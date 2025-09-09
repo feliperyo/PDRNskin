@@ -18,19 +18,32 @@ body {
     padding: 0 20px;
 }
 
-/* Gradientes e Cores */
-.gradient-text {
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
+/* Cores e Gradientes */
 :root {
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
     --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    --text-dark: #2c3e50;
+    --text-medium: #555;
+    --text-light: #666;
+}
+
+/* Texto com destaque - VERSÃO SEGURA */
+.gradient-text {
+    color: #4a5fd9;
+    font-weight: 700;
+}
+
+.hero .gradient-text {
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.guarantee .gradient-text,
+.how-to-use .gradient-text {
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 /* Animações */
@@ -86,6 +99,17 @@ body {
     to {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -165,13 +189,18 @@ body {
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.2;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
     animation: fadeInUp 1s ease 0.2s both;
 }
 
 .hero-subtitle {
     font-size: 1.3rem;
     margin-bottom: 40px;
-    opacity: 0.9;
+    opacity: 1;
+    font-weight: 500;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     animation: fadeInUp 1s ease 0.4s both;
 }
 
@@ -285,14 +314,16 @@ body {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 20px;
-    color: #2c3e50;
+    color: var(--text-dark);
 }
 
 .section-subtitle {
     font-size: 1.2rem;
-    color: #7f8c8d;
+    color: var(--text-medium);
     max-width: 600px;
     margin: 0 auto;
+    font-weight: 500;
+    line-height: 1.6;
 }
 
 /* Benefícios */
@@ -347,14 +378,16 @@ body {
 
 .benefit-card h3 {
     font-size: 1.5rem;
-    color: #2c3e50;
+    color: var(--text-dark);
     margin-bottom: 15px;
     font-weight: 600;
 }
 
 .benefit-card p {
-    color: #7f8c8d;
-    line-height: 1.6;
+    color: var(--text-medium);
+    line-height: 1.7;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 /* Ingredientes */
@@ -381,13 +414,6 @@ body {
 .ingredient-card:nth-child(2) { animation-delay: 0.2s; }
 .ingredient-card:nth-child(3) { animation-delay: 0.3s; }
 .ingredient-card:nth-child(4) { animation-delay: 0.4s; }
-
-@keyframes zoomIn {
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
 
 .ingredient-visual {
     margin-bottom: 25px;
@@ -424,21 +450,32 @@ body {
 
 .ingredient-card h3 {
     font-size: 1.4rem;
-    color: #2c3e50;
+    color: var(--text-dark);
     margin-bottom: 15px;
     font-weight: 600;
 }
 
 .ingredient-card p {
-    color: #7f8c8d;
-    line-height: 1.6;
+    color: var(--text-medium);
+    line-height: 1.7;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 /* Como Usar */
 .how-to-use {
     padding: 120px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--primary-gradient);
     color: white;
+}
+
+.how-to-use .section-title {
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.how-to-use .section-subtitle {
+    color: rgba(255,255,255,0.9);
 }
 
 .steps-container {
@@ -484,11 +521,15 @@ body {
     font-size: 1.5rem;
     margin-bottom: 10px;
     font-weight: 600;
+    color: #ffffff;
 }
 
 .step-content p {
-    opacity: 0.9;
-    line-height: 1.6;
+    opacity: 1;
+    line-height: 1.7;
+    font-weight: 400;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 /* Planos */
@@ -543,14 +584,16 @@ body {
 
 .plan-header h3 {
     font-size: 1.8rem;
-    color: #2c3e50;
+    color: var(--text-dark);
     margin-bottom: 10px;
     font-weight: 700;
 }
 
 .plan-duration {
-    color: #7f8c8d;
+    color: var(--text-light);
     margin-bottom: 30px;
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .plan-price {
@@ -566,7 +609,7 @@ body {
 }
 
 .current-price {
-    color: #2c3e50;
+    color: var(--text-dark);
     font-size: 2.5rem;
     font-weight: 700;
 }
@@ -581,7 +624,7 @@ body {
     align-items: center;
     gap: 10px;
     margin-bottom: 15px;
-    color: #2c3e50;
+    color: var(--text-dark);
 }
 
 .feature i {
@@ -613,9 +656,9 @@ body {
 
 .plan-note {
     margin-top: 15px;
-    font-size: 0.9rem;
-    color: #7f8c8d;
-    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-weight: 500;
 }
 
 /* Garantia */
@@ -623,6 +666,15 @@ body {
     padding: 120px 0;
     background: var(--primary-gradient);
     color: white;
+}
+
+.guarantee .section-title {
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.guarantee .section-subtitle {
+    color: rgba(255,255,255,0.9);
 }
 
 .guarantee-content {
@@ -665,13 +717,17 @@ body {
     font-size: 2.5rem;
     margin-bottom: 20px;
     font-weight: 700;
+    color: #ffffff;
 }
 
 .guarantee-text p {
     font-size: 1.1rem;
     margin-bottom: 30px;
-    opacity: 0.9;
+    opacity: 1;
     line-height: 1.7;
+    font-weight: 400;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .guarantee-features {
@@ -759,8 +815,10 @@ body {
 }
 
 .faq-answer p {
-    color: #2c3e50;
-    line-height: 1.6;
+    color: #333;
+    line-height: 1.7;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 /* Footer */
@@ -780,13 +838,13 @@ body {
 .footer-brand h3 {
     font-size: 2rem;
     margin-bottom: 10px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #4a5fd9;
 }
 
 .footer-brand p {
-    opacity: 0.8;
+    opacity: 0.9;
+    font-weight: 400;
+    font-size: 1rem;
 }
 
 .footer-links h4, .footer-security h4 {
@@ -799,7 +857,8 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    opacity: 0.8;
+    opacity: 0.9;
+    font-weight: 400;
 }
 
 .security-badges {
@@ -823,8 +882,9 @@ body {
 }
 
 .footer-bottom p {
-    opacity: 0.7;
+    opacity: 0.8;
     margin-bottom: 5px;
+    font-weight: 400;
 }
 
 .disclaimer {
@@ -871,7 +931,7 @@ body {
 
 .cart-header h3 {
     font-size: 1.5rem;
-    color: #2c3e50;
+    color: var(--text-dark);
 }
 
 .close-cart {
@@ -885,7 +945,7 @@ body {
 }
 
 .close-cart:hover {
-    color: #2c3e50;
+    color: var(--text-dark);
 }
 
 .cart-items {
@@ -906,7 +966,7 @@ body {
 }
 
 .item-info h4 {
-    color: #2c3e50;
+    color: var(--text-dark);
     margin-bottom: 5px;
 }
 
@@ -915,9 +975,15 @@ body {
     font-size: 0.9rem;
 }
 
+.item-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .item-price {
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--text-dark);
     font-size: 1.1rem;
 }
 
@@ -933,7 +999,7 @@ body {
     align-items: center;
     font-size: 1.3rem;
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--text-dark);
 }
 
 .cart-actions {
@@ -972,6 +1038,13 @@ body {
     
     .hero-title {
         font-size: 2.5rem;
+        text-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        font-weight: 600;
     }
     
     .hero-buttons {
@@ -988,6 +1061,12 @@ body {
         font-size: 2.2rem;
     }
     
+    .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-medium);
+        font-weight: 500;
+    }
+    
     .benefits-grid {
         grid-template-columns: 1fr;
     }
@@ -1000,6 +1079,12 @@ body {
         flex-direction: column !important;
         text-align: center;
         gap: 20px;
+    }
+    
+    .step-content p {
+        font-size: 1rem;
+        color: rgba(255,255,255,0.95);
+        font-weight: 500;
     }
     
     .guarantee-content {
@@ -1025,10 +1110,22 @@ body {
     
     .hero-title {
         font-size: 2rem;
+        text-shadow: 0 3px 10px rgba(0,0,0,0.5);
     }
     
     .hero-subtitle {
         font-size: 1.1rem;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        font-weight: 600;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+        color: var(--text-medium);
     }
     
     .ingredients-grid {
@@ -1037,5 +1134,37 @@ body {
     
     .cart-content {
         width: 95%;
+    }
+    
+    .benefit-card p, 
+    .ingredient-card p {
+        font-size: 0.95rem;
+        color: var(--text-medium);
+        line-height: 1.8;
+    }
+    
+    .faq-answer p {
+        font-size: 0.95rem;
+        color: #333;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 15px 25px;
+        font-size: 1rem;
+    }
+    
+    .step-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .guarantee-badge {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .guarantee-badge i {
+        font-size: 3rem;
     }
 }
