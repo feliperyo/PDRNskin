@@ -7,7 +7,7 @@ const PRODUCT_CONFIG = {
     price: 249.90,
     originalPrice: 299.90,
     maxQuantity: 1,
-    image: 'https://via.placeholder.com/60x60/F28C82/ffffff?text=PDRN'
+    image: 'assets/mockup3-sem-fundo.png'
 };
 
 // Configurações de desconto progressivo
@@ -853,7 +853,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Preload de imagens importantes
     const criticalImages = [
         PRODUCT_CONFIG.image,
-        'https://via.placeholder.com/400x500/F28C82/ffffff?text=PDRNskin+Premium'
+        'assets/mockup1-produto.png'
     ];
 
     criticalImages.forEach(src => {
