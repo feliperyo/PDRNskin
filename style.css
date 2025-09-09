@@ -33,6 +33,7 @@ body {
     --highlight-gold: #D4AF37;
     --highlight-green: #48B347;
     --highlight-red: #E63946;
+    --highlight-yellow: #F5E042;
     
     /* CTAs */
     --cta-bg: var(--brand-primary);
@@ -212,6 +213,12 @@ body {
     color: white;
 }
 
+.hero .gradient-text {
+    color: var(--highlight-yellow);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    font-weight: 700;
+}
+
 .hero-bg-animation {
     position: absolute;
     top: 0;
@@ -237,6 +244,7 @@ body {
     margin-bottom: 20px;
     line-height: 1.2;
     animation: fadeInUp 1s ease 0.2s both;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.2);
 }
 
 .hero-subtitle {
@@ -245,6 +253,7 @@ body {
     opacity: 0.95;
     font-weight: 400;
     animation: fadeInUp 1s ease 0.4s both;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.1);
 }
 
 .hero-buttons {
@@ -509,6 +518,22 @@ body {
     padding: 120px 0;
     background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%);
     color: white;
+}
+
+.how-to-use .section-title {
+    color: white;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.2);
+}
+
+.how-to-use .gradient-text {
+    color: var(--highlight-yellow);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    font-weight: 700;
+}
+
+.how-to-use .section-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 10px rgba(0,0,0,0.1);
 }
 
 .steps-container {
