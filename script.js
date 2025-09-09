@@ -1,25 +1,75 @@
 // Carrinho de compras
 let cart = [];
 
+// Configurações do produto
+const PRODUCT_CONFIG = {
+    name: 'PDRNskin Premium',
+    price: 249.90,
+    originalPrice: 299.90,
+    maxQuantity: 1,
+    image: 'https://via.placeholder.com/60x60/F28C82/ffffff?text=PDRN'
+};
+
+// Configurações de desconto progressivo
+const DISCOUNT_TIERS = [
+    { minAmount: 0, discount: 0, label: 'Sem desconto' },
+    { minAmount: 499.80, discount: 0.10, label: '10% de desconto' },
+    { minAmount: 749.70, discount: 0.15, label: '15% de desconto' },
+    { minAmount: 999.60, discount: 0.20, label: '20% de desconto' }
+];
+
+// Configurações de frete
+const SHIPPING_CONFIG = {
+    freeShippingMinQuantity: 2,
+    standardShippingCost: 19.90
+};
+
 // Elementos DOM
 const cartFloat = document.getElementById('cartFloat');
 const cartCount = document.getElementById('cartCount');
 const cartModal = document.getElementById('cartModal');
 const cartItems = document.getElementById('cartItems');
-const cartTotal = document.getElementById('cartTotal');
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', function () {
+    initializeCountdown();
     initializeAnimations();
     initializeScrollEffects();
     initializeFAQ();
     initializeCartEvents();
+    initializeAdvancedEffects();
     updateCartDisplay();
+    startMovingEffects();
 });
+
+// Contador Regressivo
+function initializeCountdown() {
+    const countdownDate = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 horas a partir de agora
+
+    const countdownTimer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        if (distance < 0) {
+            clearInterval(countdownTimer);
+            document.getElementById('hours').innerHTML = '00';
+            document.getElementById('minutes').innerHTML = '00';
+            document.getElementById('seconds').innerHTML = '00';
+            return;
+        }
+
+        const hours = Math.floor(distance / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('hours').innerHTML = String(hours).padStart(2, '0');
+        document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0');
+    }, 1000);
+}
 
 // Animações de entrada
 function initializeAnimations() {
-    // Observador de intersecção para animações
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -33,43 +83,128 @@ function initializeAnimations() {
         });
     }, observerOptions);
 
-    // Observar elementos animáveis
     const animatedElements = document.querySelectorAll('[data-aos]');
     animatedElements.forEach(el => observer.observe(el));
 }
 
-// Efeitos de scroll
-function initializeScrollEffects() {
-    let lastScrollTop = 0;
-
+// Efeitos de movimento
+function startMovingEffects() {
+    // Efeito parallax no hero
     window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        // Efeito parallax no hero
-        const heroSection = document.querySelector('.hero');
+        const scrolled = window.pageYOffset;
         const heroAnimation = document.querySelector('.hero-bg-animation');
 
-        if (heroSection && heroAnimation) {
-            const scrolled = window.pageYOffset;
+        if (heroAnimation) {
             const parallax = scrolled * 0.5;
             heroAnimation.style.transform = `translateY(${parallax}px)`;
         }
 
-        // Mostrar/esconder carrinho flutuante baseado no scroll
-        if (scrollTop > 100) {
+        // Mostrar/esconder carrinho flutuante
+        if (scrolled > 100) {
             cartFloat.style.opacity = '1';
-            cartFloat.style.pointerEvents = 'auto';
+            cartFloat.style.transform = 'scale(1)';
         } else {
-            cartFloat.style.opacity = '0.7';
+            cartFloat.style.opacity = '0.8';
+            cartFloat.style.transform = 'scale(0.9)';
         }
+    });
 
-        lastScrollTop = scrollTop;
+    // Efeito de movimento do mouse no hero
+    const hero = document.querySelector('.hero');
+    const productShowcase = document.querySelector('.product-showcase');
+
+    if (hero && productShowcase) {
+        hero.addEventListener('mousemove', (e) => {
+            const rect = hero.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+
+            const moveX = (x - 0.5) * 30;
+            const moveY = (y - 0.5) * 30;
+
+            productShowcase.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            productShowcase.style.transform = 'translate(0, 0)';
+        });
+    }
+}
+
+// Efeitos de scroll
+function initializeScrollEffects() {
+    // Animação dos cards de benefícios
+    const benefitCards = document.querySelectorAll('.benefit-card');
+    benefitCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-15px) scale(1.03)';
+
+            const icon = card.querySelector('.benefit-icon');
+            if (icon) {
+                icon.style.animation = 'glow 1s ease-in-out';
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+
+            const icon = card.querySelector('.benefit-icon');
+            if (icon) {
+                icon.style.animation = 'pulse 2s infinite';
+            }
+        });
+    });
+
+    // Efeito de hover nos ingredientes
+    const ingredientCards = document.querySelectorAll('.ingredient-card');
+    ingredientCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            const circle = card.querySelector('.ingredient-circle');
+            if (circle) {
+                circle.style.transform = 'scale(1.15) rotate(360deg)';
+                circle.style.transition = 'all 0.6s ease';
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            const circle = card.querySelector('.ingredient-circle');
+            if (circle) {
+                circle.style.transform = 'scale(1) rotate(0deg)';
+            }
+        });
+    });
+}
+
+// Efeitos avançados
+function initializeAdvancedEffects() {
+    // Efeito de brilho no botão de compra
+    const addCartBtn = document.querySelector('.btn-add-cart');
+    if (addCartBtn) {
+        addCartBtn.addEventListener('mouseenter', () => {
+            addCartBtn.style.boxShadow = '0 15px 35px rgba(242, 140, 130, 0.4)';
+            addCartBtn.style.transform = 'translateY(-3px) scale(1.02)';
+        });
+
+        addCartBtn.addEventListener('mouseleave', () => {
+            addCartBtn.style.boxShadow = 'none';
+            addCartBtn.style.transform = 'translateY(0) scale(1)';
+        });
+    }
+
+    // Efeito de pulsação nos elementos de destaque
+    const highlightElements = document.querySelectorAll('.offer-badge, .discount-badge');
+    highlightElements.forEach(element => {
+        setInterval(() => {
+            element.style.animation = 'pulse 0.8s ease-in-out';
+            setTimeout(() => {
+                element.style.animation = '';
+            }, 800);
+        }, 3000);
     });
 }
 
 // FAQ Funcionalidade
 function initializeFAQ() {
-    // FAQ já tem onclick no HTML, mas vamos garantir que funcione
     window.toggleFAQ = function (element) {
         const faqItem = element.parentElement;
         const isActive = faqItem.classList.contains('active');
@@ -100,12 +235,13 @@ function initializeCartEvents() {
         openCart();
     });
 
-    // Click fora do modal para fechar
-    cartModal.addEventListener('click', (e) => {
-        if (e.target === cartModal) {
+    // Click no overlay para fechar
+    const cartOverlay = document.querySelector('.cart-overlay');
+    if (cartOverlay) {
+        cartOverlay.addEventListener('click', () => {
             closeCart();
-        }
-    });
+        });
+    }
 
     // Escapar para fechar modal
     document.addEventListener('keydown', (e) => {
@@ -116,77 +252,269 @@ function initializeCartEvents() {
 }
 
 // Adicionar produto ao carrinho
-function addToCart(planType, quantity, price) {
-    const product = {
-        id: Date.now(),
-        name: `PDRNskin - ${planType.charAt(0).toUpperCase() + planType.slice(1)}`,
-        quantity: quantity,
-        price: price,
-        total: price * quantity
-    };
+function addToCart() {
+    const quantity = parseInt(document.getElementById('productQuantity').value);
 
-    cart.push(product);
+    // Verificar se já existe produto no carrinho
+    const existingItem = cart.find(item => item.id === 'pdrnskin-premium');
+
+    if (existingItem) {
+        // Atualizar quantidade (respeitando o máximo)
+        const newQuantity = Math.min(existingItem.quantity + quantity, PRODUCT_CONFIG.maxQuantity);
+        existingItem.quantity = newQuantity;
+        existingItem.total = newQuantity * PRODUCT_CONFIG.price;
+    } else {
+        // Adicionar novo item
+        const product = {
+            id: 'pdrnskin-premium',
+            name: PRODUCT_CONFIG.name,
+            quantity: Math.min(quantity, PRODUCT_CONFIG.maxQuantity),
+            price: PRODUCT_CONFIG.price,
+            originalPrice: PRODUCT_CONFIG.originalPrice,
+            image: PRODUCT_CONFIG.image,
+            total: Math.min(quantity, PRODUCT_CONFIG.maxQuantity) * PRODUCT_CONFIG.price
+        };
+
+        cart.push(product);
+    }
+
     updateCartDisplay();
-    showCartNotification();
+    showCartNotification('Produto adicionado ao carrinho!', 'success');
+    animateAddToCart();
+}
 
-    // Animação do botão
-    const button = event.target;
+// Animação do botão ao adicionar
+function animateAddToCart() {
+    const button = document.querySelector('.btn-add-cart');
+    const originalText = button.innerHTML;
+
     button.style.transform = 'scale(0.95)';
     button.innerHTML = '<i class="fas fa-check"></i> Adicionado!';
+    button.style.background = 'var(--highlight-green)';
 
     setTimeout(() => {
         button.style.transform = 'scale(1)';
-        button.innerHTML = '<i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho';
+        button.innerHTML = originalText;
+        button.style.background = 'var(--cta-bg)';
     }, 1500);
-}
-
-// Atualizar display do carrinho
-function updateCartDisplay() {
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = cart.reduce((sum, item) => sum + item.total, 0);
-
-    cartCount.textContent = totalItems;
-    cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
-
-    // Atualizar itens do carrinho
-    cartItems.innerHTML = '';
-
-    if (cart.length === 0) {
-        cartItems.innerHTML = `
-            <div style="text-align: center; padding: 40px; color: #7f8c8d;">
-                <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 15px; opacity: 0.3;"></i>
-                <p>Seu carrinho está vazio</p>
-                <p style="font-size: 0.9rem; margin-top: 10px;">Adicione produtos para continuar</p>
-            </div>
-        `;
-    } else {
-        cart.forEach(item => {
-            const cartItem = document.createElement('div');
-            cartItem.className = 'cart-item';
-            cartItem.innerHTML = `
-                <div class="item-info">
-                    <h4>${item.name}</h4>
-                    <p>Quantidade: ${item.quantity}</p>
-                </div>
-                <div class="item-actions">
-                    <div class="item-price">R$ ${item.total.toFixed(2).replace('.', ',')}</div>
-                    <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: #e74c3c; cursor: pointer; margin-left: 10px; font-size: 1.2rem;">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            `;
-            cartItems.appendChild(cartItem);
-        });
-    }
-
-    cartTotal.textContent = totalPrice.toFixed(2).replace('.', ',');
 }
 
 // Remover do carrinho
 function removeFromCart(productId) {
     cart = cart.filter(item => item.id !== productId);
     updateCartDisplay();
-    showCartNotification('Produto removido do carrinho', 'error');
+    showCartNotification('Produto removido do carrinho', 'info');
+}
+
+// Atualizar quantidade no carrinho
+function updateQuantity(productId, change) {
+    const item = cart.find(item => item.id === productId);
+    if (!item) return;
+
+    const newQuantity = item.quantity + change;
+
+    if (newQuantity <= 0) {
+        removeFromCart(productId);
+        return;
+    }
+
+    if (newQuantity > PRODUCT_CONFIG.maxQuantity) {
+        showCartNotification(`Máximo de ${PRODUCT_CONFIG.maxQuantity} unidade(s) por pedido`, 'warning');
+        return;
+    }
+
+    item.quantity = newQuantity;
+    item.total = newQuantity * item.price;
+
+    updateCartDisplay();
+}
+
+// Calcular desconto atual
+function calculateDiscount(subtotal) {
+    let applicableDiscount = 0;
+    let nextTier = null;
+
+    for (let i = DISCOUNT_TIERS.length - 1; i >= 0; i--) {
+        if (subtotal >= DISCOUNT_TIERS[i].minAmount) {
+            applicableDiscount = DISCOUNT_TIERS[i].discount;
+            break;
+        }
+        nextTier = DISCOUNT_TIERS[i];
+    }
+
+    return { discount: applicableDiscount, nextTier };
+}
+
+// Atualizar display do carrinho
+function updateCartDisplay() {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const subtotal = cart.reduce((sum, item) => sum + item.total, 0);
+
+    // Atualizar contador do carrinho flutuante
+    cartCount.textContent = totalItems;
+    cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
+
+    // Atualizar itens do carrinho
+    updateCartItems();
+
+    // Atualizar desconto progressivo
+    updateDiscountSection(subtotal);
+
+    // Atualizar frete
+    updateShippingInfo(totalItems);
+
+    // Atualizar resumo
+    updateCartSummary(subtotal, totalItems);
+}
+
+// Atualizar itens do carrinho
+function updateCartItems() {
+    const cartItemsContainer = document.getElementById('cartItems');
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = `
+            <div class="cart-empty">
+                <i class="fas fa-shopping-cart"></i>
+                <h4>Seu carrinho está vazio</h4>
+                <p>Adicione produtos para continuar sua compra</p>
+                <button class="btn-start-shopping" onclick="closeCart()">
+                    Começar a Comprar
+                </button>
+            </div>
+        `;
+        return;
+    }
+
+    cartItemsContainer.innerHTML = '';
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+            <div class="item-image">
+                <img src="${item.image}" alt="${item.name}">
+            </div>
+            <div class="item-details">
+                <div class="item-name">${item.name}</div>
+                <div class="item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+                <div class="item-controls">
+                    <button class="quantity-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
+                    <span class="quantity-display">${item.quantity}</span>
+                    <button class="quantity-btn" onclick="updateQuantity('${item.id}', 1)">+</button>
+                    <button class="remove-btn" onclick="removeFromCart('${item.id}')" title="Remover item">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        cartItemsContainer.appendChild(cartItem);
+    });
+}
+
+// Atualizar seção de desconto
+function updateDiscountSection(subtotal) {
+    const discountSection = document.getElementById('discountSection');
+    const discountProgress = document.getElementById('discountProgress');
+    const discountText = document.getElementById('discountText');
+    const nextDiscountAmount = document.getElementById('nextDiscountAmount');
+
+    if (!discountSection) return;
+
+    const { discount, nextTier } = calculateDiscount(subtotal);
+
+    if (discount > 0) {
+        // Já tem desconto aplicado
+        discountSection.innerHTML = `
+            <div class="discount-achieved">
+                <i class="fas fa-check-circle"></i>
+                Parabéns! Você ganhou ${(discount * 100)}% de desconto!
+            </div>
+        `;
+    } else if (nextTier) {
+        // Mostra progresso para próximo desconto
+        const remaining = nextTier.minAmount - subtotal;
+        const progress = Math.min((subtotal / nextTier.minAmount) * 100, 100);
+
+        discountProgress.style.width = `${progress}%`;
+        nextDiscountAmount.textContent = remaining.toFixed(2).replace('.', ',');
+        discountText.innerHTML = `
+            Adicione mais R$ <span id="nextDiscountAmount">${remaining.toFixed(2).replace('.', ',')}</span> 
+            para ganhar <strong>${nextTier.label}</strong>
+        `;
+
+        discountSection.style.display = 'block';
+    } else {
+        discountSection.style.display = 'none';
+    }
+}
+
+// Atualizar informações de frete
+function updateShippingInfo(totalItems) {
+    const shippingInfo = document.getElementById('shippingInfo');
+    const shippingText = document.getElementById('shippingText');
+
+    if (!shippingInfo) return;
+
+    if (totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity) {
+        shippingText.innerHTML = '<i class="fas fa-check"></i> Frete Grátis aplicado!';
+        shippingInfo.style.background = 'rgba(72, 179, 71, 0.1)';
+        shippingInfo.style.color = 'var(--highlight-green)';
+    } else {
+        const remaining = SHIPPING_CONFIG.freeShippingMinQuantity - totalItems;
+        shippingText.innerHTML = `<i class="fas fa-truck"></i> Adicione mais ${remaining} unidade(s) para Frete Grátis`;
+        shippingInfo.style.background = 'rgba(242, 140, 130, 0.1)';
+        shippingInfo.style.color = 'var(--brand-primary)';
+    }
+}
+
+// Atualizar resumo do carrinho
+function updateCartSummary(subtotal, totalItems) {
+    const cartSubtotal = document.getElementById('cartSubtotal');
+    const discountLine = document.getElementById('discountLine');
+    const discountAmount = document.getElementById('discountAmount');
+    const shippingCost = document.getElementById('shippingCost');
+    const cartTotal = document.getElementById('cartTotal');
+    const savingsHighlight = document.getElementById('savingsHighlight');
+    const totalSavings = document.getElementById('totalSavings');
+
+    if (!cartSubtotal) return;
+
+    // Calcular desconto
+    const { discount } = calculateDiscount(subtotal);
+    const discountValue = subtotal * discount;
+
+    // Calcular frete
+    const shipping = totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity ? 0 : SHIPPING_CONFIG.standardShippingCost;
+
+    // Total final
+    const finalTotal = subtotal - discountValue + shipping;
+
+    // Calcular economias totais
+    const originalSubtotal = cart.reduce((sum, item) => sum + (item.quantity * item.originalPrice), 0);
+    const totalSavingsValue = (originalSubtotal - subtotal) + discountValue +
+        (totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity ? SHIPPING_CONFIG.standardShippingCost : 0);
+
+    // Atualizar elementos
+    cartSubtotal.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+
+    if (discountValue > 0) {
+        discountLine.style.display = 'flex';
+        discountAmount.textContent = `-R$ ${discountValue.toFixed(2).replace('.', ',')}`;
+    } else {
+        discountLine.style.display = 'none';
+    }
+
+    shippingCost.textContent = shipping > 0 ? `R$ ${shipping.toFixed(2).replace('.', ',')}` : 'Grátis';
+    shippingCost.style.color = shipping > 0 ? 'var(--brand-text)' : 'var(--highlight-green)';
+
+    cartTotal.textContent = `R$ ${finalTotal.toFixed(2).replace('.', ',')}`;
+
+    if (totalSavingsValue > 0) {
+        savingsHighlight.style.display = 'block';
+        totalSavings.textContent = `R$ ${totalSavingsValue.toFixed(2).replace('.', ',')}`;
+    } else {
+        savingsHighlight.style.display = 'none';
+    }
 }
 
 // Abrir carrinho
@@ -196,20 +524,26 @@ function openCart() {
 
     // Animação de entrada
     const cartContent = document.querySelector('.cart-content');
-    cartContent.style.transform = 'scale(0.8)';
+    cartContent.style.transform = 'scale(0.8) translateY(50px)';
     cartContent.style.opacity = '0';
 
     setTimeout(() => {
-        cartContent.style.transform = 'scale(1)';
+        cartContent.style.transform = 'scale(1) translateY(0)';
         cartContent.style.opacity = '1';
         cartContent.style.transition = 'all 0.3s ease';
     }, 10);
+
+    // Track evento
+    trackEvent('cart_viewed', {
+        items_count: cart.length,
+        cart_value: cart.reduce((sum, item) => sum + item.total, 0)
+    });
 }
 
 // Fechar carrinho
 function closeCart() {
     const cartContent = document.querySelector('.cart-content');
-    cartContent.style.transform = 'scale(0.8)';
+    cartContent.style.transform = 'scale(0.8) translateY(50px)';
     cartContent.style.opacity = '0';
 
     setTimeout(() => {
@@ -221,38 +555,72 @@ function closeCart() {
 // Finalizar compra
 function checkout() {
     if (cart.length === 0) {
-        showCartNotification('Adicione produtos ao carrinho primeiro!', 'error');
+        showCartNotification('Adicione produtos ao carrinho primeiro!', 'warning');
         return;
     }
 
+    // Calcular totais para checkout
+    const subtotal = cart.reduce((sum, item) => sum + item.total, 0);
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const { discount } = calculateDiscount(subtotal);
+    const discountValue = subtotal * discount;
+    const shipping = totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity ? 0 : SHIPPING_CONFIG.standardShippingCost;
+    const finalTotal = subtotal - discountValue + shipping;
+
+    // Dados do pedido
+    const orderData = {
+        items: cart.map(item => ({
+            id: item.id,
+            name: item.name,
+            quantity: item.quantity,
+            unitPrice: item.price,
+            total: item.total
+        })),
+        subtotal: subtotal,
+        discount: discountValue,
+        shipping: shipping,
+        total: finalTotal,
+        timestamp: new Date().toISOString(),
+        discountPercentage: discount * 100
+    };
+
     // Simular processo de checkout
-    showCartNotification('Redirecionando para pagamento...', 'success');
+    const checkoutBtn = document.querySelector('.btn-checkout');
+    const originalText = checkoutBtn.innerHTML;
 
-    // Aqui você integraria com seu gateway de pagamento
+    checkoutBtn.disabled = true;
+    checkoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+
+    showCartNotification('Redirecionando para pagamento...', 'info');
+
     setTimeout(() => {
-        // Por enquanto, vamos simular um sucesso
-        const totalAmount = cart.reduce((sum, item) => sum + item.total, 0);
-        const orderData = {
-            items: cart,
-            total: totalAmount,
-            timestamp: new Date().toISOString()
-        };
-
+        // Simular sucesso
         console.log('Dados do pedido:', orderData);
 
-        // Em uma implementação real, você enviaria esses dados para seu backend
-        // window.location.href = `/checkout?data=${encodeURIComponent(JSON.stringify(orderData))}`;
+        // Track evento
+        trackEvent('checkout_initiated', {
+            value: finalTotal,
+            items: cart.length,
+            discount_applied: discountValue > 0
+        });
 
-        alert(`Pedido processado com sucesso!\nTotal: R$ ${totalAmount.toFixed(2).replace('.', ',')}\n\nEm breve você será redirecionado para o pagamento.`);
+        // Em produção, redirecionar para gateway de pagamento
+        alert(`Pedido processado com sucesso!\n\nResumo do Pedido:\nSubtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\nDesconto: R$ ${discountValue.toFixed(2).replace('.', ',')}\nFrete: ${shipping > 0 ? 'R$ ' + shipping.toFixed(2).replace('.', ',') : 'Grátis'}\nTotal: R$ ${finalTotal.toFixed(2).replace('.', ',')}\n\nEm breve você será redirecionado para o pagamento.`);
 
-        // Limpar carrinho após "compra"
+        // Limpar carrinho
         cart = [];
         updateCartDisplay();
         closeCart();
+
+        // Restaurar botão
+        checkoutBtn.disabled = false;
+        checkoutBtn.innerHTML = originalText;
+
+        showCartNotification('Pedido finalizado com sucesso!', 'success');
     }, 2000);
 }
 
-// Notificação do carrinho
+// Notificação
 function showCartNotification(message, type = 'success') {
     // Remover notificação existente
     const existingNotification = document.querySelector('.cart-notification');
@@ -262,23 +630,42 @@ function showCartNotification(message, type = 'success') {
 
     const notification = document.createElement('div');
     notification.className = `cart-notification ${type}`;
+
+    const colors = {
+        success: '#48B347',
+        error: '#E63946',
+        warning: '#D4AF37',
+        info: '#F28C82'
+    };
+
+    const icons = {
+        success: 'check-circle',
+        error: 'exclamation-triangle',
+        warning: 'exclamation-circle',
+        info: 'info-circle'
+    };
+
     notification.style.cssText = `
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'success' ? '#2ecc71' : '#e74c3c'};
+        background: ${colors[type]};
         color: white;
-        padding: 15px 20px;
+        padding: 15px 25px;
         border-radius: 50px;
         font-weight: 600;
         z-index: 3000;
         transform: translateX(100%);
         transition: transform 0.3s ease;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        max-width: 300px;
     `;
 
     notification.innerHTML = `
-        <i class="fas fa-${type === 'success' ? 'check' : 'exclamation-triangle'}"></i>
+        <i class="fas fa-${icons[type]}"></i>
         ${message}
     `;
 
@@ -289,13 +676,13 @@ function showCartNotification(message, type = 'success') {
         notification.style.transform = 'translateX(0)';
     }, 100);
 
-    // Remover após 3 segundos
+    // Remover após 4 segundos
     setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => {
             notification.remove();
         }, 300);
-    }, 3000);
+    }, 4000);
 }
 
 // Scroll suave para seções
@@ -313,11 +700,16 @@ function scrollToSection(sectionId) {
 function scrollToPlans() {
     scrollToSection('plans');
 
-    // Adicionar efeito visual ao botão de plano
+    // Adicionar efeito visual
     setTimeout(() => {
-        const planCard = document.querySelector('.plan-card');
-        if (planCard) {
-            planCard.style.animation = 'pulse 1s ease-in-out 3';
+        const offerCard = document.querySelector('.product-offer-card');
+        if (offerCard) {
+            offerCard.style.animation = 'pulse 1s ease-in-out 3';
+            offerCard.style.boxShadow = '0 20px 60px rgba(242, 140, 130, 0.4)';
+
+            setTimeout(() => {
+                offerCard.style.boxShadow = '0 15px 50px var(--card-shadow)';
+            }, 3000);
         }
     }, 1000);
 }
@@ -326,202 +718,112 @@ function scrollToBenefits() {
     scrollToSection('benefits');
 }
 
-// Efeitos visuais avançados
-function initializeAdvancedEffects() {
-    // Efeito de movimento do mouse no hero
-    const hero = document.querySelector('.hero');
-    const productShowcase = document.querySelector('.product-showcase');
-
-    if (hero && productShowcase) {
-        hero.addEventListener('mousemove', (e) => {
-            const rect = hero.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width;
-            const y = (e.clientY - rect.top) / rect.height;
-
-            const moveX = (x - 0.5) * 20;
-            const moveY = (y - 0.5) * 20;
-
-            productShowcase.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
-
-        hero.addEventListener('mouseleave', () => {
-            productShowcase.style.transform = 'translate(0, 0)';
-        });
-    }
-
-    // Efeito de hover nos cards de benefícios
-    const benefitCards = document.querySelectorAll('.benefit-card');
-    benefitCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) scale(1.02)';
-
-            // Efeito de brilho
-            const icon = card.querySelector('.benefit-icon');
-            if (icon) {
-                icon.style.animation = 'glow 1s ease-in-out';
-            }
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
-
-            const icon = card.querySelector('.benefit-icon');
-            if (icon) {
-                icon.style.animation = 'pulse 2s infinite';
-            }
-        });
-    });
-
-    // Efeito de hover nos ingredientes
-    const ingredientCards = document.querySelectorAll('.ingredient-card');
-    ingredientCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            const circle = card.querySelector('.ingredient-circle');
-            if (circle) {
-                circle.style.transform = 'scale(1.1) rotate(360deg)';
-                circle.style.transition = 'all 0.5s ease';
-            }
-        });
-
-        card.addEventListener('mouseleave', () => {
-            const circle = card.querySelector('.ingredient-circle');
-            if (circle) {
-                circle.style.transform = 'scale(1) rotate(0deg)';
-            }
-        });
-    });
-}
-
-// Contador animado para preços
-function animatePrice(element, finalValue, duration = 1000) {
-    const startValue = 0;
-    const startTime = performance.now();
-
-    function updatePrice(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        const currentValue = startValue + (finalValue - startValue) * easeOutCubic(progress);
-        element.textContent = `R$ ${currentValue.toFixed(2).replace('.', ',')}`;
-
-        if (progress < 1) {
-            requestAnimationFrame(updatePrice);
-        }
-    }
-
-    requestAnimationFrame(updatePrice);
-}
-
-// Função de easing
-function easeOutCubic(t) {
-    return 1 - Math.pow(1 - t, 3);
-}
-
-// Validação de formulários (se houver)
-function validateForm(formData) {
-    const errors = [];
-
-    if (!formData.name || formData.name.length < 2) {
-        errors.push('Nome deve ter pelo menos 2 caracteres');
-    }
-
-    if (!formData.email || !isValidEmail(formData.email)) {
-        errors.push('Email inválido');
-    }
-
-    if (!formData.phone || formData.phone.length < 10) {
-        errors.push('Telefone inválido');
-    }
-
-    return errors;
-}
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Lazy loading de imagens
-function initializeLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                observer.unobserve(img);
-            }
-        });
-    });
-
-    images.forEach(img => imageObserver.observe(img));
-}
-
-// Performance e otimizações
-function optimizePerformance() {
-    // Preload de recursos críticos
-    const preloadResources = [
-        'style.css',
-        // Adicionar outras resources importantes
-    ];
-
-    preloadResources.forEach(resource => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.href = resource;
-        link.as = resource.endsWith('.css') ? 'style' : 'script';
-        document.head.appendChild(link);
-    });
-
-    // Otimizar animações para dispositivos de baixa performance
-    if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
-        document.body.classList.add('reduce-animations');
-    }
-}
-
-// Analytics e tracking (placeholder)
+// Analytics e tracking
 function trackEvent(eventName, properties = {}) {
-    // Placeholder para integração com Google Analytics, Facebook Pixel, etc.
+    // Placeholder para integração com analytics
     console.log('Track Event:', eventName, properties);
 
-    // Exemplo de implementação:
+    // Implementação real seria:
     // gtag('event', eventName, properties);
     // fbq('track', eventName, properties);
 }
 
-// Inicializar tudo quando a página carregar
-document.addEventListener('DOMContentLoaded', function () {
-    initializeAnimations();
-    initializeScrollEffects();
-    initializeFAQ();
-    initializeCartEvents();
-    initializeAdvancedEffects();
-    initializeLazyLoading();
-    optimizePerformance();
-    updateCartDisplay();
+// Funções utilitárias
+const Utils = {
+    formatCurrency(value) {
+        return new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        }).format(value);
+    },
 
-    // Animar preços quando visíveis
-    const priceElements = document.querySelectorAll('.current-price');
-    const priceObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const priceText = entry.target.textContent;
-                const priceValue = parseFloat(priceText.replace('R$ ', '').replace(',', '.'));
-                animatePrice(entry.target, priceValue);
-                priceObserver.unobserve(entry.target);
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    },
+
+    generateId() {
+        return Date.now().toString(36) + Math.random().toString(36).substr(2);
+    }
+};
+
+// Performance e otimizações
+function optimizePerformance() {
+    // Reduzir animações em dispositivos de baixa performance
+    if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+        document.body.classList.add('reduce-animations');
+
+        // Reduzir frequência de atualizações
+        const style = document.createElement('style');
+        style.textContent = `
+            .reduce-animations * {
+                animation-duration: 0.5s !important;
+                transition-duration: 0.2s !important;
             }
-        });
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Otimizar scroll events
+    const optimizedScroll = Utils.debounce(() => {
+        // Lógica de scroll otimizada
+    }, 16);
+
+    window.addEventListener('scroll', optimizedScroll);
+}
+
+// Recursos extras para melhor UX
+function initializeExtraFeatures() {
+    // Detectar dispositivo móvel
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile) {
+        document.body.classList.add('mobile-device');
+
+        // Ajustar comportamentos para mobile
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            // Reduzir efeitos complexos no mobile
+            hero.style.backgroundAttachment = 'scroll';
+        }
+    }
+
+    // Detectar conexão lenta
+    if ('connection' in navigator) {
+        const connection = navigator.connection;
+        if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+            document.body.classList.add('slow-connection');
+
+            // Reduzir animações e otimizar para conexão lenta
+            const style = document.createElement('style');
+            style.textContent = `
+                .slow-connection * {
+                    animation: none !important;
+                    transition: none !important;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    // Suporte a teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            document.body.classList.add('keyboard-navigation');
+        }
     });
 
-    priceElements.forEach(el => priceObserver.observe(el));
-
-    // Track página carregada
-    trackEvent('page_view', {
-        page_title: 'PDRNskin Landing Page',
-        page_location: window.location.href
+    document.addEventListener('mousedown', () => {
+        document.body.classList.remove('keyboard-navigation');
     });
-});
+}
 
 // Service Worker para cache (opcional)
 if ('serviceWorker' in navigator) {
@@ -536,90 +838,36 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-// Funcionalidades extras para melhor UX
-function initializeExtraFeatures() {
-    // Detectar se o usuário está no mobile
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-    if (isMobile) {
-        document.body.classList.add('mobile-device');
-
-        // Ajustar comportamentos para mobile
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            hero.addEventListener('touchstart', () => {
-                // Adicionar feedback tátil
-            });
-        }
-    }
-
-    // Detectar conexão lenta
-    if ('connection' in navigator) {
-        const connection = navigator.connection;
-        if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
-            document.body.classList.add('slow-connection');
-            // Reduzir animações e otimizar para conexão lenta
-        }
-    }
-
-    // Modo escuro (se implementado)
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    if (prefersDarkScheme.matches) {
-        document.body.classList.add('dark-theme');
-    }
-}
-
 // Inicializar recursos extras
-document.addEventListener('DOMContentLoaded', initializeExtraFeatures);
+document.addEventListener('DOMContentLoaded', () => {
+    initializeExtraFeatures();
+    optimizePerformance();
 
-// Funções utilitárias
-const Utils = {
-    // Formatar moeda
-    formatCurrency(value) {
-        return new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        }).format(value);
-    },
+    // Track página carregada
+    trackEvent('page_view', {
+        page_title: 'PDRNskin Landing Page',
+        page_location: window.location.href,
+        user_agent: navigator.userAgent
+    });
 
-    // Debounce para otimizar events
-    debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    },
+    // Preload de imagens importantes
+    const criticalImages = [
+        PRODUCT_CONFIG.image,
+        'https://via.placeholder.com/400x500/F28C82/ffffff?text=PDRNskin+Premium'
+    ];
 
-    // Throttle para scroll events
-    throttle(func, limit) {
-        let inThrottle;
-        return function () {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        }
-    },
-
-    // Gerar ID único
-    generateId() {
-        return Date.now().toString(36) + Math.random().toString(36).substr(2);
-    }
-};
+    criticalImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+});
 
 // Exportar funções globais necessárias
 window.scrollToPlans = scrollToPlans;
 window.scrollToBenefits = scrollToBenefits;
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
+window.updateQuantity = updateQuantity;
 window.closeCart = closeCart;
 window.checkout = checkout;
 window.toggleFAQ = toggleFAQ;

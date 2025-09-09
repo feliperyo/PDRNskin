@@ -41,7 +41,7 @@
                 <div class="hero-image">
                     <div class="product-showcase">
                         <div class="product-glow"></div>
-                        <img src="https://via.placeholder.com/400x500/667eea/ffffff?text=PDRNskin+Premium"
+                        <img src="https://via.placeholder.com/400x500/F28C82/ffffff?text=PDRNskin+Premium"
                             alt="PDRNskin Premium" class="floating-product">
                     </div>
                 </div>
@@ -221,48 +221,74 @@
         </div>
     </section>
 
-    <!-- Planos Section -->
-    <section class="plans" id="plans">
+    <!-- Oferta Especial Section -->
+    <section class="special-offer" id="plans">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Escolha seu <span class="gradient-text">Plano</span></h2>
-                <p class="section-subtitle">Garanta já o seu tratamento exclusivo de regeneração celular</p>
+                <h2 class="section-title">Oferta <span class="gradient-text">Exclusiva</span></h2>
+                <p class="section-subtitle">Por tempo limitado - Apenas 1 unidade disponível para compra</p>
+
+                <!-- Contador Regressivo -->
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">23</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">45</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">30</span>
+                        <span class="countdown-label">Segundos</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="plans-grid">
-                <div class="plan-card popular" data-aos="zoom-in" data-delay="100">
-                    <div class="plan-badge">Mais Vendido</div>
-                    <div class="plan-header">
-                        <h3>Plano Essencial</h3>
-                        <div class="plan-duration">1 Mês de Tratamento</div>
+            <div class="offer-container">
+                <div class="product-offer-card">
+                    <div class="offer-badge">OFERTA LIMITADA</div>
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/250x300/F28C82/ffffff?text=PDRNskin"
+                            alt="PDRNskin Premium">
                     </div>
-                    <div class="plan-price">
-                        <span class="old-price">R$ 299,90</span>
-                        <span class="current-price">R$ 249,90</span>
+                    <div class="product-info">
+                        <h3>PDRNskin Premium</h3>
+                        <p class="product-description">1 Frasco - Tratamento para 30 dias</p>
+
+                        <div class="price-section">
+                            <span class="old-price">De: R$ 299,90</span>
+                            <span class="current-price">Por: R$ 249,90</span>
+                            <span class="discount-badge">-17%</span>
+                        </div>
+
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Aprovado pela ANVISA</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Garantia de 90 dias</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check"></i>
+                                <span>Frete Grátis acima de 2 unidades</span>
+                            </div>
+                        </div>
+
+                        <div class="quantity-selector">
+                            <label>Quantidade:</label>
+                            <select id="productQuantity">
+                                <option value="1">1 Unidade</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="addToCart()">
+                            <i class="fas fa-cart-plus"></i>
+                            Adicionar ao Carrinho
+                        </button>
                     </div>
-                    <div class="plan-features">
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            1 frasco PDRNskin Premium
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            Tratamento para 30 dias
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            Garantia de 90 dias
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            Aprovado pela ANVISA
-                        </div>
-                    </div>
-                    <button class="btn-plan" onclick="addToCart('essencial', 1, 249.90)">
-                        <i class="fas fa-shopping-cart"></i>
-                        Adicionar ao Carrinho
-                    </button>
-                    <div class="plan-note">Frete Grátis para 2+ unidades</div>
                 </div>
             </div>
         </div>
@@ -358,50 +384,129 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>PDRNskin</h3>
-                    <p>Biotecnologia para sua pele</p>
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <h3>PDRNskin</h3>
+                        <p>Biotecnologia avançada para sua pele</p>
+                    </div>
                 </div>
-                <div class="footer-links">
+
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> contato@pdrnskin.com.br</p>
+                        <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                        <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</p>
+                    </div>
+                </div>
+
+                <div class="footer-section">
                     <h4>Atendimento</h4>
-                    <p><i class="fas fa-envelope"></i> contato@pdrnskin.com.br</p>
-                    <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</p>
+                    <div class="footer-links">
+                        <a href="#faq">Perguntas Frequentes</a>
+                        <a href="#guarantee">Política de Garantia</a>
+                        <a href="#privacy">Política de Privacidade</a>
+                        <a href="#terms">Termos de Uso</a>
+                    </div>
                 </div>
-                <div class="footer-security">
+
+                <div class="footer-section">
                     <h4>Segurança</h4>
                     <div class="security-badges">
-                        <span class="badge">ANVISA</span>
-                        <span class="badge">SSL</span>
-                        <span class="badge">90 DIAS</span>
+                        <div class="badge-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>ANVISA</span>
+                        </div>
+                        <div class="badge-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Site Seguro</span>
+                        </div>
+                        <div class="badge-item">
+                            <i class="fas fa-medal"></i>
+                            <span>90 Dias</span>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2025 PDRNskin. Todos os direitos reservados.</p>
-                <p class="disclaimer">Este produto não é medicamento e não substitui tratamentos prescritos por
-                    profissionais de saúde.</p>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 PDRNskin. Todos os direitos reservados.</p>
+                    <p class="disclaimer">Este produto não é medicamento e não substitui tratamentos prescritos por
+                        profissionais de saúde.</p>
+                </div>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                    <i class="fas fa-barcode"></i>
+                </div>
             </div>
         </div>
     </footer>
 
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
+        <div class="cart-overlay"></div>
         <div class="cart-content">
             <div class="cart-header">
-                <h3>Seu Carrinho</h3>
+                <h3>Meu Carrinho</h3>
                 <button class="close-cart" onclick="closeCart()">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="cart-items" id="cartItems">
-                <!-- Items do carrinho serão inseridos aqui -->
-            </div>
-            <div class="cart-total">
-                <div class="total-line">
-                    <span>Total: R$ <span id="cartTotal">0,00</span></span>
+
+            <div class="cart-body">
+                <div class="cart-items" id="cartItems">
+                    <!-- Items serão inseridos via JavaScript -->
+                </div>
+
+                <!-- Desconto Progressivo -->
+                <div class="discount-section" id="discountSection">
+                    <div class="discount-bar">
+                        <div class="discount-progress" id="discountProgress"></div>
+                    </div>
+                    <p class="discount-text" id="discountText">
+                        Adicione mais R$ <span id="nextDiscountAmount">249,90</span> para ganhar <strong>10% de
+                            desconto</strong>
+                    </p>
+                </div>
+
+                <!-- Frete Information -->
+                <div class="shipping-info" id="shippingInfo">
+                    <div class="shipping-item">
+                        <i class="fas fa-truck"></i>
+                        <span id="shippingText">Frete Grátis a partir de 2 unidades</span>
+                    </div>
                 </div>
             </div>
+
+            <div class="cart-summary">
+                <div class="summary-line">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">R$ 0,00</span>
+                </div>
+                <div class="summary-line discount-line" id="discountLine" style="display: none;">
+                    <span>Desconto:</span>
+                    <span id="discountAmount">-R$ 0,00</span>
+                </div>
+                <div class="summary-line">
+                    <span>Frete:</span>
+                    <span id="shippingCost">R$ 19,90</span>
+                </div>
+                <div class="summary-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">R$ 0,00</span>
+                </div>
+                <div class="savings-highlight" id="savingsHighlight" style="display: none;">
+                    Você economizou: <span id="totalSavings">R$ 0,00</span>
+                </div>
+            </div>
+
             <div class="cart-actions">
+                <button class="btn-continue-shopping" onclick="closeCart()">
+                    Continuar Comprando
+                </button>
                 <button class="btn-checkout" onclick="checkout()">
                     <i class="fas fa-credit-card"></i>
                     Finalizar Compra
