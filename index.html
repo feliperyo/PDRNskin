@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDRNskin - Biotecnologia para sua pele</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Carrinho Flutuante -->
+    <div class="cart-float" id="cartFloat">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-animation"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        O poder da <span class="gradient-text">Biotecnologia PDRN</span>, extraída do DNA do salmão
+                    </h1>
+                    <p class="hero-subtitle">
+                        O bioativo mais avançado e exclusivo da tecnologia antienvelhecimento utilizado por famosos em
+                        todo o mundo agora acessível em sua rotina diária
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn-primary pulse-animation" onclick="scrollToPlans()">
+                            <i class="fas fa-rocket"></i> Quero Rejuvenescer Agora
+                        </button>
+                        <button class="btn-secondary" onclick="scrollToBenefits()">
+                            <i class="fas fa-play"></i> Ver Benefícios
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="product-showcase">
+                        <div class="product-glow"></div>
+                        <img src="https://via.placeholder.com/400x500/667eea/ffffff?text=PDRNskin+Premium"
+                            alt="PDRNskin Premium" class="floating-product">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Benefícios Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Transforme sua pele com a <span class="gradient-text">Biotecnologia
+                        PDRN</span></h2>
+                <p class="section-subtitle">Descubra os benefícios únicos que só a tecnologia do DNA do salmão pode
+                    oferecer</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card" data-aos="fade-up" data-delay="100">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>Rejuvenesce a pele</h3>
+                    <p>Ativa o processo natural de regeneração celular, estimulando a produção de colágeno e reduzindo
+                        os sinais visíveis de envelhecimento.</p>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-delay="200">
+                    <div class="benefit-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Pele firme e hidratada</h3>
+                    <p>Melhora a elasticidade e retenção de água na pele, proporcionando hidratação intensa e firmeza
+                        visível.</p>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-delay="300">
+                    <div class="benefit-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Combate rugas e linhas</h3>
+                    <p>Acelera a renovação celular, suavizando linhas de expressão, rugas e marcas, promovendo um
+                        aspecto mais liso.</p>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-delay="400">
+                    <div class="benefit-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Uniformiza o tom</h3>
+                    <p>Promove regeneração celular que uniformiza a textura da pele e clareia manchas, devolvendo viço e
+                        brilho.</p>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-delay="500">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Controle da oleosidade</h3>
+                    <p>Equilibra a regeneração celular, controlando a produção sebácea e deixando a pele com toque
+                        aveludado.</p>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-delay="600">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Combate à acne</h3>
+                    <p>Reduz inflamações locais e acelera a reparação da pele, diminuindo vermelhidão e recuperando
+                        uniformidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredientes Section -->
+    <section class="ingredients">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Fórmula <span class="gradient-text">Exclusiva</span></h2>
+                <p class="section-subtitle">Cada ingrediente foi cuidadosamente selecionado para potencializar os
+                    resultados</p>
+            </div>
+
+            <div class="ingredients-grid">
+                <div class="ingredient-card" data-aos="zoom-in" data-delay="100">
+                    <div class="ingredient-visual">
+                        <div class="ingredient-circle pdrn-color">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                    </div>
+                    <h3>PDRN</h3>
+                    <p>Bioativo extraído do DNA do salmão, capaz de estimular a regeneração celular e acelerar a
+                        produção de colágeno.</p>
+                </div>
+
+                <div class="ingredient-card" data-aos="zoom-in" data-delay="200">
+                    <div class="ingredient-visual">
+                        <div class="ingredient-circle hyaluronic-color">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                    </div>
+                    <h3>Ácido Hialurônico</h3>
+                    <p>Hidrata profundamente a pele, retendo água nas camadas cutâneas e garantindo firmeza e viço.</p>
+                </div>
+
+                <div class="ingredient-card" data-aos="zoom-in" data-delay="300">
+                    <div class="ingredient-visual">
+                        <div class="ingredient-circle collagen-color">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                    </div>
+                    <h3>Colágeno</h3>
+                    <p>Proteína essencial que restaura a elasticidade, reduz a flacidez e potencializa os efeitos do
+                        PDRN.</p>
+                </div>
+
+                <div class="ingredient-card" data-aos="zoom-in" data-delay="400">
+                    <div class="ingredient-visual">
+                        <div class="ingredient-circle resveratrol-color">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                    </div>
+                    <h3>Trans-Resveratrol</h3>
+                    <p>Antioxidante potente que combate radicais livres, uniformiza o tom e aumenta a vitalidade facial.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Usar Section -->
+    <section class="how-to-use">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Como <span class="gradient-text">Usar</span></h2>
+                <p class="section-subtitle">Aplicação simples e prática para resultados extraordinários</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step" data-aos="fade-right" data-delay="100">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Higienize a pele</h3>
+                        <p>Lave o rosto com sabonete facial, removendo impurezas e oleosidade para preparar a pele.</p>
+                    </div>
+                </div>
+
+                <div class="step" data-aos="fade-left" data-delay="200">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Aplique o PDRNskin</h3>
+                        <p>Com a pele limpa, aplique algumas gotas diretamente no rosto, espalhando uniformemente.</p>
+                    </div>
+                </div>
+
+                <div class="step" data-aos="fade-right" data-delay="300">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Aguarde a absorção</h3>
+                        <p>Deixe o produto agir por alguns minutos. O PDRN começa a atuar na regeneração celular.</p>
+                    </div>
+                </div>
+
+                <div class="step" data-aos="fade-left" data-delay="400">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Finalize sua rotina</h3>
+                        <p>Após a absorção, continue com protetor solar ou maquiagem. Se adapta perfeitamente à sua
+                            rotina.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planos Section -->
+    <section class="plans" id="plans">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Escolha seu <span class="gradient-text">Plano</span></h2>
+                <p class="section-subtitle">Garanta já o seu tratamento exclusivo de regeneração celular</p>
+            </div>
+
+            <div class="plans-grid">
+                <div class="plan-card popular" data-aos="zoom-in" data-delay="100">
+                    <div class="plan-badge">Mais Vendido</div>
+                    <div class="plan-header">
+                        <h3>Plano Essencial</h3>
+                        <div class="plan-duration">1 Mês de Tratamento</div>
+                    </div>
+                    <div class="plan-price">
+                        <span class="old-price">R$ 299,90</span>
+                        <span class="current-price">R$ 249,90</span>
+                    </div>
+                    <div class="plan-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            1 frasco PDRNskin Premium
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            Tratamento para 30 dias
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            Garantia de 90 dias
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            Aprovado pela ANVISA
+                        </div>
+                    </div>
+                    <button class="btn-plan" onclick="addToCart('essencial', 1, 249.90)">
+                        <i class="fas fa-shopping-cart"></i>
+                        Adicionar ao Carrinho
+                    </button>
+                    <div class="plan-note">Frete Grátis para 2+ unidades</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garantia Section -->
+    <section class="guarantee">
+        <div class="container">
+            <div class="guarantee-content">
+                <div class="guarantee-visual">
+                    <div class="guarantee-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>90 DIAS</span>
+                    </div>
+                </div>
+                <div class="guarantee-text">
+                    <h2>Garantia de <span class="gradient-text">Satisfação</span></h2>
+                    <p>Estamos tão confiantes no poder da biotecnologia PDRN que oferecemos uma garantia exclusiva de 90
+                        dias. Se você não perceber os benefícios prometidos, devolvemos 100% do valor investido.</p>
+                    <div class="guarantee-features">
+                        <div class="guarantee-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Produto aprovado pela ANVISA</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>90 dias para testar</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>100% do dinheiro de volta</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Perguntas <span class="gradient-text">Frequentes</span></h2>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>O que é o PDRN?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>É um bioativo extraído do DNA do salmão que estimula a regeneração celular e promove
+                            rejuvenescimento facial.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>É seguro?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim, o produto é aprovado pela ANVISA e pode ser usado diariamente sem riscos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Em quanto tempo vejo resultados?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Em poucas semanas já é possível notar firmeza, hidratação e rejuvenescimento visíveis.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Quem pode usar?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Homens e mulheres que desejam combater rugas, linhas de expressão, manchas e envelhecimento
+                            precoce.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>PDRNskin</h3>
+                    <p>Biotecnologia para sua pele</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Atendimento</h4>
+                    <p><i class="fas fa-envelope"></i> contato@pdrnskin.com.br</p>
+                    <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</p>
+                </div>
+                <div class="footer-security">
+                    <h4>Segurança</h4>
+                    <div class="security-badges">
+                        <span class="badge">ANVISA</span>
+                        <span class="badge">SSL</span>
+                        <span class="badge">90 DIAS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PDRNskin. Todos os direitos reservados.</p>
+                <p class="disclaimer">Este produto não é medicamento e não substitui tratamentos prescritos por
+                    profissionais de saúde.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Seu Carrinho</h3>
+                <button class="close-cart" onclick="closeCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Items do carrinho serão inseridos aqui -->
+            </div>
+            <div class="cart-total">
+                <div class="total-line">
+                    <span>Total: R$ <span id="cartTotal">0,00</span></span>
+                </div>
+            </div>
+            <div class="cart-actions">
+                <button class="btn-checkout" onclick="checkout()">
+                    <i class="fas fa-credit-card"></i>
+                    Finalizar Compra
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
