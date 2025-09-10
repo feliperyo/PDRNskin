@@ -4,24 +4,86 @@ let cart = [];
 // Configurações do produto
 const PRODUCT_CONFIG = {
     name: 'PDRNskin Premium',
-    price: 249.90,
+    basePrice: 249.00,
     originalPrice: 299.90,
-    maxQuantity: 1,
-    image: 'assets/mockup3-sem-fundo.png'
+    maxQuantity: 6,
+    image: 'assets/mockup3-sem-fundo.png',
+    description: '1 Frasco - Tratamento para 30 dias'
 };
 
-// Configurações de desconto progressivo
-const DISCOUNT_TIERS = [
-    { minAmount: 0, discount: 0, label: 'Sem desconto' },
-    { minAmount: 499.80, discount: 0.10, label: '10% de desconto' },
-    { minAmount: 749.70, discount: 0.15, label: '15% de desconto' },
-    { minAmount: 999.60, discount: 0.20, label: '20% de desconto' }
-];
+// Configuração de Pacotes
+const PACKAGE_CONFIG = {
+    1: {
+        name: 'Experimente',
+        price: 249.00,
+        originalPrice: 299.90,
+        discount: 17,
+        savings: 50.90,
+        installments: 20.75,
+        freeShipping: false,
+        image: 'assets/mockup2-produto.png',
+        description: '1 Frasco (30 dias de tratamento)',
+        benefits: [
+            '1 Frasco (30 dias de tratamento)',
+            'Frete: R$ 19,90',
+            'Ideal para testar'
+        ]
+    },
+    2: {
+        name: 'Kit 2 Meses',
+        price: 479.00,
+        originalPrice: 599.80,
+        discount: 20,
+        savings: 120.80,
+        installments: 39.92,
+        freeShipping: true,
+        image: 'assets/mockup-2-frascos.png',
+        description: '2 Frascos (60 dias de tratamento)',
+        benefits: [
+            '2 Frascos (60 dias de tratamento)',
+            'Frete GRÁTIS',
+            'Primeiros resultados visíveis'
+        ]
+    },
+    3: {
+        name: 'Kit 3 Meses',
+        price: 599.00,
+        originalPrice: 899.70,
+        discount: 33,
+        savings: 300.70,
+        installments: 49.92,
+        freeShipping: true,
+        popular: true,
+        image: 'assets/mockup-3-frascos.png',
+        description: '3 Frascos (90 dias de tratamento)',
+        benefits: [
+            '3 Frascos (90 dias de tratamento)',
+            'Frete GRÁTIS',
+            'Resultados visíveis garantidos'
+        ]
+    }
+};
+
+// Sistema de preços por quantidade (mantido para compatibilidade)
+const QUANTITY_PRICING = {
+    1: { price: 249.00, total: 249.00, discount: 0, discountLabel: 'Preço normal' },
+    2: { price: 239.50, total: 479.00, discount: 10, discountLabel: '10% OFF + Frete Grátis' },
+    3: { price: 199.67, total: 599.00, discount: 25, discountLabel: '25% OFF + Frete Grátis' },
+    4: { price: 174.75, total: 699.00, discount: 30, discountLabel: '30% OFF + Frete Grátis' },
+    5: { price: 159.80, total: 799.00, discount: 35, discountLabel: '35% OFF + Frete Grátis' },
+    6: { price: 149.98, total: 899.99, discount: 40, discountLabel: '40% OFF + Frete Grátis' }
+};
 
 // Configurações de frete
 const SHIPPING_CONFIG = {
     freeShippingMinQuantity: 2,
     standardShippingCost: 19.90
+};
+
+// Configuração do Checkout Yampi
+const YAMPI_CONFIG = {
+    checkoutUrl: 'https://pdrnskin.pay.yampi.com.br/r/PUZYMA5H4Y',
+    productId: 'pdrnskin-premium'
 };
 
 // Elementos DOM
@@ -40,11 +102,14 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeAdvancedEffects();
     updateCartDisplay();
     startMovingEffects();
+    initializeIngredients();
+    initializeCustomerPhotos();
 });
 
-// Contador Regressivo
+// Contador Regressivo Melhorado
 function initializeCountdown() {
-    const countdownDate = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 horas a partir de agora
+    // Definir um tempo fixo para demonstração (pode ser alterado para dinâmico)
+    const countdownDate = new Date().getTime() + (14 * 60 * 1000) + (39 * 1000); // 14:39
 
     const countdownTimer = setInterval(() => {
         const now = new Date().getTime();
@@ -52,9 +117,10 @@ function initializeCountdown() {
 
         if (distance < 0) {
             clearInterval(countdownTimer);
-            document.getElementById('hours').innerHTML = '00';
-            document.getElementById('minutes').innerHTML = '00';
-            document.getElementById('seconds').innerHTML = '00';
+            // Quando o tempo acabar, reiniciar o contador
+            setTimeout(() => {
+                initializeCountdown();
+            }, 1000);
             return;
         }
 
@@ -66,6 +132,100 @@ function initializeCountdown() {
         document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0');
         document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0');
     }, 1000);
+}
+
+// Inicializar fotos de clientes (placeholder)
+function initializeCustomerPhotos() {
+    // Em produção, essas seriam fotos reais de clientes
+    const customerPhotos = document.querySelectorAll('.customer-photo');
+    const placeholderImages = [
+        'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face',
+        'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=60&h=60&fit=crop&crop=face',
+        'https://images.unsplash.com/photo-1534308143481-c55c15c4f8cc?w=60&h=60&fit=crop&crop=face'
+    ];
+
+    customerPhotos.forEach((photo, index) => {
+        if (placeholderImages[index]) {
+            photo.src = placeholderImages[index];
+        }
+    });
+}
+
+// Inicializar ingredientes expandíveis
+function initializeIngredients() {
+    // A função toggleIngredient será chamada pelo onclick no HTML
+    window.toggleIngredient = function (element) {
+        const item = element.closest('.ingredient-expandable-item');
+        const isActive = item.classList.contains('active');
+
+        // Fechar todos os outros ingredientes
+        document.querySelectorAll('.ingredient-expandable-item').forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.classList.remove('active');
+            }
+        });
+
+        // Toggle o clicado
+        if (isActive) {
+            item.classList.remove('active');
+        } else {
+            item.classList.add('active');
+
+            // Scroll suave para o item aberto
+            setTimeout(() => {
+                item.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }, 300);
+        }
+    };
+}
+
+// Adicionar pacote ao carrinho
+function addPackageToCart(packageQuantity) {
+    const packageInfo = PACKAGE_CONFIG[packageQuantity];
+
+    if (!packageInfo) {
+        showCartNotification('Pacote não encontrado!', 'error');
+        return;
+    }
+
+    // Limpar carrinho existente para evitar conflitos
+    cart = [];
+
+    // Adicionar o pacote
+    const product = {
+        id: YAMPI_CONFIG.productId,
+        name: PRODUCT_CONFIG.name,
+        packageName: packageInfo.name,
+        quantity: packageQuantity,
+        price: packageInfo.price / packageQuantity, // preço unitário
+        originalPrice: PRODUCT_CONFIG.originalPrice,
+        total: packageInfo.price,
+        originalTotal: packageInfo.originalPrice,
+        discount: packageInfo.discount,
+        savings: packageInfo.savings,
+        installments: packageInfo.installments,
+        freeShipping: packageInfo.freeShipping,
+        image: packageInfo.image || PRODUCT_CONFIG.image,
+        description: packageInfo.description,
+        discountLabel: `${packageInfo.discount}% OFF` + (packageInfo.freeShipping ? ' + Frete Grátis' : '')
+    };
+
+    cart.push(product);
+
+    updateCartDisplay();
+    showCartNotification(`${packageInfo.name} adicionado ao carrinho!`, 'success');
+    animateAddToCart();
+
+    // Track evento
+    trackEvent('add_to_cart', {
+        item_id: YAMPI_CONFIG.productId,
+        package_name: packageInfo.name,
+        quantity: packageQuantity,
+        value: packageInfo.price
+    });
 }
 
 // Animações de entrada
@@ -155,21 +315,18 @@ function initializeScrollEffects() {
         });
     });
 
-    // Efeito de hover nos ingredientes
-    const ingredientCards = document.querySelectorAll('.ingredient-card');
-    ingredientCards.forEach(card => {
+    // Efeito de hover nos pacotes
+    const packageCards = document.querySelectorAll('.package-card');
+    packageCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-            const circle = card.querySelector('.ingredient-circle');
-            if (circle) {
-                circle.style.transform = 'scale(1.15) rotate(360deg)';
-                circle.style.transition = 'all 0.6s ease';
+            if (!card.classList.contains('popular-package')) {
+                card.style.transform = 'translateY(-15px) scale(1.02)';
             }
         });
 
         card.addEventListener('mouseleave', () => {
-            const circle = card.querySelector('.ingredient-circle');
-            if (circle) {
-                circle.style.transform = 'scale(1) rotate(0deg)';
+            if (!card.classList.contains('popular-package')) {
+                card.style.transform = 'translateY(0) scale(1)';
             }
         });
     });
@@ -177,22 +334,22 @@ function initializeScrollEffects() {
 
 // Efeitos avançados
 function initializeAdvancedEffects() {
-    // Efeito de brilho no botão de compra
-    const addCartBtn = document.querySelector('.btn-add-cart');
-    if (addCartBtn) {
-        addCartBtn.addEventListener('mouseenter', () => {
-            addCartBtn.style.boxShadow = '0 15px 35px rgba(242, 140, 130, 0.4)';
-            addCartBtn.style.transform = 'translateY(-3px) scale(1.02)';
+    // Efeito de brilho nos botões de pacote
+    const packageBtns = document.querySelectorAll('.package-btn');
+    packageBtns.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+            btn.style.boxShadow = '0 15px 35px rgba(242, 140, 130, 0.4)';
+            btn.style.transform = 'translateY(-3px) scale(1.02)';
         });
 
-        addCartBtn.addEventListener('mouseleave', () => {
-            addCartBtn.style.boxShadow = 'none';
-            addCartBtn.style.transform = 'translateY(0) scale(1)';
+        btn.addEventListener('mouseleave', () => {
+            btn.style.boxShadow = 'none';
+            btn.style.transform = 'translateY(0) scale(1)';
         });
-    }
+    });
 
     // Efeito de pulsação nos elementos de destaque
-    const highlightElements = document.querySelectorAll('.offer-badge, .discount-badge');
+    const highlightElements = document.querySelectorAll('.package-badge, .discount-badge, .coupon-badge');
     highlightElements.forEach(element => {
         setInterval(() => {
             element.style.animation = 'pulse 0.8s ease-in-out';
@@ -251,52 +408,28 @@ function initializeCartEvents() {
     });
 }
 
-// Adicionar produto ao carrinho
+// Adicionar produto ao carrinho (método original mantido para compatibilidade)
 function addToCart() {
-    const quantity = parseInt(document.getElementById('productQuantity').value);
-
-    // Verificar se já existe produto no carrinho
-    const existingItem = cart.find(item => item.id === 'pdrnskin-premium');
-
-    if (existingItem) {
-        // Atualizar quantidade (respeitando o máximo)
-        const newQuantity = Math.min(existingItem.quantity + quantity, PRODUCT_CONFIG.maxQuantity);
-        existingItem.quantity = newQuantity;
-        existingItem.total = newQuantity * PRODUCT_CONFIG.price;
-    } else {
-        // Adicionar novo item
-        const product = {
-            id: 'pdrnskin-premium',
-            name: PRODUCT_CONFIG.name,
-            quantity: Math.min(quantity, PRODUCT_CONFIG.maxQuantity),
-            price: PRODUCT_CONFIG.price,
-            originalPrice: PRODUCT_CONFIG.originalPrice,
-            image: PRODUCT_CONFIG.image,
-            total: Math.min(quantity, PRODUCT_CONFIG.maxQuantity) * PRODUCT_CONFIG.price
-        };
-
-        cart.push(product);
-    }
-
-    updateCartDisplay();
-    showCartNotification('Produto adicionado ao carrinho!', 'success');
-    animateAddToCart();
+    // Usar o pacote de 1 unidade como padrão
+    addPackageToCart(1);
 }
 
 // Animação do botão ao adicionar
 function animateAddToCart() {
-    const button = document.querySelector('.btn-add-cart');
-    const originalText = button.innerHTML;
+    const buttons = document.querySelectorAll('.btn-add-cart, .package-btn');
+    buttons.forEach(button => {
+        const originalText = button.innerHTML;
 
-    button.style.transform = 'scale(0.95)';
-    button.innerHTML = '<i class="fas fa-check"></i> Adicionado!';
-    button.style.background = 'var(--highlight-green)';
+        button.style.transform = 'scale(0.95)';
+        button.innerHTML = '<i class="fas fa-check"></i> Adicionado!';
+        button.style.background = 'var(--highlight-green)';
 
-    setTimeout(() => {
-        button.style.transform = 'scale(1)';
-        button.innerHTML = originalText;
-        button.style.background = 'var(--cta-bg)';
-    }, 1500);
+        setTimeout(() => {
+            button.style.transform = 'scale(1)';
+            button.innerHTML = originalText;
+            button.style.background = 'var(--cta-bg)';
+        }, 1500);
+    });
 }
 
 // Remover do carrinho
@@ -304,9 +437,14 @@ function removeFromCart(productId) {
     cart = cart.filter(item => item.id !== productId);
     updateCartDisplay();
     showCartNotification('Produto removido do carrinho', 'info');
+
+    // Track evento
+    trackEvent('remove_from_cart', {
+        item_id: productId
+    });
 }
 
-// Atualizar quantidade no carrinho
+// Atualizar quantidade no carrinho (atualizado para trabalhar com pacotes)
 function updateQuantity(productId, change) {
     const item = cart.find(item => item.id === productId);
     if (!item) return;
@@ -318,31 +456,48 @@ function updateQuantity(productId, change) {
         return;
     }
 
-    if (newQuantity > PRODUCT_CONFIG.maxQuantity) {
-        showCartNotification(`Máximo de ${PRODUCT_CONFIG.maxQuantity} unidade(s) por pedido`, 'warning');
+    if (newQuantity > 6) {
+        showCartNotification('Máximo de 6 unidades por pedido', 'warning');
         return;
     }
 
-    item.quantity = newQuantity;
-    item.total = newQuantity * item.price;
+    // Verificar se existe configuração de pacote para a nova quantidade
+    const newPackageConfig = PACKAGE_CONFIG[newQuantity];
 
-    updateCartDisplay();
-}
-
-// Calcular desconto atual
-function calculateDiscount(subtotal) {
-    let applicableDiscount = 0;
-    let nextTier = null;
-
-    for (let i = DISCOUNT_TIERS.length - 1; i >= 0; i--) {
-        if (subtotal >= DISCOUNT_TIERS[i].minAmount) {
-            applicableDiscount = DISCOUNT_TIERS[i].discount;
-            break;
+    if (newPackageConfig) {
+        // Usar configuração de pacote
+        item.quantity = newQuantity;
+        item.packageName = newPackageConfig.name;
+        item.price = newPackageConfig.price / newQuantity;
+        item.total = newPackageConfig.price;
+        item.originalTotal = newPackageConfig.originalPrice;
+        item.discount = newPackageConfig.discount;
+        item.savings = newPackageConfig.savings;
+        item.installments = newPackageConfig.installments;
+        item.freeShipping = newPackageConfig.freeShipping;
+        item.description = newPackageConfig.description;
+        item.discountLabel = `${newPackageConfig.discount}% OFF` + (newPackageConfig.freeShipping ? ' + Frete Grátis' : '');
+    } else {
+        // Usar sistema de preços padrão
+        const newPricing = QUANTITY_PRICING[newQuantity];
+        if (newPricing) {
+            item.quantity = newQuantity;
+            item.price = newPricing.price;
+            item.total = newPricing.total;
+            item.discount = newPricing.discount;
+            item.discountLabel = newPricing.discountLabel;
+            item.freeShipping = newQuantity >= 2;
         }
-        nextTier = DISCOUNT_TIERS[i];
     }
 
-    return { discount: applicableDiscount, nextTier };
+    updateCartDisplay();
+
+    // Track evento
+    trackEvent('update_cart_quantity', {
+        item_id: productId,
+        new_quantity: newQuantity,
+        new_value: item.total
+    });
 }
 
 // Atualizar display do carrinho
@@ -358,7 +513,7 @@ function updateCartDisplay() {
     updateCartItems();
 
     // Atualizar desconto progressivo
-    updateDiscountSection(subtotal);
+    updateDiscountSection();
 
     // Atualizar frete
     updateShippingInfo(totalItems);
@@ -376,9 +531,9 @@ function updateCartItems() {
             <div class="cart-empty">
                 <i class="fas fa-shopping-cart"></i>
                 <h4>Seu carrinho está vazio</h4>
-                <p>Adicione produtos para continuar sua compra</p>
+                <p>Escolha um dos nossos pacotes para começar sua transformação</p>
                 <button class="btn-start-shopping" onclick="closeCart()">
-                    Começar a Comprar
+                    Ver Pacotes
                 </button>
             </div>
         `;
@@ -390,13 +545,20 @@ function updateCartItems() {
     cart.forEach(item => {
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item';
+
+        const savings = item.savings ? `<div class="item-savings">Você economiza: R$ ${item.savings.toFixed(2).replace('.', ',')}</div>` : '';
+        const installments = item.installments ? `<div class="item-installments">ou 12x R$ ${item.installments.toFixed(2).replace('.', ',')}</div>` : '';
+
         cartItem.innerHTML = `
             <div class="item-image">
                 <img src="${item.image}" alt="${item.name}">
             </div>
             <div class="item-details">
-                <div class="item-name">${item.name}</div>
-                <div class="item-price">R$ ${item.price.toFixed(2).replace('.', ',')}</div>
+                <div class="item-name">${item.packageName || item.name}</div>
+                <div class="item-description">${item.description}</div>
+                <div class="item-price">R$ ${item.total.toFixed(2).replace('.', ',')}</div>
+                ${installments}
+                ${savings}
                 <div class="item-controls">
                     <button class="quantity-btn" onclick="updateQuantity('${item.id}', -1)">-</button>
                     <span class="quantity-display">${item.quantity}</span>
@@ -411,40 +573,50 @@ function updateCartItems() {
     });
 }
 
-// Atualizar seção de desconto
-function updateDiscountSection(subtotal) {
+// Atualizar seção de desconto progressivo
+function updateDiscountSection() {
     const discountSection = document.getElementById('discountSection');
-    const discountProgress = document.getElementById('discountProgress');
-    const discountText = document.getElementById('discountText');
-    const nextDiscountAmount = document.getElementById('nextDiscountAmount');
 
-    if (!discountSection) return;
+    if (!discountSection || cart.length === 0) {
+        if (discountSection) discountSection.style.display = 'none';
+        return;
+    }
 
-    const { discount, nextTier } = calculateDiscount(subtotal);
+    const currentQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-    if (discount > 0) {
-        // Já tem desconto aplicado
+    // Mostrar progresso para próximo pacote com mais economia
+    if (currentQuantity < 3) {
+        const nextQuantity = currentQuantity === 1 ? 2 : 3;
+        const nextPackage = PACKAGE_CONFIG[nextQuantity];
+        const currentItem = cart[0];
+
+        if (nextPackage) {
+            const additionalSavings = nextPackage.savings - (currentItem.savings || 0);
+            const progress = (currentQuantity / 3) * 100;
+
+            const discountProgress = document.getElementById('discountProgress');
+            const discountText = document.getElementById('discountText');
+
+            if (discountProgress) discountProgress.style.width = `${progress}%`;
+
+            if (discountText) {
+                discountText.innerHTML = `
+                    Mude para o <strong>${nextPackage.name}</strong> e economize mais 
+                    <span style="color: var(--highlight-green)">R$ ${additionalSavings.toFixed(2).replace('.', ',')}</span>!
+                `;
+            }
+
+            discountSection.style.display = 'block';
+        } else {
+            discountSection.style.display = 'none';
+        }
+    } else {
         discountSection.innerHTML = `
             <div class="discount-achieved">
-                <i class="fas fa-check-circle"></i>
-                Parabéns! Você ganhou ${(discount * 100)}% de desconto!
+                <i class="fas fa-trophy"></i>
+                Parabéns! Você escolheu nosso pacote mais vantajoso!
             </div>
         `;
-    } else if (nextTier) {
-        // Mostra progresso para próximo desconto
-        const remaining = nextTier.minAmount - subtotal;
-        const progress = Math.min((subtotal / nextTier.minAmount) * 100, 100);
-
-        discountProgress.style.width = `${progress}%`;
-        nextDiscountAmount.textContent = remaining.toFixed(2).replace('.', ',');
-        discountText.innerHTML = `
-            Adicione mais R$ <span id="nextDiscountAmount">${remaining.toFixed(2).replace('.', ',')}</span> 
-            para ganhar <strong>${nextTier.label}</strong>
-        `;
-
-        discountSection.style.display = 'block';
-    } else {
-        discountSection.style.display = 'none';
     }
 }
 
@@ -455,13 +627,15 @@ function updateShippingInfo(totalItems) {
 
     if (!shippingInfo) return;
 
-    if (totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity) {
+    const currentItem = cart[0];
+    const hasFreeShipping = currentItem && currentItem.freeShipping;
+
+    if (hasFreeShipping || totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity) {
         shippingText.innerHTML = '<i class="fas fa-check"></i> Frete Grátis aplicado!';
         shippingInfo.style.background = 'rgba(72, 179, 71, 0.1)';
         shippingInfo.style.color = 'var(--highlight-green)';
     } else {
-        const remaining = SHIPPING_CONFIG.freeShippingMinQuantity - totalItems;
-        shippingText.innerHTML = `<i class="fas fa-truck"></i> Adicione mais ${remaining} unidade(s) para Frete Grátis`;
+        shippingText.innerHTML = '<i class="fas fa-truck"></i> Escolha um pacote de 2+ unidades para Frete Grátis';
         shippingInfo.style.background = 'rgba(242, 140, 130, 0.1)';
         shippingInfo.style.color = 'var(--brand-primary)';
     }
@@ -479,27 +653,28 @@ function updateCartSummary(subtotal, totalItems) {
 
     if (!cartSubtotal) return;
 
-    // Calcular desconto
-    const { discount } = calculateDiscount(subtotal);
-    const discountValue = subtotal * discount;
+    // Calcular preço original total
+    const originalTotal = cart.reduce((sum, item) => sum + (item.originalTotal || (item.quantity * item.originalPrice)), 0);
+    const productSavings = originalTotal - subtotal;
 
     // Calcular frete
-    const shipping = totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity ? 0 : SHIPPING_CONFIG.standardShippingCost;
+    const currentItem = cart[0];
+    const hasFreeShipping = currentItem && currentItem.freeShipping;
+    const shipping = (hasFreeShipping || totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity) ? 0 : SHIPPING_CONFIG.standardShippingCost;
+    const shippingSavings = (hasFreeShipping || totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity) ? SHIPPING_CONFIG.standardShippingCost : 0;
 
     // Total final
-    const finalTotal = subtotal - discountValue + shipping;
+    const finalTotal = subtotal + shipping;
 
-    // Calcular economias totais
-    const originalSubtotal = cart.reduce((sum, item) => sum + (item.quantity * item.originalPrice), 0);
-    const totalSavingsValue = (originalSubtotal - subtotal) + discountValue +
-        (totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity ? SHIPPING_CONFIG.standardShippingCost : 0);
+    // Total de economias
+    const totalSavingsValue = productSavings + shippingSavings;
 
     // Atualizar elementos
-    cartSubtotal.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+    cartSubtotal.textContent = `R$ ${originalTotal.toFixed(2).replace('.', ',')}`;
 
-    if (discountValue > 0) {
+    if (productSavings > 0) {
         discountLine.style.display = 'flex';
-        discountAmount.textContent = `-R$ ${discountValue.toFixed(2).replace('.', ',')}`;
+        discountAmount.textContent = `-R$ ${productSavings.toFixed(2).replace('.', ',')}`;
     } else {
         discountLine.style.display = 'none';
     }
@@ -552,7 +727,7 @@ function closeCart() {
     }, 300);
 }
 
-// Finalizar compra
+// Finalizar compra - Integração com Yampi
 function checkout() {
     if (cart.length === 0) {
         showCartNotification('Adicione produtos ao carrinho primeiro!', 'warning');
@@ -562,26 +737,25 @@ function checkout() {
     // Calcular totais para checkout
     const subtotal = cart.reduce((sum, item) => sum + item.total, 0);
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const { discount } = calculateDiscount(subtotal);
-    const discountValue = subtotal * discount;
-    const shipping = totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity ? 0 : SHIPPING_CONFIG.standardShippingCost;
-    const finalTotal = subtotal - discountValue + shipping;
+    const currentItem = cart[0];
+    const hasFreeShipping = currentItem && currentItem.freeShipping;
+    const shipping = (hasFreeShipping || totalItems >= SHIPPING_CONFIG.freeShippingMinQuantity) ? 0 : SHIPPING_CONFIG.standardShippingCost;
+    const finalTotal = subtotal + shipping;
 
-    // Dados do pedido
+    // Dados do pedido para tracking
     const orderData = {
         items: cart.map(item => ({
             id: item.id,
-            name: item.name,
+            name: item.packageName || item.name,
             quantity: item.quantity,
             unitPrice: item.price,
-            total: item.total
+            total: item.total,
+            package: item.packageName
         })),
         subtotal: subtotal,
-        discount: discountValue,
         shipping: shipping,
         total: finalTotal,
-        timestamp: new Date().toISOString(),
-        discountPercentage: discount * 100
+        timestamp: new Date().toISOString()
     };
 
     // Simular processo de checkout
@@ -589,35 +763,43 @@ function checkout() {
     const originalText = checkoutBtn.innerHTML;
 
     checkoutBtn.disabled = true;
-    checkoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+    checkoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecionando...';
 
-    showCartNotification('Redirecionando para pagamento...', 'info');
+    // Track evento
+    trackEvent('checkout_initiated', {
+        value: finalTotal,
+        items: cart.length,
+        quantity: totalItems,
+        package_name: currentItem.packageName
+    });
+
+    // Preparar dados para o Yampi
+    const yampiData = {
+        product: YAMPI_CONFIG.productId,
+        quantity: totalItems,
+        value: finalTotal,
+        package: currentItem.packageName,
+        cart: JSON.stringify(orderData)
+    };
+
+    // Construir URL com parâmetros
+    const yampiUrl = new URL(YAMPI_CONFIG.checkoutUrl);
+    Object.keys(yampiData).forEach(key => {
+        yampiUrl.searchParams.append(key, yampiData[key]);
+    });
 
     setTimeout(() => {
-        // Simular sucesso
-        console.log('Dados do pedido:', orderData);
+        // Redirecionar para o checkout da Yampi
+        window.location.href = yampiUrl.toString();
 
-        // Track evento
-        trackEvent('checkout_initiated', {
-            value: finalTotal,
-            items: cart.length,
-            discount_applied: discountValue > 0
-        });
+        // Em caso de falha no redirecionamento, restaurar botão
+        setTimeout(() => {
+            checkoutBtn.disabled = false;
+            checkoutBtn.innerHTML = originalText;
+        }, 3000);
+    }, 1500);
 
-        // Em produção, redirecionar para gateway de pagamento
-        alert(`Pedido processado com sucesso!\n\nResumo do Pedido:\nSubtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\nDesconto: R$ ${discountValue.toFixed(2).replace('.', ',')}\nFrete: ${shipping > 0 ? 'R$ ' + shipping.toFixed(2).replace('.', ',') : 'Grátis'}\nTotal: R$ ${finalTotal.toFixed(2).replace('.', ',')}\n\nEm breve você será redirecionado para o pagamento.`);
-
-        // Limpar carrinho
-        cart = [];
-        updateCartDisplay();
-        closeCart();
-
-        // Restaurar botão
-        checkoutBtn.disabled = false;
-        checkoutBtn.innerHTML = originalText;
-
-        showCartNotification('Pedido finalizado com sucesso!', 'success');
-    }, 2000);
+    showCartNotification('Redirecionando para pagamento...', 'info');
 }
 
 // Notificação
@@ -700,32 +882,50 @@ function scrollToSection(sectionId) {
 function scrollToPlans() {
     scrollToSection('plans');
 
-    // Adicionar efeito visual
+    // Adicionar efeito visual nos pacotes
     setTimeout(() => {
-        const offerCard = document.querySelector('.product-offer-card');
-        if (offerCard) {
-            offerCard.style.animation = 'pulse 1s ease-in-out 3';
-            offerCard.style.boxShadow = '0 20px 60px rgba(242, 140, 130, 0.4)';
-
+        const packageCards = document.querySelectorAll('.package-card');
+        packageCards.forEach((card, index) => {
             setTimeout(() => {
-                offerCard.style.boxShadow = '0 15px 50px var(--card-shadow)';
-            }, 3000);
-        }
+                card.style.animation = 'pulse 1s ease-in-out';
+                card.style.boxShadow = '0 20px 60px rgba(242, 140, 130, 0.4)';
+
+                setTimeout(() => {
+                    card.style.boxShadow = '';
+                    card.style.animation = '';
+                }, 1000);
+            }, index * 200);
+        });
     }, 1000);
+
+    // Track evento
+    trackEvent('scroll_to_plans');
 }
 
 function scrollToBenefits() {
     scrollToSection('benefits');
+    trackEvent('scroll_to_benefits');
 }
 
 // Analytics e tracking
 function trackEvent(eventName, properties = {}) {
-    // Placeholder para integração com analytics
+    // Log para debug
     console.log('Track Event:', eventName, properties);
 
     // Implementação real seria:
     // gtag('event', eventName, properties);
     // fbq('track', eventName, properties);
+    // analytics.track(eventName, properties);
+
+    // Para integração com GTM/GA4:
+    if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, properties);
+    }
+
+    // Para Facebook Pixel:
+    if (typeof fbq !== 'undefined') {
+        fbq('track', eventName, properties);
+    }
 }
 
 // Funções utilitárias
@@ -751,6 +951,10 @@ const Utils = {
 
     generateId() {
         return Date.now().toString(36) + Math.random().toString(36).substr(2);
+    },
+
+    isMobile() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 };
 
@@ -760,7 +964,6 @@ function optimizePerformance() {
     if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
         document.body.classList.add('reduce-animations');
 
-        // Reduzir frequência de atualizações
         const style = document.createElement('style');
         style.textContent = `
             .reduce-animations * {
@@ -781,18 +984,26 @@ function optimizePerformance() {
 
 // Recursos extras para melhor UX
 function initializeExtraFeatures() {
-    // Detectar dispositivo móvel
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-    if (isMobile) {
+    if (Utils.isMobile()) {
         document.body.classList.add('mobile-device');
 
         // Ajustar comportamentos para mobile
         const hero = document.querySelector('.hero');
         if (hero) {
-            // Reduzir efeitos complexos no mobile
             hero.style.backgroundAttachment = 'scroll';
         }
+
+        // Melhorar toque em dispositivos móveis
+        const touchElements = document.querySelectorAll('.package-card, .benefit-card, .testimonial-card');
+        touchElements.forEach(element => {
+            element.addEventListener('touchstart', () => {
+                element.style.transform = 'scale(0.98)';
+            });
+
+            element.addEventListener('touchend', () => {
+                element.style.transform = '';
+            });
+        });
     }
 
     // Detectar conexão lenta
@@ -801,7 +1012,6 @@ function initializeExtraFeatures() {
         if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
             document.body.classList.add('slow-connection');
 
-            // Reduzir animações e otimizar para conexão lenta
             const style = document.createElement('style');
             style.textContent = `
                 .slow-connection * {
@@ -825,49 +1035,66 @@ function initializeExtraFeatures() {
     });
 }
 
-// Service Worker para cache (opcional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registered: ', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW registration failed: ', registrationError);
+// Lazy loading de imagens
+function initializeLazyLoading() {
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
             });
-    });
+        });
+
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        lazyImages.forEach(img => imageObserver.observe(img));
+    }
 }
 
 // Inicializar recursos extras
 document.addEventListener('DOMContentLoaded', () => {
     initializeExtraFeatures();
     optimizePerformance();
+    initializeLazyLoading();
 
     // Track página carregada
     trackEvent('page_view', {
         page_title: 'PDRNskin Landing Page',
         page_location: window.location.href,
-        user_agent: navigator.userAgent
+        user_agent: navigator.userAgent,
+        is_mobile: Utils.isMobile()
     });
 
     // Preload de imagens importantes
     const criticalImages = [
         PRODUCT_CONFIG.image,
-        'assets/mockup1-produto.png'
+        'assets/mockup1-produto.png',
+        'assets/mockup2-produto.png'
     ];
 
     criticalImages.forEach(src => {
         const img = new Image();
         img.src = src;
     });
+
+    // Inicializar tooltips nos pacotes populares
+    const popularPackage = document.querySelector('.popular-package');
+    if (popularPackage) {
+        popularPackage.title = 'Pacote mais escolhido pelos nossos clientes!';
+    }
 });
 
 // Exportar funções globais necessárias
 window.scrollToPlans = scrollToPlans;
 window.scrollToBenefits = scrollToBenefits;
 window.addToCart = addToCart;
+window.addPackageToCart = addPackageToCart;
 window.removeFromCart = removeFromCart;
 window.updateQuantity = updateQuantity;
 window.closeCart = closeCart;
 window.checkout = checkout;
 window.toggleFAQ = toggleFAQ;
+window.toggleIngredient = toggleIngredient;
