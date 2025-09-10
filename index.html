@@ -43,7 +43,7 @@
                 <div class="hero-image">
                     <div class="product-showcase">
                         <div class="product-glow"></div>
-                        <img src="assets/mockup-atual.webp" alt="PDRNskin Premium" class="floating-product">
+                        <img src="./assets/mockup-atual.webp" alt="PDRNskin Premium" class="floating-product">
                     </div>
                 </div>
             </div>
@@ -349,7 +349,8 @@
                     <p class="testimonial-text">"Incrível como em poucas semanas já consigo ver a diferença. Minha pele
                         ficou mais firme e as manchas diminuíram muito. Produto top!"</p>
                     <div class="customer-info">
-                        <img src="assets/customer1.webp" alt="Mariana Silva" class="customer-photo">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b3f5?w=150&h=150&fit=crop&crop=face"
+                            alt="Mariana Silva" class="customer-photo" loading="lazy">
                         <div class="customer-details">
                             <h4>Mariana Silva</h4>
                             <span>São Paulo/SP</span>
@@ -368,7 +369,8 @@
                     <p class="testimonial-text">"Eu estava cética, mas o resultado surpreendeu. As linhas de expressão
                         diminuíram e minha pele tem um brilho natural que eu não tinha há anos."</p>
                     <div class="customer-info">
-                        <img src="assets/customer2.webp" alt="Ana Paula" class="customer-photo">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+                            alt="Ana Paula" class="customer-photo" loading="lazy">
                         <div class="customer-details">
                             <h4>Ana Paula</h4>
                             <span>Rio de Janeiro/RJ</span>
@@ -387,7 +389,8 @@
                     <p class="testimonial-text">"Melhor investimento que fiz para minha pele! A hidratação é incrível e
                         as pessoas começaram a elogiar minha aparência jovem."</p>
                     <div class="customer-info">
-                        <img src="assets/customer3.webp" alt="Juliana Costa" class="customer-photo">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+                            alt="Juliana Costa" class="customer-photo" loading="lazy">
                         <div class="customer-details">
                             <h4>Juliana Costa</h4>
                             <span>Belo Horizonte/MG</span>
@@ -443,7 +446,7 @@
                     <div class="package-header">
                         <h3>Kit 3 Meses</h3>
                         <div class="package-image">
-                            <img src="assets/mockup-3-frascos.webp" alt="3 Frascos PDRNskin">
+                            <img src="./assets/mockup-atual-2.webp" alt="3 Frascos PDRNskin" loading="lazy">
                         </div>
                     </div>
                     <div class="package-pricing">
@@ -477,7 +480,7 @@
                     <div class="package-header">
                         <h3>Kit 2 Meses</h3>
                         <div class="package-image">
-                            <img src="assets/mockup-2-frascos.webp" alt="2 Frascos PDRNskin">
+                            <img src="./assets/mockup-atual-2.webp" alt="2 Frascos PDRNskin" loading="lazy">
                         </div>
                     </div>
                     <div class="package-pricing">
@@ -511,7 +514,7 @@
                     <div class="package-header">
                         <h3>Experimente</h3>
                         <div class="package-image">
-                            <img src="assets/mockup-atual-2.webp" alt="1 Frasco PDRNskin">
+                            <img src="./assets/mockup-atual-2.webp" alt="1 Frasco PDRNskin" loading="lazy">
                         </div>
                     </div>
                     <div class="package-pricing">
@@ -538,7 +541,7 @@
 
             <div class="trust-badges">
                 <div class="trust-item">
-                    <i class="fas fa-shield-check"></i>
+                    <i class="fas fa-shield-alt"></i>
                     <span>Compra Segura</span>
                 </div>
                 <div class="trust-item">
@@ -550,6 +553,7 @@
                     <span>Privacidade Protegida</span>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -777,6 +781,10 @@
                 <div class="summary-line">
                     <span>Subtotal:</span>
                     <span id="cartSubtotal">R$ 0,00</span>
+                </div>
+                <div class="summary-line" id="discountLine" style="display: none;">
+                    <span class="discount-line">Desconto:</span>
+                    <span class="discount-line" id="discountAmount">-R$ 0,00</span>
                 </div>
                 <div class="summary-total">
                     <span>Total:</span>
