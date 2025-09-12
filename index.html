@@ -158,14 +158,14 @@
             transform: translateX(-50%);
             z-index: 1000;
             background: rgba(255, 255, 255, 0.95);
-            padding: 8px 20px;
+            padding: 6px 16px;
             border-radius: 50px;
             backdrop-filter: blur(10px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .top-logo h1 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 800;
             background: linear-gradient(135deg, #FF6B6B, #FF8E9B);
             -webkit-background-clip: text;
@@ -226,7 +226,7 @@
             width: 70px;
             height: 70px;
             background: linear-gradient(135deg, #FF1493, #FF69B4);
-            border-radius: var(--radius-blob);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -236,7 +236,6 @@
             z-index: 1001;
             box-shadow: var(--shadow-neon);
             transition: all 0.3s ease;
-            animation: float 4s ease-in-out infinite, morphing 6s ease-in-out infinite;
         }
 
         .cart-float:hover {
@@ -350,13 +349,9 @@
         .logo-text {
             font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            color: white;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
             letter-spacing: 3px;
-            text-transform: uppercase;
         }
 
         .hero-title {
@@ -414,8 +409,9 @@
 
         /* Produto SEM BORDA como pedido */
         .floating-product {
-            width: 450px;
-            height: auto;
+            width: 500px;
+            height: 800px;
+            object-fit: contain;
             animation: float 6s ease-in-out infinite;
             position: relative;
             z-index: 4;
@@ -599,6 +595,143 @@
             line-height: 1.6;
             font-size: 1rem;
             font-weight: 600;
+        }
+
+        /* Como usar Section */
+        .how-to-use {
+            background: var(--light-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-to-use::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 70%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255, 20, 147, 0.05) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-card {
+            background: var(--light-color);
+            border-radius: var(--radius-blob);
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            text-align: center;
+        }
+
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+            border-radius: var(--radius-blob);
+            padding: 3px;
+            z-index: -1;
+        }
+
+        .step-card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: var(--shadow-neon);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+        }
+
+        .step-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        /* Ingredientes Section */
+        .ingredients {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe4e6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ingredients::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 105, 180, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 20, 147, 0.05) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .ingredients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ingredient-card {
+            background: var(--light-color);
+            padding: 25px;
+            border-radius: var(--radius-blob);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 2px solid rgba(255, 105, 180, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: morphing 10s ease-in-out infinite;
+        }
+
+        .ingredient-card:nth-child(2n) {
+            animation-delay: 5s;
+        }
+
+        .ingredient-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--vibrant-pink);
+        }
+
+        .ingredient-name {
+            font-weight: 700;
+            color: var(--vibrant-pink);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
 
         /* Influencers com design orgânico - MANTENDO TORTINHO como estava bom */
@@ -844,7 +977,6 @@
             backdrop-filter: blur(30px);
             border: 2px solid rgba(255, 255, 255, 0.2);
             margin-bottom: 40px;
-            box-shadow: 0 0 50px rgba(255, 20, 147, 0.3);
             animation: morphing 12s ease-in-out infinite;
         }
 
@@ -864,7 +996,6 @@
             max-width: 250px;
             height: auto;
             border-radius: var(--radius-3xl);
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
             animation: float 5s ease-in-out infinite;
         }
 
@@ -876,11 +1007,29 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .product-description {
-            color: rgba(255, 255, 255, 0.9);
+        /* Contador adicionado */
+        .countdown-timer {
+            background: rgba(255, 20, 147, 0.2);
+            border: 2px solid rgba(255, 20, 147, 0.5);
+            border-radius: var(--radius-xl);
+            padding: 20px;
             margin-bottom: 25px;
-            line-height: 1.6;
-            font-weight: 600;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-title {
+            color: #FFD700;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .countdown-display {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
         .product-price {
@@ -1161,7 +1310,7 @@
             text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
         }
 
-        /* Modal do Carrinho */
+        /* Modal do Carrinho - DESIGN QUADRADO */
         .cart-modal {
             position: fixed;
             top: 0;
@@ -1182,7 +1331,7 @@
 
         .cart-content {
             background: var(--light-color);
-            border-radius: var(--radius-blob);
+            border-radius: 12px;
             max-width: 500px;
             width: 95%;
             max-height: 85vh;
@@ -1215,7 +1364,7 @@
             color: white;
             cursor: pointer;
             padding: 8px;
-            border-radius: var(--radius-full);
+            border-radius: 6px;
             width: 40px;
             height: 40px;
             display: flex;
@@ -1247,7 +1396,7 @@
             width: 70px;
             height: 70px;
             background: #f8fafc;
-            border-radius: var(--radius-xl);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1257,8 +1406,8 @@
         .item-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: var(--radius-lg);
+            object-fit: contain;
+            border-radius: 6px;
         }
 
         .item-details {
@@ -1272,10 +1421,56 @@
             font-size: 1.1rem;
         }
 
+        .item-description {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
         .item-price {
             color: var(--vibrant-pink);
             font-weight: 900;
             font-size: 1.2rem;
+        }
+
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .cart-qty-btn {
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cart-qty-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.4);
+        }
+
+        .cart-qty-display {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            min-width: 40px;
+            text-align: center;
         }
 
         .cart-summary {
@@ -1300,7 +1495,7 @@
             background: linear-gradient(135deg, #FF1493, #FF69B4);
             color: white;
             border: none;
-            border-radius: var(--radius-organic);
+            border-radius: 8px;
             font-size: 1.2rem;
             font-weight: 800;
             cursor: pointer;
@@ -1329,11 +1524,14 @@
 
             .floating-product {
                 width: 350px;
+                height: 450px;
             }
 
             .benefits-grid,
             .testimonials-grid,
-            .influencers-grid {
+            .influencers-grid,
+            .steps-grid,
+            .ingredients-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
@@ -1455,10 +1653,10 @@
     <section class="benefits section" id="benefits">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Transforme sua pele com a <span class="gradient-text">Biotecnologia
-                        PDRN</span></h2>
-                <p class="section-subtitle">Descubra os benefícios únicos que só a tecnologia do DNA do salmão pode
-                    oferecer para sua pele</p>
+                <h2 class="section-title">Veja o poder da <span class="gradient-text">Biotecnologia PDRN</span> na sua
+                    pele!</h2>
+                <p class="section-subtitle">Um skincare premium que estimula a regeneração celular, devolve firmeza,
+                    rejuvenescimento e hidratação profunda ao seu rosto</p>
             </div>
 
             <div class="benefits-grid">
@@ -1467,8 +1665,9 @@
                         <i class="fas fa-dna"></i>
                     </div>
                     <h3>Rejuvenesce a pele</h3>
-                    <p>Estimula a produção de colágeno e reduz os sinais visíveis de envelhecimento, deixando sua pele
-                        mais jovem e radiante.</p>
+                    <p>Com o passar do tempo, nossas células perdem a capacidade natural de regeneração. O PDRNskin
+                        ativa esse processo novamente, estimulando a produção de colágeno e reduzindo os sinais visíveis
+                        de envelhecimento, deixando sua pele mais jovem e radiante.</p>
                 </div>
 
                 <div class="benefit-card">
@@ -1476,31 +1675,37 @@
                         <i class="fas fa-tint"></i>
                     </div>
                     <h3>Pele firme e hidratada</h3>
-                    <p>Melhora a elasticidade e retenção de água na pele. Hidratação intensa e luminosidade natural.</p>
+                    <p>O PDRN atua de dentro para fora, melhorando a elasticidade e retenção de água na pele. Resultado:
+                        hidratação intensa, firmeza visível e luminosidade natural logo nas primeiras semanas de uso.
+                    </p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-icon">
                         <i class="fas fa-magic"></i>
                     </div>
-                    <h3>Combate rugas e linhas</h3>
-                    <p>Acelera a renovação celular, suavizando linhas de expressão e rugas profundas.</p>
+                    <h3>Combate rugas e linhas de expressão</h3>
+                    <p>Graças ao seu poder regenerativo, o PDRN acelera a renovação celular, suavizando linhas de
+                        expressão, rugas e marcas como o bigode chinês — promovendo um aspecto mais liso e
+                        rejuvenescido.</p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-icon">
                         <i class="fas fa-sun"></i>
                     </div>
-                    <h3>Uniformiza o tom</h3>
-                    <p>Ajuda a uniformizar a textura da pele e clarear manchas, devolvendo viço e brilho natural.</p>
+                    <h3>Uniformiza o tom e reduz manchas</h3>
+                    <p>O processo de regeneração celular promovido pelo PDRN ajuda a uniformizar a textura da pele e
+                        clarear manchas, devolvendo viço, brilho e aparência saudável.</p>
                 </div>
 
                 <div class="benefit-card">
                     <div class="benefit-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>Controle da oleosidade</h3>
-                    <p>Sua pele fica hidratada na medida certa, sem oleosidade excessiva.</p>
+                    <h3>Controle da oleosidade e textura aveludada</h3>
+                    <p>O equilíbrio na regeneração celular também reflete no controle da produção sebácea. Sua pele fica
+                        hidratada na medida certa, sem oleosidade excessiva e com toque macio e aveludado.</p>
                 </div>
 
                 <div class="benefit-card">
@@ -1508,7 +1713,8 @@
                         <i class="fas fa-heart"></i>
                     </div>
                     <h3>Auxilia no combate à acne</h3>
-                    <p>Reduz inflamações locais e acelera a reparação da pele danificada.</p>
+                    <p>Por reduzir inflamações locais e acelerar a reparação da pele, o PDRNskin é um aliado no combate
+                        à acne, diminuindo a vermelhidão e ajudando a recuperar a uniformidade da pele.</p>
                 </div>
             </div>
         </div>
@@ -1520,6 +1726,96 @@
             🌟 CELEBRIDADES USAM • INFLUENCERS APROVAM • TECNOLOGIA DO FUTURO • PELE PERFEITA 🌟
         </div>
     </div>
+
+    <!-- Como Usar Section -->
+    <section class="how-to-use section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Como usar o <span class="gradient-text">PDRNskin</span></h2>
+                <p class="section-subtitle">Para conquistar todos os benefícios da biotecnologia PDRN, basta incluir o
+                    PDRNskin na sua rotina diária de skincare</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Higienize a pele</h3>
+                    <p>Lave o rosto com um sabonete facial de sua preferência, removendo impurezas e oleosidade. Isso
+                        prepara sua pele para absorver melhor os ativos.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Aplique o PDRNskin</h3>
+                    <p>Com a pele limpa e seca, aplique algumas gotas do produto diretamente no rosto. Espalhe de forma
+                        uniforme, massageando suavemente até completa absorção.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Aguarde a absorção</h3>
+                    <p>Deixe o produto agir por alguns minutos. O PDRN começa a atuar diretamente na regeneração
+                        celular.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Finalize sua rotina</h3>
+                    <p>Após a absorção, você pode seguir normalmente com o uso do protetor solar ou maquiagem. O
+                        PDRNskin se adapta perfeitamente à sua rotina de cuidados diários.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredientes Section -->
+    <section class="ingredients section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Fórmula Exclusiva <span class="gradient-text">PDRNskin</span></h2>
+                <p class="section-subtitle">Nosso skincare combina biotecnologia de ponta com ativos dermatológicos
+                    consagrados</p>
+            </div>
+
+            <div class="ingredients-grid">
+                <div class="ingredient-card">
+                    <div class="ingredient-name">🌊 PDRN (Polydeoxyribonucleotide)</div>
+                    <p>O ativo biotecnológico extraído do DNA do salmão, responsável por estimular a regeneração celular
+                        e potencializar a produção natural de colágeno e elastina.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <div class="ingredient-name">💧 Água + Propilenoglicol + Glicerina</div>
+                    <p>A base hidratante que garante textura leve, rápida absorção e hidratação prolongada, sem deixar a
+                        pele oleosa.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <div class="ingredient-name">🌱 Pantenol (Pró-Vitamina B5)</div>
+                    <p>Calmante e reparador, ajuda a reduzir irritações, mantém a barreira cutânea saudável e promove
+                        maciez imediata.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <div class="ingredient-name">✨ Ácido Hialurônico</div>
+                    <p>Ativo consagrado que atrai e retém água na pele, proporcionando hidratação intensa e efeito de
+                        preenchimento natural.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <div class="ingredient-name">🌟 Niacinamida (Vitamina B3)</div>
+                    <p>Auxilia na uniformização do tom da pele, reduz a aparência de manchas, controla a oleosidade e
+                        suaviza os poros.</p>
+                </div>
+
+                <div class="ingredient-card">
+                    <div class="ingredient-name">🌿 Óleo de Pracaxi & Óleo de Jojoba</div>
+                    <p>Ricos em ácidos graxos e nutrientes, oferecem nutrição profunda, restauram a elasticidade e
+                        reforçam a barreira natural da pele.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Seção de Influencers -->
     <section class="influencers section">
@@ -1657,15 +1953,16 @@
                 <div class="product-main">
                     <div class="product-content">
                         <div class="product-image">
-                            <img src="./assets/mockup1-produto.webp" alt="PDRNskin Premium">
+                            <img src="./assets/mockup1-sem-fundo.webp" alt="PDRNskin Premium">
                         </div>
 
                         <div class="product-details">
                             <h3>PDRNskin Premium</h3>
-                            <p class="product-description">
-                                Fórmula avançada com biotecnologia PDRN extraída do DNA do salmão.
-                                Cada frasco contém 30ml para 30 dias de tratamento intensivo.
-                            </p>
+
+                            <div class="countdown-timer">
+                                <div class="countdown-title">⏰ Oferta por tempo limitado!</div>
+                                <div class="countdown-display" id="countdown">23:59:45</div>
+                            </div>
 
                             <div class="product-price">
                                 <span class="current-price" id="displayPrice">R$ 249,00</span>
@@ -1717,7 +2014,7 @@
                     </div>
                     <div class="faq-answer">
                         <p>É um bioativo extraído do DNA do salmão que estimula a regeneração celular e promove
-                            rejuvenescimento facial profundo.</p>
+                            rejuvenescimento facial.</p>
                     </div>
                 </div>
 
@@ -1727,8 +2024,7 @@
                         <i class="fas fa-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Sim, o PDRNskin é totalmente seguro. O produto é aprovado pela ANVISA e pode ser usado
-                            diariamente sem riscos.</p>
+                        <p>Sim, o produto é aprovado pela ANVISA e pode ser usado diariamente sem riscos.</p>
                     </div>
                 </div>
 
@@ -1738,19 +2034,18 @@
                         <i class="fas fa-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Em poucas semanas já é possível notar firmeza, hidratação e rejuvenescimento visíveis na
-                            pele.</p>
+                        <p>Em poucas semanas já é possível notar firmeza, hidratação e rejuvenescimento visíveis.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        <span>Como funciona a garantia?</span>
+                        <span>Quem pode usar?</span>
                         <i class="fas fa-plus"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Se você não perceber os benefícios em 90 dias, devolvemos 100% do valor investido sem
-                            perguntas.</p>
+                        <p>Homens e mulheres que desejam combater rugas, linhas de expressão, manchas e envelhecimento
+                            precoce.</p>
                     </div>
                 </div>
             </div>
@@ -1768,15 +2063,18 @@
                 </div>
 
                 <div class="footer-section">
-                    <h4>Contato</h4>
-                    <p><i class="fas fa-envelope"></i> contato@pdrnskin.com.br</p>
-                    <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                    <h4>🔒 Segurança & Confiança</h4>
+                    <p><i class="fas fa-shield-alt"></i> Produto aprovado pela ANVISA</p>
+                    <p><i class="fas fa-medal"></i> Garantia de 90 dias</p>
+                    <p><i class="fas fa-lock"></i> Compra 100% segura</p>
+                    <p><i class="fas fa-shipping-fast"></i> Entrega rápida para todo o Brasil</p>
                 </div>
 
                 <div class="footer-section">
-                    <h4>Garantias</h4>
-                    <p><i class="fas fa-shield-alt"></i> Produto aprovado pela ANVISA</p>
-                    <p><i class="fas fa-medal"></i> Garantia de 90 dias</p>
+                    <h4>📞 Atendimento ao Cliente</h4>
+                    <p><i class="fas fa-envelope"></i> contato@pdrnskin.com.br</p>
+                    <p><i class="fas fa-phone"></i> (11) 99999-9999</p>
+                    <p><i class="fas fa-clock"></i> Segunda a Sexta – 9h às 18h</p>
                 </div>
             </div>
 
@@ -1787,6 +2085,10 @@
                         Desenvolvido por RyArt Design ®
                     </a>
                 </div>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: rgba(255,255,255,0.8);">⚠️ PDRNskin é um
+                    dermocosmético de uso tópico. Resultados podem variar de pessoa para pessoa, conforme uso e rotina
+                    de cuidados. Este produto não é medicamento e não substitui tratamentos prescritos por profissionais
+                    de saúde.</p>
             </div>
         </div>
     </footer>
@@ -1827,7 +2129,7 @@
             name: 'PDRNskin Premium',
             basePrice: 249.00,
             originalPrice: 299.00,
-            image: './assets/mockup1-produto.webp',
+            image: 'assets/mockup1-sem-fundo.webp',
             description: 'Biotecnologia PDRN - Tratamento para 30 dias'
         };
 
@@ -1854,7 +2156,32 @@
             updatePriceDisplay();
             initializeFAQ();
             initializeCartEvents();
+            startCountdown();
         });
+
+        // Contador regressivo
+        function startCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            let time = countdownElement.textContent.split(':');
+            let hours = parseInt(time[0]);
+            let minutes = parseInt(time[1]);
+            let seconds = parseInt(time[2]);
+
+            setInterval(() => {
+                if (seconds > 0) {
+                    seconds--;
+                } else if (minutes > 0) {
+                    minutes--;
+                    seconds = 59;
+                } else if (hours > 0) {
+                    hours--;
+                    minutes = 59;
+                    seconds = 59;
+                }
+
+                countdownElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
 
         // Aumentar quantidade
         function increaseQuantity() {
@@ -1928,33 +2255,62 @@
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = `
-                    <div style="text-align: center; padding: 40px 20px; color: #6b7280;">
-                        <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.3;"></i>
-                        <h4>Seu carrinho está vazio</h4>
-                        <p>Adicione produtos para começar</p>
-                    </div>
-                `;
+                <div style="text-align: center; padding: 40px 20px; color: #6b7280;">
+                    <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.3;"></i>
+                    <h4>Seu carrinho está vazio</h4>
+                    <p>Adicione produtos para começar</p>
+                </div>
+            `;
                 return;
             }
 
             cartItemsContainer.innerHTML = '';
 
-            cart.forEach(item => {
+            cart.forEach((item, index) => {
                 const cartItem = document.createElement('div');
                 cartItem.className = 'cart-item';
 
                 cartItem.innerHTML = `
-                    <div class="item-image">
-                        <img src="${item.image}" alt="${item.name}">
+                <div class="item-image">
+                    <img src="${item.image}" alt="${item.name}">
+                </div>
+                <div class="item-details">
+                    <div class="item-name">${item.name}</div>
+                    <div class="item-description">${item.description}</div>
+                    <div class="item-price">R$ ${item.total.toFixed(2).replace('.', ',')}</div>
+                    <div class="item-controls">
+                        <button class="cart-qty-btn" onclick="decreaseCartQuantity(${index})">-</button>
+                        <div class="cart-qty-display">${item.quantity}</div>
+                        <button class="cart-qty-btn" onclick="increaseCartQuantity(${index})">+</button>
                     </div>
-                    <div class="item-details">
-                        <div class="item-name">${item.name}</div>
-                        <div style="font-size: 0.9rem; color: #6b7280; margin-bottom: 8px;">${item.description}</div>
-                        <div class="item-price">R$ ${item.total.toFixed(2).replace('.', ',')}</div>
-                    </div>
-                `;
+                </div>
+            `;
                 cartItemsContainer.appendChild(cartItem);
             });
+        }
+
+        // Aumentar quantidade no carrinho
+        function increaseCartQuantity(index) {
+            if (cart[index].quantity < 6) {
+                cart[index].quantity++;
+                const pricing = QUANTITY_PRICING[cart[index].quantity];
+                cart[index].unitPrice = pricing.price;
+                cart[index].total = pricing.total;
+                cart[index].description = `${cart[index].quantity} frasco${cart[index].quantity > 1 ? 's' : ''} - ${cart[index].quantity * 30} dias de tratamento`;
+                updateCartDisplay();
+            }
+        }
+
+        // Diminuir quantidade no carrinho
+        function decreaseCartQuantity(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+                const pricing = QUANTITY_PRICING[cart[index].quantity];
+                cart[index].unitPrice = pricing.price;
+                cart[index].total = pricing.total;
+                cart[index].description = `${cart[index].quantity} frasco${cart[index].quantity > 1 ? 's' : ''} - ${cart[index].quantity * 30} dias de tratamento`;
+                updateCartDisplay();
+            }
         }
 
         // Abrir carrinho
@@ -2041,20 +2397,20 @@
             };
 
             notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: ${colors[type]};
-                color: white;
-                padding: 12px 20px;
-                border-radius: 25px;
-                font-weight: 600;
-                z-index: 3000;
-                transform: translateX(100%);
-                transition: transform 0.3s ease;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-                font-size: 0.9rem;
-            `;
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: ${colors[type]};
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            z-index: 3000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+        `;
 
             notification.textContent = message;
             document.body.appendChild(notification);
@@ -2100,6 +2456,8 @@
         window.toggleFAQ = toggleFAQ;
         window.scrollToCheckout = scrollToCheckout;
         window.scrollToBenefits = scrollToBenefits;
+        window.increaseCartQuantity = increaseCartQuantity;
+        window.decreaseCartQuantity = decreaseCartQuantity;
     </script>
 </body>
 
