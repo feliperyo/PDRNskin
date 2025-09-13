@@ -174,7 +174,7 @@
             margin: 0;
         }
 
-        /* Faixas Animadas - CORRIGIDAS para mostrar texto */
+        /* Faixas Animadas */
         .animated-banner {
             position: relative;
             height: 70px;
@@ -216,49 +216,6 @@
 
         .banner-scroll-left {
             animation: scrollLeft 18s linear infinite;
-        }
-
-        /* Carrinho Flutuante */
-        .cart-float {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #FF1493, #FF69B4);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            cursor: pointer;
-            z-index: 1001;
-            box-shadow: var(--shadow-neon);
-            transition: all 0.3s ease;
-        }
-
-        .cart-float:hover {
-            transform: scale(1.2) translateY(-10px);
-            box-shadow: 0 0 50px rgba(255, 20, 147, 0.8);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ef4444;
-            color: white;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 900;
-            border: 3px solid white;
-            animation: pulse 2s infinite;
         }
 
         /* Hero Section */
@@ -365,7 +322,6 @@
             text-align: center;
         }
 
-        /* Título PDRN melhorado - MAIS LEGÍVEL */
         .biotechnology-title {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
             -webkit-background-clip: text;
@@ -407,7 +363,6 @@
             z-index: 3;
         }
 
-        /* Produto SEM BORDA como pedido */
         .floating-product {
             width: 500px;
             height: 800px;
@@ -516,7 +471,7 @@
             font-weight: 900;
         }
 
-        /* Benefícios com formas orgânicas */
+        /* Benefícios */
         .benefits {
             background: linear-gradient(135deg, #FF6B6B 0%, #FF8E9B 50%, #FFB6C1 100%);
             position: relative;
@@ -734,7 +689,7 @@
             font-size: 1.1rem;
         }
 
-        /* Influencers com design orgânico - MANTENDO TORTINHO como estava bom */
+        /* Influencers */
         .influencers {
             background: var(--light-color);
             position: relative;
@@ -837,7 +792,7 @@
             font-weight: 700;
         }
 
-        /* Depoimentos orgânicos */
+        /* Depoimentos */
         .testimonials {
             background: linear-gradient(135deg, #fff5f5 0%, #ffe4e6 100%);
             position: relative;
@@ -935,7 +890,7 @@
             font-weight: 600;
         }
 
-        /* Checkout Section com formas orgânicas - MANTENDO TORTINHO */
+        /* Checkout Section */
         .checkout-section {
             background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
             color: white;
@@ -970,6 +925,34 @@
             z-index: 2;
         }
 
+        /* CONTADOR ACIMA DO TÍTULO */
+        .countdown-timer-header {
+            background: rgba(255, 20, 147, 0.2);
+            border: 2px solid rgba(255, 20, 147, 0.5);
+            border-radius: var(--radius-xl);
+            padding: 25px;
+            margin-bottom: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .countdown-timer-header .countdown-title {
+            color: #FFD700;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .countdown-timer-header .countdown-display {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
         .product-main {
             background: rgba(255, 255, 255, 0.1);
             border-radius: var(--radius-blob);
@@ -1002,41 +985,17 @@
         .product-details h3 {
             font-size: 2.2rem;
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Contador adicionado */
-        .countdown-timer {
-            background: rgba(255, 20, 147, 0.2);
-            border: 2px solid rgba(255, 20, 147, 0.5);
-            border-radius: var(--radius-xl);
-            padding: 20px;
-            margin-bottom: 25px;
             text-align: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .countdown-title {
-            color: #FFD700;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .countdown-display {
-            font-size: 2rem;
-            font-weight: 900;
-            color: #FFD700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
         .product-price {
             display: flex;
             align-items: baseline;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             justify-content: center;
         }
 
@@ -1056,23 +1015,30 @@
             text-decoration: line-through;
         }
 
+        /* SELETOR DE QUANTIDADE */
         .quantity-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: var(--radius-xl);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             margin-bottom: 30px;
         }
 
         .quantity-label {
             display: block;
-            margin-bottom: 15px;
-            font-weight: 700;
+            margin-bottom: 20px;
+            font-weight: 800;
             color: white;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .quantity-selector {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 20px;
             justify-content: center;
         }
@@ -1080,83 +1046,70 @@
         .quantity-btn {
             background: linear-gradient(135deg, #FF1493, #FF69B4);
             border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: var(--radius-blob);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
+            user-select: none;
         }
 
         .quantity-btn:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.6);
+            transform: scale(1.15);
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.7);
+        }
+
+        .quantity-btn:active {
+            transform: scale(1.05);
         }
 
         .quantity-display {
             background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.4);
             border-radius: var(--radius-xl);
-            padding: 15px 25px;
+            padding: 18px 30px;
             font-weight: 900;
             color: white;
-            font-size: 1.3rem;
-            min-width: 80px;
+            font-size: 1.5rem;
+            min-width: 100px;
             text-align: center;
             backdrop-filter: blur(20px);
-        }
-
-        .quantity-info {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-style: italic;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .buy-button {
-            width: 100%;
-            padding: 22px 30px;
-            font-size: 1.4rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: var(--radius-organic);
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
-            position: relative;
-            overflow: hidden;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .buy-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+        .quantity-info {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            text-align: center;
+            font-weight: 600;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        .buy-button:hover::before {
-            left: 100%;
+        /* YAMPI BUTTONS DINÂMICOS */
+        .yampi-buy-button-container {
+            margin-bottom: 30px;
         }
 
-        .buy-button:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
+        .yampi-button-slot {
+            display: none;
+        }
+
+        .yampi-button-slot.active {
+            display: block;
+        }
+
+        /* Ocultar elementos da Yampi que não queremos */
+        .yampi-buy-button-container .yampi-buy-button img {
+            display: none !important;
         }
 
         .simple-guarantee {
@@ -1182,7 +1135,7 @@
             font-weight: 700;
         }
 
-        /* FAQ - QUADRADO como pedido */
+        /* FAQ */
         .faq {
             background: var(--light-color);
             overflow: hidden;
@@ -1310,206 +1263,6 @@
             text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
         }
 
-        /* Modal do Carrinho - DESIGN QUADRADO */
-        .cart-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(15px);
-        }
-
-        .cart-modal.active {
-            display: flex;
-        }
-
-        .cart-content {
-            background: var(--light-color);
-            border-radius: 12px;
-            max-width: 500px;
-            width: 95%;
-            max-height: 85vh;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            box-shadow: var(--shadow-2xl);
-            overflow: hidden;
-            border: 3px solid var(--vibrant-pink);
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px 30px;
-            background: linear-gradient(135deg, #FF1493, #FF69B4);
-            color: white;
-        }
-
-        .cart-header h3 {
-            font-size: 1.5rem;
-            font-weight: 800;
-        }
-
-        .close-cart {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            font-size: 1.4rem;
-            color: white;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 6px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .close-cart:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        .cart-items {
-            padding: 25px 30px;
-            flex: 1;
-            overflow-y: auto;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px 0;
-            border-bottom: 2px solid #f1f5f9;
-        }
-
-        .item-image {
-            width: 70px;
-            height: 70px;
-            background: #f8fafc;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .item-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 6px;
-        }
-
-        .item-details {
-            flex: 1;
-        }
-
-        .item-name {
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-
-        .item-description {
-            font-size: 0.9rem;
-            color: #6b7280;
-            margin-bottom: 8px;
-        }
-
-        .item-price {
-            color: var(--vibrant-pink);
-            font-weight: 900;
-            font-size: 1.2rem;
-        }
-
-        .item-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .cart-qty-btn {
-            background: linear-gradient(135deg, #FF1493, #FF69B4);
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .cart-qty-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 10px rgba(255, 20, 147, 0.4);
-        }
-
-        .cart-qty-display {
-            background: #f8fafc;
-            border: 1px solid #e5e7eb;
-            border-radius: 4px;
-            padding: 5px 10px;
-            font-weight: 700;
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            min-width: 40px;
-            text-align: center;
-        }
-
-        .cart-summary {
-            padding: 25px 30px;
-            background: #f8fafc;
-            border-top: 2px solid #e5e7eb;
-        }
-
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-        }
-
-        .btn-checkout {
-            width: 100%;
-            padding: 20px 30px;
-            background: linear-gradient(135deg, #FF1493, #FF69B4);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 30px rgba(255, 20, 147, 0.4);
-        }
-
-        .btn-checkout:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 40px rgba(255, 20, 147, 0.6);
-        }
-
         /* Responsividade */
         @media (max-width: 768px) {
             .container {
@@ -1546,20 +1299,17 @@
                 padding: 30px 25px;
             }
 
-            .cart-float {
-                width: 60px;
-                height: 60px;
-                font-size: 24px;
-                top: 20px;
-                right: 20px;
-            }
-
             .animated-banner {
                 height: 50px;
             }
 
             .banner-text {
                 font-size: 1.2rem;
+            }
+
+            .countdown-timer-header {
+                max-width: 350px;
+                padding: 20px;
             }
         }
 
@@ -1575,6 +1325,16 @@
             .banner-text {
                 font-size: 1rem;
             }
+
+            .quantity-selector {
+                gap: 15px;
+            }
+
+            .quantity-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.5rem;
+            }
         }
 
         .hidden {
@@ -1587,12 +1347,6 @@
     <!-- Logo no topo -->
     <div class="top-logo">
         <h1>PDRNskin</h1>
-    </div>
-
-    <!-- Carrinho Flutuante -->
-    <div class="cart-float" id="cartFloat">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count" id="cartCount">0</span>
     </div>
 
     <!-- Faixa Animada Superior -->
@@ -1945,6 +1699,13 @@
     <section class="checkout-section section" id="checkout">
         <div class="container">
             <div class="checkout-container">
+
+                <!-- CONTADOR ACIMA DO TÍTULO -->
+                <div class="countdown-timer-header">
+                    <div class="countdown-title">⏰ Oferta por tempo limitado!</div>
+                    <div class="countdown-display" id="countdown">23:59:45</div>
+                </div>
+
                 <div class="section-header">
                     <h2 class="section-title">Transforme sua pele <span class="gradient-text">hoje mesmo</span></h2>
                     <p class="section-subtitle">Escolha a quantidade e comece sua jornada de rejuvenescimento agora</p>
@@ -1959,16 +1720,12 @@
                         <div class="product-details">
                             <h3>PDRNskin Premium</h3>
 
-                            <div class="countdown-timer">
-                                <div class="countdown-title">⏰ Oferta por tempo limitado!</div>
-                                <div class="countdown-display" id="countdown">23:59:45</div>
-                            </div>
-
                             <div class="product-price">
                                 <span class="current-price" id="displayPrice">R$ 249,00</span>
                                 <span class="old-price">R$ 299,00</span>
                             </div>
 
+                            <!-- SELETOR DE QUANTIDADE -->
                             <div class="quantity-section">
                                 <label class="quantity-label">Quantidade:</label>
                                 <div class="quantity-selector">
@@ -1979,10 +1736,44 @@
                                 <div class="quantity-info" id="quantityInfo">1 frasco = 30 dias de tratamento</div>
                             </div>
 
-                            <button class="buy-button" onclick="addToCart()">
-                                <i class="fas fa-cart-plus"></i>
-                                Adicionar ao Carrinho
-                            </button>
+                            <!-- YAMPI BUTTONS DINÂMICOS -->
+                            <div class="yampi-buy-button-container">
+                                <!-- BOTÃO YAMPI PARA 1 UNIDADE -->
+                                <div id="yampi-button-1" class="yampi-button-slot active">
+                                    <script class="ymp-script"
+                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/1TPD5A9U0H/js"></script>
+                                </div>
+
+                                <!-- BOTÃO YAMPI PARA 2 UNIDADES -->
+                                <div id="yampi-button-2" class="yampi-button-slot">
+                                    <script class="ymp-script"
+                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/LB3T9Z5QYV/js"></script>
+                                </div>
+
+                                <!-- BOTÃO YAMPI PARA 3 UNIDADES -->
+                                <div id="yampi-button-3" class="yampi-button-slot">
+                                    <script class="ymp-script"
+                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/R5ZJQ3ASC5/js"></script>
+                                </div>
+
+                                <!-- BOTÃO YAMPI PARA 4 UNIDADES -->
+                                <div id="yampi-button-4" class="yampi-button-slot">
+                                    <script class="ymp-script"
+                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/RVI57I655H/js"></script>
+                                </div>
+
+                                <!-- BOTÃO YAMPI PARA 5 UNIDADES -->
+                                <div id="yampi-button-5" class="yampi-button-slot">
+                                    <script class="ymp-script"
+                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/SETHGEIP5J/js"></script>
+                                </div>
+
+                                <!-- BOTÃO YAMPI PARA 6 UNIDADES -->
+                                <div id="yampi-button-6" class="yampi-button-slot">
+                                    <script class="ymp-script"
+                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/500XL055KW/js"></script>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -2066,7 +1857,7 @@
                     <h4>🔒 Segurança & Confiança</h4>
                     <p><i class="fas fa-shield-alt"></i> Produto aprovado pela ANVISA</p>
                     <p><i class="fas fa-medal"></i> Garantia de 90 dias</p>
-                    <p><i class="fas fa-lock"></i> Compra 100% segura</p>
+                    <p><i class="fas fa-lock"></i> Compra 100% segura com Yampi</p>
                     <p><i class="fas fa-shipping-fast"></i> Entrega rápida para todo o Brasil</p>
                 </div>
 
@@ -2093,37 +1884,9 @@
         </div>
     </footer>
 
-    <!-- Cart Modal -->
-    <div class="cart-modal" id="cartModal">
-        <div class="cart-content">
-            <div class="cart-header">
-                <h3>Meu Carrinho</h3>
-                <button class="close-cart" onclick="closeCart()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-
-            <div class="cart-items" id="cartItems">
-                <!-- Items serão inseridos via JavaScript -->
-            </div>
-
-            <div class="cart-summary">
-                <div class="summary-total">
-                    <span>Total:</span>
-                    <span id="cartTotal">R$ 0,00</span>
-                </div>
-                <button class="btn-checkout" onclick="checkout()">
-                    <i class="fas fa-credit-card"></i>
-                    Finalizar Compra
-                </button>
-            </div>
-        </div>
-    </div>
-
     <script>
         // Configuração do produto
         let quantity = 1;
-        let cart = [];
 
         const PRODUCT_CONFIG = {
             name: 'PDRNskin Premium',
@@ -2136,32 +1899,26 @@
         // Preços por quantidade
         const QUANTITY_PRICING = {
             1: { price: 249.00, total: 249.00, savings: 0, info: "1 frasco = 30 dias de tratamento" },
-            2: { price: 239.50, total: 479.00, savings: 69.00, info: "2 frascos = 60 dias + Frete Grátis" },
-            3: { price: 199.67, total: 599.00, savings: 298.00, info: "3 frascos = 90 dias + Frete Grátis" },
-            4: { price: 174.75, total: 699.00, savings: 497.00, info: "4 frascos = 120 dias + Frete Grátis" },
-            5: { price: 159.80, total: 799.00, savings: 696.00, info: "5 frascos = 150 dias + Frete Grátis" },
-            6: { price: 149.98, total: 899.99, savings: 895.01, info: "6 frascos = 180 dias + Frete Grátis" }
+            2: { price: 239.50, total: 479.00, savings: 69.00, info: "2 frascos = 60 dias + Desconto de R$ 69" },
+            3: { price: 199.67, total: 599.00, savings: 298.00, info: "3 frascos = 90 dias + Frete Grátis + Desconto de R$ 298" },
+            4: { price: 174.75, total: 699.00, savings: 497.00, info: "4 frascos = 120 dias + Frete Grátis + Desconto de R$ 497" },
+            5: { price: 159.80, total: 799.00, savings: 696.00, info: "5 frascos = 150 dias + Frete Grátis + Desconto de R$ 696" },
+            6: { price: 149.98, total: 899.99, savings: 895.01, info: "6 frascos = 180 dias + Frete Grátis + Maior Desconto de R$ 895" }
         };
-
-        // Elementos DOM
-        const quantityDisplay = document.getElementById('quantityDisplay');
-        const displayPrice = document.getElementById('displayPrice');
-        const quantityInfo = document.getElementById('quantityInfo');
-        const cartFloat = document.getElementById('cartFloat');
-        const cartCount = document.getElementById('cartCount');
-        const cartModal = document.getElementById('cartModal');
 
         // Inicialização
         document.addEventListener('DOMContentLoaded', function () {
             updatePriceDisplay();
+            updateYampiButton();
             initializeFAQ();
-            initializeCartEvents();
             startCountdown();
         });
 
         // Contador regressivo
         function startCountdown() {
             const countdownElement = document.getElementById('countdown');
+            if (!countdownElement) return;
+
             let time = countdownElement.textContent.split(':');
             let hours = parseInt(time[0]);
             let minutes = parseInt(time[1]);
@@ -2188,6 +1945,7 @@
             if (quantity < 6) {
                 quantity++;
                 updatePriceDisplay();
+                updateYampiButton();
             }
         }
 
@@ -2196,148 +1954,30 @@
             if (quantity > 1) {
                 quantity--;
                 updatePriceDisplay();
+                updateYampiButton();
             }
         }
 
         // Atualizar display de preço
         function updatePriceDisplay() {
             const pricing = QUANTITY_PRICING[quantity];
-            quantityDisplay.textContent = quantity;
-            displayPrice.textContent = `R$ ${pricing.total.toFixed(2).replace('.', ',')}`;
-            quantityInfo.textContent = pricing.info;
+            document.getElementById('quantityDisplay').textContent = quantity;
+            document.getElementById('displayPrice').textContent = `R$ ${pricing.total.toFixed(2).replace('.', ',')}`;
+            document.getElementById('quantityInfo').textContent = pricing.info;
         }
 
-        // Adicionar ao carrinho
-        function addToCart() {
-            const pricing = QUANTITY_PRICING[quantity];
-
-            // Limpar carrinho anterior
-            cart = [];
-
-            // Adicionar produto
-            const product = {
-                id: 'pdrnskin-premium',
-                name: PRODUCT_CONFIG.name,
-                quantity: quantity,
-                unitPrice: pricing.price,
-                total: pricing.total,
-                image: PRODUCT_CONFIG.image,
-                description: `${quantity} frasco${quantity > 1 ? 's' : ''} - ${quantity * 30} dias de tratamento`
-            };
-
-            cart.push(product);
-            updateCartDisplay();
-            openCart();
-            showNotification('Produto adicionado ao carrinho!', 'success');
-        }
-
-        // Atualizar display do carrinho
-        function updateCartDisplay() {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const totalValue = cart.reduce((sum, item) => sum + item.total, 0);
-
-            cartCount.textContent = totalItems;
-            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
-
-            // Atualizar itens do carrinho
-            updateCartItems();
-
-            // Atualizar total
-            const cartTotalElement = document.getElementById('cartTotal');
-            if (cartTotalElement) {
-                cartTotalElement.textContent = `R$ ${totalValue.toFixed(2).replace('.', ',')}`;
-            }
-        }
-
-        // Atualizar itens do carrinho
-        function updateCartItems() {
-            const cartItemsContainer = document.getElementById('cartItems');
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = `
-                <div style="text-align: center; padding: 40px 20px; color: #6b7280;">
-                    <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.3;"></i>
-                    <h4>Seu carrinho está vazio</h4>
-                    <p>Adicione produtos para começar</p>
-                </div>
-            `;
-                return;
-            }
-
-            cartItemsContainer.innerHTML = '';
-
-            cart.forEach((item, index) => {
-                const cartItem = document.createElement('div');
-                cartItem.className = 'cart-item';
-
-                cartItem.innerHTML = `
-                <div class="item-image">
-                    <img src="${item.image}" alt="${item.name}">
-                </div>
-                <div class="item-details">
-                    <div class="item-name">${item.name}</div>
-                    <div class="item-description">${item.description}</div>
-                    <div class="item-price">R$ ${item.total.toFixed(2).replace('.', ',')}</div>
-                    <div class="item-controls">
-                        <button class="cart-qty-btn" onclick="decreaseCartQuantity(${index})">-</button>
-                        <div class="cart-qty-display">${item.quantity}</div>
-                        <button class="cart-qty-btn" onclick="increaseCartQuantity(${index})">+</button>
-                    </div>
-                </div>
-            `;
-                cartItemsContainer.appendChild(cartItem);
+        // Atualizar botão Yampi ativo
+        function updateYampiButton() {
+            // Ocultar todos os botões
+            document.querySelectorAll('.yampi-button-slot').forEach(slot => {
+                slot.classList.remove('active');
             });
-        }
 
-        // Aumentar quantidade no carrinho
-        function increaseCartQuantity(index) {
-            if (cart[index].quantity < 6) {
-                cart[index].quantity++;
-                const pricing = QUANTITY_PRICING[cart[index].quantity];
-                cart[index].unitPrice = pricing.price;
-                cart[index].total = pricing.total;
-                cart[index].description = `${cart[index].quantity} frasco${cart[index].quantity > 1 ? 's' : ''} - ${cart[index].quantity * 30} dias de tratamento`;
-                updateCartDisplay();
+            // Mostrar botão da quantidade atual
+            const activeButton = document.getElementById(`yampi-button-${quantity}`);
+            if (activeButton) {
+                activeButton.classList.add('active');
             }
-        }
-
-        // Diminuir quantidade no carrinho
-        function decreaseCartQuantity(index) {
-            if (cart[index].quantity > 1) {
-                cart[index].quantity--;
-                const pricing = QUANTITY_PRICING[cart[index].quantity];
-                cart[index].unitPrice = pricing.price;
-                cart[index].total = pricing.total;
-                cart[index].description = `${cart[index].quantity} frasco${cart[index].quantity > 1 ? 's' : ''} - ${cart[index].quantity * 30} dias de tratamento`;
-                updateCartDisplay();
-            }
-        }
-
-        // Abrir carrinho
-        function openCart() {
-            cartModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Fechar carrinho
-        function closeCart() {
-            cartModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Finalizar compra
-        function checkout() {
-            if (cart.length === 0) {
-                showNotification('Adicione produtos ao carrinho primeiro!', 'warning');
-                return;
-            }
-
-            showNotification('Redirecionando para pagamento...', 'info');
-
-            // Aqui será integrada a URL real do Yampi
-            setTimeout(() => {
-                alert('Integração com Yampi será implementada aqui');
-            }, 1500);
         }
 
         // FAQ
@@ -2354,77 +1994,6 @@
                     faqItem.classList.add('active');
                 }
             };
-        }
-
-        // Eventos do carrinho
-        function initializeCartEvents() {
-            cartFloat.addEventListener('click', () => {
-                if (cart.length > 0) {
-                    openCart();
-                } else {
-                    scrollToCheckout();
-                }
-            });
-
-            cartModal.addEventListener('click', (e) => {
-                if (e.target === cartModal) {
-                    closeCart();
-                }
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && cartModal.classList.contains('active')) {
-                    closeCart();
-                }
-            });
-        }
-
-        // Notificação
-        function showNotification(message, type = 'success') {
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-
-            const colors = {
-                success: '#10b981',
-                error: '#ef4444',
-                warning: '#f59e0b',
-                info: '#667eea'
-            };
-
-            notification.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: ${colors[type]};
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            z-index: 3000;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            font-size: 0.9rem;
-        `;
-
-            notification.textContent = message;
-            document.body.appendChild(notification);
-
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-
-            setTimeout(() => {
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    notification.remove();
-                }, 300);
-            }, 3000);
         }
 
         // Scroll para seções
@@ -2447,17 +2016,11 @@
         }
 
         // Exportar funções globais
-        window.increaseQuantity = increaseQuantity;
-        window.decreaseQuantity = decreaseQuantity;
-        window.addToCart = addToCart;
-        window.openCart = openCart;
-        window.closeCart = closeCart;
-        window.checkout = checkout;
-        window.toggleFAQ = toggleFAQ;
         window.scrollToCheckout = scrollToCheckout;
         window.scrollToBenefits = scrollToBenefits;
-        window.increaseCartQuantity = increaseCartQuantity;
-        window.decreaseCartQuantity = decreaseCartQuantity;
+        window.toggleFAQ = toggleFAQ;
+        window.increaseQuantity = increaseQuantity;
+        window.decreaseQuantity = decreaseQuantity;
     </script>
 </body>
 
