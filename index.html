@@ -24,7 +24,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         /* Variáveis CSS */
@@ -152,16 +152,16 @@
 
         /* Logo no topo */
         .top-logo {
-            position: absolute;
-            top: 20px;
+            position: fixed;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
             background: rgba(255, 255, 255, 0.95);
-            padding: 6px 16px;
+            padding: 8px 20px;
             border-radius: 50px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .top-logo h1 {
@@ -177,32 +177,32 @@
         /* Faixas Animadas */
         .animated-banner {
             position: relative;
-            height: 70px;
+            height: 50px;
             background: linear-gradient(135deg, #FF6B6B 0%, #FF8E9B 50%, #FFB6C1 100%);
             overflow: hidden;
-            margin: 20px 0;
-            transform: rotate(-2deg);
+            margin: 15px 0;
+            transform: rotate(-1deg);
             box-shadow: var(--shadow-neon);
             z-index: 500;
-            width: 110%;
-            margin-left: -5%;
+            width: 105%;
+            margin-left: -2.5%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .animated-banner.reverse {
-            transform: rotate(2deg);
+            transform: rotate(1deg);
             background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #FF6B6B 100%);
         }
 
         .banner-text {
             white-space: nowrap;
-            font-size: 1.3rem;
+            font-size: 1rem;
             font-weight: 900;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             display: block;
             width: max-content;
@@ -226,7 +226,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding: 100px 0 60px;
+            padding: 80px 0 40px;
         }
 
         .hero::before {
@@ -260,61 +260,62 @@
         }
 
         .blob1 {
-            width: 200px;
-            height: 200px;
-            top: 10%;
-            left: 10%;
+            width: 150px;
+            height: 150px;
+            top: 15%;
+            left: 5%;
             animation-delay: 0s;
         }
 
         .blob2 {
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
             top: 60%;
-            right: 15%;
+            right: 10%;
             animation-delay: 2s;
         }
 
         .blob3 {
-            width: 100px;
-            height: 100px;
-            bottom: 20%;
-            left: 20%;
+            width: 80px;
+            height: 80px;
+            bottom: 25%;
+            left: 15%;
             animation-delay: 4s;
         }
 
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
             position: relative;
             z-index: 2;
+            gap: 30px;
         }
 
         .hero-text {
-            animation: fadeInLeft 1s ease 0.5s both;
-            text-align: center;
+            animation: fadeInUp 1s ease 0.3s both;
+            order: 2;
         }
 
         .brand-logo {
             text-align: center;
-            margin-bottom: 40px;
-            animation: fadeInUp 1s ease 0.2s both;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease 0.1s both;
         }
 
         .logo-text {
-            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-size: clamp(2.5rem, 8vw, 4rem);
             font-weight: 900;
             color: white;
             text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(1.8rem, 6vw, 3.5rem);
             font-weight: 900;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             line-height: 1.1;
             color: white;
             letter-spacing: -0.02em;
@@ -333,8 +334,8 @@
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            margin-bottom: 40px;
+            font-size: clamp(1rem, 4vw, 1.3rem);
+            margin-bottom: 30px;
             color: rgba(255, 255, 255, 0.95);
             font-weight: 600;
             line-height: 1.5;
@@ -344,10 +345,11 @@
 
         .hero-buttons {
             display: flex;
-            gap: 20px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 350px;
         }
 
         .hero-image {
@@ -355,7 +357,8 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            animation: fadeInRight 1s ease 0.7s both;
+            animation: fadeInUp 1s ease 0.5s both;
+            order: 1;
         }
 
         .product-showcase {
@@ -364,8 +367,8 @@
         }
 
         .floating-product {
-            width: 500px;
-            height: 800px;
+            width: 280px;
+            height: 350px;
             object-fit: contain;
             animation: float 6s ease-in-out infinite;
             position: relative;
@@ -375,22 +378,24 @@
 
         /* Botões Orgânicos */
         .btn {
-            padding: 18px 35px;
+            padding: 18px 25px;
             border: none;
             border-radius: var(--radius-organic);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            gap: 10px;
             text-decoration: none;
             letter-spacing: 1px;
             text-transform: uppercase;
             box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
         .btn::before {
@@ -415,19 +420,19 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-4px) scale(1.05);
+            transform: translateY(-3px) scale(1.02);
             box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
         }
 
         .btn-secondary {
             background: rgba(255, 255, 255, 0.95);
             color: var(--vibrant-pink);
-            border: 3px solid rgba(255, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(20px);
         }
 
         .btn-secondary:hover {
-            transform: translateY(-4px) scale(1.05);
+            transform: translateY(-3px) scale(1.02);
             background: white;
             border-color: var(--vibrant-pink);
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
@@ -435,29 +440,29 @@
 
         /* Seções */
         .section {
-            padding: 80px 0;
+            padding: 60px 0;
             position: relative;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             animation: fadeInUp 0.8s ease both;
         }
 
         .section-title {
-            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
             font-weight: 900;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: var(--text-primary);
             line-height: 1.2;
             letter-spacing: -0.02em;
         }
 
         .section-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-size: clamp(1rem, 3vw, 1.2rem);
             color: var(--text-secondary);
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
             font-weight: 600;
             line-height: 1.5;
@@ -493,15 +498,15 @@
 
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 20px;
             position: relative;
             z-index: 2;
         }
 
         .benefit-card {
             background: rgba(255, 255, 255, 0.95);
-            padding: 35px 25px;
+            padding: 25px 20px;
             border-radius: var(--radius-blob);
             text-align: center;
             box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
@@ -518,37 +523,37 @@
         }
 
         .benefit-card:hover {
-            transform: translateY(-12px) scale(1.02);
+            transform: translateY(-8px) scale(1.02);
             box-shadow: 0 0 60px rgba(255, 255, 255, 0.5);
             border-color: var(--vibrant-pink);
         }
 
         .benefit-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
             background: linear-gradient(135deg, #FF1493, #FF69B4);
             border-radius: var(--radius-blob);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 32px;
+            font-size: 24px;
             box-shadow: 0 0 30px rgba(255, 20, 147, 0.4);
             animation: float 4s ease-in-out infinite;
         }
 
         .benefit-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: var(--text-primary);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-weight: 800;
         }
 
         .benefit-card p {
             color: var(--text-secondary);
             line-height: 1.6;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
         }
 
@@ -574,8 +579,8 @@
 
         .steps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 25px;
             position: relative;
             z-index: 2;
         }
@@ -583,7 +588,7 @@
         .step-card {
             background: var(--light-color);
             border-radius: var(--radius-blob);
-            padding: 30px;
+            padding: 25px 20px;
             box-shadow: var(--shadow-lg);
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             position: relative;
@@ -606,30 +611,36 @@
         }
 
         .step-card:hover {
-            transform: translateY(-15px) rotate(2deg);
+            transform: translateY(-10px) rotate(1deg);
             box-shadow: var(--shadow-neon);
         }
 
         .step-number {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #FF1493, #FF69B4);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 800;
-            margin: 0 auto 20px;
+            margin: 0 auto 15px;
             box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
         }
 
         .step-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: var(--text-primary);
+        }
+
+        .step-card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
         }
 
         /* Ingredientes Section */
@@ -654,15 +665,15 @@
 
         .ingredients-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: 1fr;
+            gap: 20px;
             position: relative;
             z-index: 2;
         }
 
         .ingredient-card {
             background: var(--light-color);
-            padding: 25px;
+            padding: 20px;
             border-radius: var(--radius-blob);
             box-shadow: var(--shadow-md);
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -677,7 +688,7 @@
         }
 
         .ingredient-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-8px) scale(1.02);
             box-shadow: var(--shadow-xl);
             border-color: var(--vibrant-pink);
         }
@@ -685,8 +696,14 @@
         .ingredient-name {
             font-weight: 700;
             color: var(--vibrant-pink);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .ingredient-card p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
         }
 
         /* Influencers */
@@ -711,9 +728,9 @@
 
         .influencers-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
             position: relative;
             z-index: 2;
         }
@@ -743,24 +760,24 @@
         }
 
         .influencer-card:hover {
-            transform: translateY(-15px) rotate(2deg);
+            transform: translateY(-10px) rotate(1deg);
             box-shadow: var(--shadow-neon);
         }
 
         .influencer-photo {
             width: 100%;
-            height: 280px;
+            height: 180px;
             background: linear-gradient(45deg, #FF69B4 25%, transparent 25%),
                 linear-gradient(-45deg, #FF69B4 25%, transparent 25%),
                 linear-gradient(45deg, transparent 75%, #FF69B4 75%),
                 linear-gradient(-45deg, transparent 75%, #FF69B4 75%);
-            background-size: 25px 25px;
-            background-position: 0 0, 0 12.5px, 12.5px -12.5px, -12.5px 0px;
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 16px;
+            font-size: 12px;
             font-weight: 700;
             text-align: center;
             position: relative;
@@ -768,13 +785,13 @@
         }
 
         .influencer-photo::after {
-            content: 'Influencer\A Usando PDRNskin';
+            content: 'Influencer\AUsando PDRNskin';
             white-space: pre;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         .influencer-info {
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             background: white;
         }
@@ -782,13 +799,13 @@
         .influencer-name {
             font-weight: 800;
             color: var(--text-primary);
-            margin-bottom: 6px;
-            font-size: 1.1rem;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
         }
 
         .influencer-followers {
             color: var(--vibrant-pink);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 700;
         }
 
@@ -814,15 +831,15 @@
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 25px;
             position: relative;
             z-index: 2;
         }
 
         .testimonial-card {
             background: var(--light-color);
-            padding: 30px 25px;
+            padding: 25px 20px;
             border-radius: var(--radius-blob);
             box-shadow: var(--shadow-md);
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -837,25 +854,25 @@
         }
 
         .testimonial-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-8px) scale(1.02);
             box-shadow: var(--shadow-xl);
             border-color: var(--vibrant-pink);
         }
 
         .stars {
             display: flex;
-            gap: 4px;
-            margin-bottom: 20px;
+            gap: 3px;
+            margin-bottom: 15px;
             color: var(--warning-color);
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             justify-content: center;
         }
 
         .testimonial-text {
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.6;
             color: var(--text-primary);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-style: italic;
             font-weight: 600;
             text-align: center;
@@ -864,28 +881,28 @@
         .customer-info {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
         }
 
         .customer-photo {
-            width: 55px;
-            height: 55px;
+            width: 45px;
+            height: 45px;
             border-radius: var(--radius-full);
             object-fit: cover;
-            border: 3px solid var(--vibrant-pink);
-            box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+            border: 2px solid var(--vibrant-pink);
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
         }
 
         .customer-details h4 {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--text-primary);
             font-weight: 800;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
         }
 
         .customer-details span {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
             font-weight: 600;
         }
@@ -919,7 +936,7 @@
         }
 
         .checkout-container {
-            max-width: 900px;
+            max-width: 500px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
@@ -930,11 +947,11 @@
             background: rgba(255, 20, 147, 0.2);
             border: 2px solid rgba(255, 20, 147, 0.5);
             border-radius: var(--radius-xl);
-            padding: 25px;
-            margin-bottom: 40px;
+            padding: 20px;
+            margin-bottom: 30px;
             text-align: center;
             backdrop-filter: blur(10px);
-            max-width: 400px;
+            max-width: 300px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -942,12 +959,12 @@
         .countdown-timer-header .countdown-title {
             color: #FFD700;
             font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 12px;
+            font-size: 1rem;
+            margin-bottom: 10px;
         }
 
         .countdown-timer-header .countdown-display {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 900;
             color: #FFD700;
             text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
@@ -956,18 +973,19 @@
         .product-main {
             background: rgba(255, 255, 255, 0.1);
             border-radius: var(--radius-blob);
-            padding: 50px;
+            padding: 30px 20px;
             backdrop-filter: blur(30px);
             border: 2px solid rgba(255, 255, 255, 0.2);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             animation: morphing 12s ease-in-out infinite;
         }
 
         .product-content {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
             align-items: center;
+            text-align: center;
         }
 
         .product-image {
@@ -976,16 +994,16 @@
 
         .product-image img {
             width: 100%;
-            max-width: 250px;
+            max-width: 180px;
             height: auto;
             border-radius: var(--radius-3xl);
             animation: float 5s ease-in-out infinite;
         }
 
         .product-details h3 {
-            font-size: 2.2rem;
+            font-size: 1.6rem;
             font-weight: 900;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             text-align: center;
@@ -994,13 +1012,14 @@
         .product-price {
             display: flex;
             align-items: baseline;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 25px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .current-price {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 900;
             background: linear-gradient(135deg, #FFD700, #FFA500);
             -webkit-background-clip: text;
@@ -1010,7 +1029,7 @@
         }
 
         .old-price {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             color: rgba(255, 255, 255, 0.6);
             text-decoration: line-through;
         }
@@ -1018,19 +1037,19 @@
         /* SELETOR DE QUANTIDADE */
         .quantity-section {
             background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
+            padding: 20px;
             border-radius: var(--radius-xl);
             border: 2px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .quantity-label {
             display: block;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 800;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-align: center;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -1038,16 +1057,16 @@
         .quantity-selector {
             display: flex;
             align-items: center;
-            gap: 25px;
-            margin-bottom: 20px;
+            gap: 20px;
+            margin-bottom: 15px;
             justify-content: center;
         }
 
         .quantity-btn {
             background: linear-gradient(135deg, #FF1493, #FF69B4);
             border: none;
-            width: 55px;
-            height: 55px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -1055,14 +1074,14 @@
             justify-content: center;
             font-weight: 900;
             color: white;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             box-shadow: 0 0 20px rgba(255, 20, 147, 0.4);
             user-select: none;
         }
 
         .quantity-btn:hover {
-            transform: scale(1.15);
+            transform: scale(1.1);
             box-shadow: 0 0 30px rgba(255, 20, 147, 0.7);
         }
 
@@ -1072,20 +1091,20 @@
 
         .quantity-display {
             background: rgba(255, 255, 255, 0.2);
-            border: 3px solid rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.4);
             border-radius: var(--radius-xl);
-            padding: 18px 30px;
+            padding: 12px 25px;
             font-weight: 900;
             color: white;
-            font-size: 1.5rem;
-            min-width: 100px;
+            font-size: 1.3rem;
+            min-width: 80px;
             text-align: center;
             backdrop-filter: blur(20px);
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .quantity-info {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.9);
             font-style: italic;
             text-align: center;
@@ -1094,44 +1113,86 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        /* YAMPI BUTTONS DINÂMICOS */
-        .yampi-buy-button-container {
-            margin-bottom: 30px;
+        /* BOTÃO DE COMPRA PERSONALIZADO */
+        .custom-buy-button-container {
+            margin-bottom: 25px;
         }
 
-        .yampi-button-slot {
-            display: none;
+        .custom-buy-button {
+            width: 100%;
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+            border: none;
+            padding: 18px 30px;
+            border-radius: var(--radius-organic);
+            color: white;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            text-decoration: none;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .yampi-button-slot.active {
-            display: block;
+        .custom-buy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
         }
 
-        /* Ocultar elementos da Yampi que não queremos */
-        .yampi-buy-button-container .yampi-buy-button img {
-            display: none !important;
+        .custom-buy-button:hover::before {
+            left: 100%;
+        }
+
+        .custom-buy-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 0 40px rgba(255, 20, 147, 0.8);
+        }
+
+        /* Container para botão Yampi (oculto) */
+        #yampi-button-container {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            z-index: -1;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
         }
 
         .simple-guarantee {
             background: rgba(16, 185, 129, 0.15);
             border: 2px solid rgba(16, 185, 129, 0.4);
             border-radius: var(--radius-lg);
-            padding: 12px 16px;
+            padding: 15px;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 25px;
             backdrop-filter: blur(20px);
         }
 
         .guarantee-icon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--success-color);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             animation: pulse 3s infinite;
         }
 
         .guarantee-text {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 700;
         }
 
@@ -1142,12 +1203,12 @@
         }
 
         .faq-container {
-            max-width: 900px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
         .faq-item {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-md);
@@ -1157,7 +1218,7 @@
         .faq-question {
             background: linear-gradient(135deg, #FF1493, #FF69B4);
             color: white;
-            padding: 22px 30px;
+            padding: 18px 20px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -1167,13 +1228,16 @@
         }
 
         .faq-question span {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
+            line-height: 1.3;
         }
 
         .faq-question i {
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            font-size: 1.3rem;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-left: 10px;
         }
 
         .faq-item.active .faq-question i {
@@ -1182,7 +1246,7 @@
 
         .faq-answer {
             background: var(--light-color);
-            padding: 0 30px;
+            padding: 0 20px;
             max-height: 0;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -1190,13 +1254,13 @@
 
         .faq-item.active .faq-answer {
             max-height: 200px;
-            padding: 22px 30px;
+            padding: 18px 20px;
         }
 
         .faq-answer p {
             color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 1rem;
+            line-height: 1.5;
+            font-size: 0.9rem;
             font-weight: 600;
         }
 
@@ -1204,7 +1268,7 @@
         .footer {
             background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
             color: white;
-            padding: 80px 0 30px;
+            padding: 60px 0 25px;
             position: relative;
             overflow: hidden;
         }
@@ -1223,9 +1287,9 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
             position: relative;
             z-index: 2;
         }
@@ -1233,28 +1297,41 @@
         .footer-section h3,
         .footer-section h4 {
             color: white;
-            margin-bottom: 20px;
-            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
             font-weight: 800;
+        }
+
+        .footer-section p {
+            margin-bottom: 8px;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+
+        .footer-section i {
+            margin-right: 8px;
+            color: var(--vibrant-pink);
+            width: 16px;
         }
 
         .footer-bottom {
             border-top: 2px solid rgba(255, 255, 255, 0.1);
-            padding-top: 25px;
+            padding-top: 20px;
             text-align: center;
             position: relative;
             z-index: 2;
+            font-size: 0.9rem;
         }
 
         .developer-credit {
-            margin-top: 15px;
+            margin-top: 12px;
         }
 
         .developer-credit a {
             color: var(--vibrant-pink);
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
 
@@ -1263,16 +1340,30 @@
             text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
+        /* Responsividade Tablet */
+        @media (min-width: 768px) {
             .container {
-                padding: 0 16px;
+                padding: 0 30px;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
             }
 
             .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 50px;
+                flex-direction: row;
+                text-align: left;
+                gap: 60px;
+            }
+
+            .hero-text {
+                flex: 1;
+                order: 1;
+            }
+
+            .hero-image {
+                flex: 1;
+                order: 2;
             }
 
             .floating-product {
@@ -1280,50 +1371,137 @@
                 height: 450px;
             }
 
-            .benefits-grid,
-            .testimonials-grid,
-            .influencers-grid,
-            .steps-grid,
+            .hero-buttons {
+                flex-direction: row;
+                max-width: none;
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
             .ingredients-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
             }
 
             .product-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                text-align: center;
+                flex-direction: row;
+                text-align: left;
+                gap: 40px;
+            }
+
+            .product-image {
+                flex: 0 0 auto;
+            }
+
+            .product-details {
+                flex: 1;
+            }
+
+            .checkout-container {
+                max-width: 800px;
             }
 
             .product-main {
-                padding: 30px 25px;
+                padding: 40px 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
             }
 
             .animated-banner {
-                height: 50px;
+                height: 60px;
             }
 
             .banner-text {
                 font-size: 1.2rem;
             }
-
-            .countdown-timer-header {
-                max-width: 350px;
-                padding: 20px;
-            }
         }
 
-        @media (max-width: 480px) {
-            .section {
-                padding: 50px 0;
+        /* Responsividade Desktop */
+        @media (min-width: 1024px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .floating-product {
+                width: 450px;
+                height: 600px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+
+            .ingredients-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+
+            .influencers-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .checkout-container {
+                max-width: 900px;
             }
 
             .animated-banner {
-                height: 45px;
+                height: 70px;
             }
 
             .banner-text {
-                font-size: 1rem;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Ajustes para telas muito pequenas */
+        @media (max-width: 350px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .logo-text {
+                font-size: 2rem;
+            }
+
+            .floating-product {
+                width: 220px;
+                height: 280px;
             }
 
             .quantity-selector {
@@ -1331,9 +1509,27 @@
             }
 
             .quantity-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.5rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
+            }
+
+            .quantity-display {
+                padding: 10px 20px;
+                font-size: 1.1rem;
+                min-width: 70px;
+            }
+
+            .current-price {
+                font-size: 1.7rem;
+            }
+
+            .animated-banner {
+                height: 40px;
+            }
+
+            .banner-text {
+                font-size: 0.8rem;
             }
         }
 
@@ -1736,43 +1932,14 @@
                                 <div class="quantity-info" id="quantityInfo">1 frasco = 30 dias de tratamento</div>
                             </div>
 
-                            <!-- YAMPI BUTTONS DINÂMICOS -->
-                            <div class="yampi-buy-button-container">
-                                <!-- BOTÃO YAMPI PARA 1 UNIDADE -->
-                                <div id="yampi-button-1" class="yampi-button-slot active">
-                                    <script class="ymp-script"
-                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/1TPD5A9U0H/js"></script>
-                                </div>
+                            <!-- BOTÃO DE COMPRA PERSONALIZADO -->
+                            <div class="custom-buy-button-container">
+                                <button class="custom-buy-button" onclick="redirectToCheckout()">
+                                    <i class="fas fa-shopping-cart"></i> Comprar Agora
+                                </button>
 
-                                <!-- BOTÃO YAMPI PARA 2 UNIDADES -->
-                                <div id="yampi-button-2" class="yampi-button-slot">
-                                    <script class="ymp-script"
-                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/LB3T9Z5QYV/js"></script>
-                                </div>
-
-                                <!-- BOTÃO YAMPI PARA 3 UNIDADES -->
-                                <div id="yampi-button-3" class="yampi-button-slot">
-                                    <script class="ymp-script"
-                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/R5ZJQ3ASC5/js"></script>
-                                </div>
-
-                                <!-- BOTÃO YAMPI PARA 4 UNIDADES -->
-                                <div id="yampi-button-4" class="yampi-button-slot">
-                                    <script class="ymp-script"
-                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/RVI57I655H/js"></script>
-                                </div>
-
-                                <!-- BOTÃO YAMPI PARA 5 UNIDADES -->
-                                <div id="yampi-button-5" class="yampi-button-slot">
-                                    <script class="ymp-script"
-                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/SETHGEIP5J/js"></script>
-                                </div>
-
-                                <!-- BOTÃO YAMPI PARA 6 UNIDADES -->
-                                <div id="yampi-button-6" class="yampi-button-slot">
-                                    <script class="ymp-script"
-                                        src="https://api.yampi.io/v2/pdrnskin/public/buy-button/500XL055KW/js"></script>
-                                </div>
+                                <!-- Container oculto para o botão da Yampi -->
+                                <div id="yampi-button-container"></div>
                             </div>
                         </div>
                     </div>
@@ -1876,7 +2043,7 @@
                         Desenvolvido por RyArt Design ®
                     </a>
                 </div>
-                <p style="margin-top: 10px; font-size: 0.9rem; color: rgba(255,255,255,0.8);">⚠️ PDRNskin é um
+                <p style="margin-top: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.8);">⚠️ PDRNskin é um
                     dermocosmético de uso tópico. Resultados podem variar de pessoa para pessoa, conforme uso e rotina
                     de cuidados. Este produto não é medicamento e não substitui tratamentos prescritos por profissionais
                     de saúde.</p>
@@ -1906,13 +2073,55 @@
             6: { price: 149.98, total: 899.99, savings: 895.01, info: "6 frascos = 180 dias + Frete Grátis + Maior Desconto de R$ 895" }
         };
 
+        // IDs dos botões da Yampi por quantidade
+        const YAMPI_BUTTON_IDS = {
+            1: '1TPD5A9U0H',
+            2: 'LB3T9Z5QYV',
+            3: 'R5ZJQ3ASC5',
+            4: 'RVI57I655H',
+            5: 'SETHGEIP5J',
+            6: '500XL055KW'
+        };
+
         // Inicialização
         document.addEventListener('DOMContentLoaded', function () {
             updatePriceDisplay();
-            updateYampiButton();
             initializeFAQ();
             startCountdown();
+            loadYampiScript();
         });
+
+        // Carregar script da Yampi dinamicamente
+        function loadYampiScript() {
+            // Remove script anterior se existir
+            const existingScript = document.querySelector('.ymp-script');
+            if (existingScript) {
+                existingScript.remove();
+            }
+
+            // Remove container anterior se existir
+            const existingContainer = document.getElementById('yampi-button-container');
+            if (existingContainer) {
+                existingContainer.innerHTML = '';
+            }
+
+            const buttonId = YAMPI_BUTTON_IDS[quantity];
+            const script = document.createElement('script');
+            script.className = 'ymp-script';
+            script.src = `https://api.yampi.io/v2/pdrnskin/public/buy-button/${buttonId}/js`;
+            script.async = true;
+
+            // Aguarda o script carregar
+            script.onload = function () {
+                console.log('Script da Yampi carregado para quantidade:', quantity);
+            };
+
+            script.onerror = function () {
+                console.error('Erro ao carregar script da Yampi');
+            };
+
+            document.head.appendChild(script);
+        }
 
         // Contador regressivo
         function startCountdown() {
@@ -1940,12 +2149,43 @@
             }, 1000);
         }
 
+        // Redirecionar para checkout com quantidade selecionada
+        function redirectToCheckout() {
+            // Tenta encontrar o botão da Yampi
+            const yampiButton = document.querySelector('[data-yampi-button="true"]') ||
+                document.querySelector('.ymp-buy-button') ||
+                document.querySelector('[class*="yampi"]');
+
+            if (yampiButton && yampiButton.click) {
+                yampiButton.click();
+                console.log('Botão da Yampi clicado');
+            } else {
+                // Fallback: recarrega script e tenta novamente
+                console.log('Botão da Yampi não encontrado, recarregando...');
+                loadYampiScript();
+                setTimeout(() => {
+                    const retryButton = document.querySelector('[data-yampi-button="true"]') ||
+                        document.querySelector('.ymp-buy-button') ||
+                        document.querySelector('[class*="yampi"]');
+                    if (retryButton && retryButton.click) {
+                        retryButton.click();
+                        console.log('Botão da Yampi clicado após retry');
+                    } else {
+                        console.log('Botão da Yampi ainda não encontrado');
+                        // Último recurso: abrir link direto
+                        const directLink = `https://pdrnskin.com.br/checkout/cart/add/${YAMPI_BUTTON_IDS[quantity]}`;
+                        window.open(directLink, '_blank');
+                    }
+                }, 1000);
+            }
+        }
+
         // Aumentar quantidade
         function increaseQuantity() {
             if (quantity < 6) {
                 quantity++;
                 updatePriceDisplay();
-                updateYampiButton();
+                loadYampiScript(); // Recarrega script da Yampi
             }
         }
 
@@ -1954,7 +2194,7 @@
             if (quantity > 1) {
                 quantity--;
                 updatePriceDisplay();
-                updateYampiButton();
+                loadYampiScript(); // Recarrega script da Yampi
             }
         }
 
@@ -1964,20 +2204,6 @@
             document.getElementById('quantityDisplay').textContent = quantity;
             document.getElementById('displayPrice').textContent = `R$ ${pricing.total.toFixed(2).replace('.', ',')}`;
             document.getElementById('quantityInfo').textContent = pricing.info;
-        }
-
-        // Atualizar botão Yampi ativo
-        function updateYampiButton() {
-            // Ocultar todos os botões
-            document.querySelectorAll('.yampi-button-slot').forEach(slot => {
-                slot.classList.remove('active');
-            });
-
-            // Mostrar botão da quantidade atual
-            const activeButton = document.getElementById(`yampi-button-${quantity}`);
-            if (activeButton) {
-                activeButton.classList.add('active');
-            }
         }
 
         // FAQ
@@ -2021,6 +2247,7 @@
         window.toggleFAQ = toggleFAQ;
         window.increaseQuantity = increaseQuantity;
         window.decreaseQuantity = decreaseQuantity;
+        window.redirectToCheckout = redirectToCheckout;
     </script>
 </body>
 
