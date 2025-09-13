@@ -1113,9 +1113,28 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        /* BOTÃO DE COMPRA PERSONALIZADO */
-        .custom-buy-button-container {
+        /* BOTÃO DE COMPRA PERSONALIZADO E YAMPI */
+        .yampi-buy-button-container {
+            width: 100%;
             margin-bottom: 25px;
+        }
+
+        /* Ocultar o botão Yampi original */
+        .ymp-buy-button {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            position: absolute !important;
+            left: -9999px !important;
+            top: -9999px !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        /* Container customizado para o botão */
+        .custom-buy-button-wrapper {
+            position: relative;
+            width: 100%;
         }
 
         .custom-buy-button {
@@ -1160,17 +1179,6 @@
         .custom-buy-button:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 0 40px rgba(255, 20, 147, 0.8);
-        }
-
-        /* Container para botão Yampi (oculto) */
-        #yampi-button-container {
-            opacity: 0;
-            visibility: hidden;
-            position: absolute;
-            z-index: -1;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
         }
 
         .simple-guarantee {
@@ -1932,14 +1940,13 @@
                                 <div class="quantity-info" id="quantityInfo">1 frasco = 30 dias de tratamento</div>
                             </div>
 
-                            <!-- BOTÃO DE COMPRA PERSONALIZADO -->
-                            <div class="custom-buy-button-container">
-                                <button class="custom-buy-button" onclick="redirectToCheckout()">
-                                    <i class="fas fa-shopping-cart"></i> Comprar Agora
-                                </button>
-
-                                <!-- Container oculto para o botão da Yampi -->
-                                <div id="yampi-button-container"></div>
+                            <!-- BOTÃO DE COMPRA DINÂMICO -->
+                            <div class="yampi-buy-button-container">
+                                <div class="custom-buy-button-wrapper">
+                                    <button class="custom-buy-button" id="customBuyButton">
+                                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2054,6 +2061,7 @@
     <script>
         // Configuração do produto
         let quantity = 1;
+        let currentYampiScript = null;
 
         const PRODUCT_CONFIG = {
             name: 'PDRNskin Premium',
@@ -2061,6 +2069,16 @@
             originalPrice: 299.00,
             image: 'assets/mockup1-sem-fundo.webp',
             description: 'Biotecnologia PDRN - Tratamento para 30 dias'
+        };
+
+        // Códigos dos scripts da Yampi para cada quantidade
+        const YAMPI_SCRIPTS = {
+            1: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/1TPD5A9U0H/js',
+            2: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/LB3T9Z5QYV/js',
+            3: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/R5ZJQ3ASC5/js',
+            4: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/RVI57I655H/js',
+            5: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/SETHGEIP5J/js',
+            6: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/500XL055KW/js'
         };
 
         // Preços por quantidade
@@ -2073,54 +2091,65 @@
             6: { price: 149.98, total: 899.99, savings: 895.01, info: "6 frascos = 180 dias + Frete Grátis + Maior Desconto de R$ 895" }
         };
 
-        // IDs dos botões da Yampi por quantidade
-        const YAMPI_BUTTON_IDS = {
-            1: '1TPD5A9U0H',
-            2: 'LB3T9Z5QYV',
-            3: 'R5ZJQ3ASC5',
-            4: 'RVI57I655H',
-            5: 'SETHGEIP5J',
-            6: '500XL055KW'
-        };
-
         // Inicialização
         document.addEventListener('DOMContentLoaded', function () {
             updatePriceDisplay();
+            loadYampiScript();
             initializeFAQ();
             startCountdown();
-            loadYampiScript();
         });
 
-        // Carregar script da Yampi dinamicamente
+        // Função para carregar o script da Yampi dinamicamente
         function loadYampiScript() {
-            // Remove script anterior se existir
-            const existingScript = document.querySelector('.ymp-script');
-            if (existingScript) {
-                existingScript.remove();
+            // Remove o script anterior se existir
+            if (currentYampiScript) {
+                currentYampiScript.remove();
+                currentYampiScript = null;
             }
 
-            // Remove container anterior se existir
-            const existingContainer = document.getElementById('yampi-button-container');
-            if (existingContainer) {
-                existingContainer.innerHTML = '';
+            // Remove qualquer botão Yampi existente
+            const existingButtons = document.querySelectorAll('.ymp-buy-button');
+            existingButtons.forEach(btn => btn.remove());
+
+            // Cria e carrega o novo script
+            const scriptUrl = YAMPI_SCRIPTS[quantity];
+            if (scriptUrl) {
+                currentYampiScript = document.createElement('script');
+                currentYampiScript.className = 'ymp-script';
+                currentYampiScript.src = scriptUrl;
+                currentYampiScript.onload = function () {
+                    console.log('Script Yampi carregado para quantidade:', quantity);
+                    // Aguarda um momento para o botão Yampi ser criado
+                    setTimeout(attachCustomButtonClick, 500);
+                };
+                document.head.appendChild(currentYampiScript);
             }
+        }
 
-            const buttonId = YAMPI_BUTTON_IDS[quantity];
-            const script = document.createElement('script');
-            script.className = 'ymp-script';
-            script.src = `https://api.yampi.io/v2/pdrnskin/public/buy-button/${buttonId}/js`;
-            script.async = true;
+        // Função para anexar o clique do botão customizado ao botão Yampi
+        function attachCustomButtonClick() {
+            const customButton = document.getElementById('customBuyButton');
 
-            // Aguarda o script carregar
-            script.onload = function () {
-                console.log('Script da Yampi carregado para quantidade:', quantity);
-            };
+            if (customButton) {
+                // Remove qualquer listener anterior
+                customButton.replaceWith(customButton.cloneNode(true));
+                const newCustomButton = document.getElementById('customBuyButton');
 
-            script.onerror = function () {
-                console.error('Erro ao carregar script da Yampi');
-            };
+                newCustomButton.addEventListener('click', function (e) {
+                    e.preventDefault();
 
-            document.head.appendChild(script);
+                    // Procura pelo botão Yampi no DOM
+                    const yampiButton = document.querySelector('.ymp-buy-button');
+
+                    if (yampiButton) {
+                        console.log('Clicando no botão Yampi para quantidade:', quantity);
+                        yampiButton.click();
+                    } else {
+                        console.warn('Botão Yampi não encontrado, tentando recarregar...');
+                        loadYampiScript();
+                    }
+                });
+            }
         }
 
         // Contador regressivo
@@ -2149,43 +2178,12 @@
             }, 1000);
         }
 
-        // Redirecionar para checkout com quantidade selecionada
-        function redirectToCheckout() {
-            // Tenta encontrar o botão da Yampi
-            const yampiButton = document.querySelector('[data-yampi-button="true"]') ||
-                document.querySelector('.ymp-buy-button') ||
-                document.querySelector('[class*="yampi"]');
-
-            if (yampiButton && yampiButton.click) {
-                yampiButton.click();
-                console.log('Botão da Yampi clicado');
-            } else {
-                // Fallback: recarrega script e tenta novamente
-                console.log('Botão da Yampi não encontrado, recarregando...');
-                loadYampiScript();
-                setTimeout(() => {
-                    const retryButton = document.querySelector('[data-yampi-button="true"]') ||
-                        document.querySelector('.ymp-buy-button') ||
-                        document.querySelector('[class*="yampi"]');
-                    if (retryButton && retryButton.click) {
-                        retryButton.click();
-                        console.log('Botão da Yampi clicado após retry');
-                    } else {
-                        console.log('Botão da Yampi ainda não encontrado');
-                        // Último recurso: abrir link direto
-                        const directLink = `https://pdrnskin.com.br/checkout/cart/add/${YAMPI_BUTTON_IDS[quantity]}`;
-                        window.open(directLink, '_blank');
-                    }
-                }, 1000);
-            }
-        }
-
         // Aumentar quantidade
         function increaseQuantity() {
             if (quantity < 6) {
                 quantity++;
                 updatePriceDisplay();
-                loadYampiScript(); // Recarrega script da Yampi
+                loadYampiScript();
             }
         }
 
@@ -2194,7 +2192,7 @@
             if (quantity > 1) {
                 quantity--;
                 updatePriceDisplay();
-                loadYampiScript(); // Recarrega script da Yampi
+                loadYampiScript();
             }
         }
 
@@ -2247,7 +2245,6 @@
         window.toggleFAQ = toggleFAQ;
         window.increaseQuantity = increaseQuantity;
         window.decreaseQuantity = decreaseQuantity;
-        window.redirectToCheckout = redirectToCheckout;
     </script>
 </body>
 
