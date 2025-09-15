@@ -741,49 +741,50 @@
             box-shadow: var(--shadow-neon);
         }
 
+        .influencer-card:hover .influencer-photo img {
+            transform: scale(1.05);
+        }
+
         .influencer-photo {
             width: 100%;
-            height: 180px;
-            background: linear-gradient(45deg, #FF69B4 25%, transparent 25%),
-                linear-gradient(-45deg, #FF69B4 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #FF69B4 75%),
-                linear-gradient(-45deg, transparent 75%, #FF69B4 75%);
-            background-size: 20px 20px;
-            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 12px;
-            font-weight: 700;
-            text-align: center;
             position: relative;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
         }
 
-        .influencer-photo::after {
-            content: 'Influencer\AUsando PDRNskin';
-            white-space: pre;
-            line-height: 1.3;
+        .influencer-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: all 0.3s ease;
+            filter: brightness(1.1) saturate(1.1);
         }
 
         .influencer-info {
-            padding: 15px;
+            padding: 20px 15px;
             text-align: center;
             background: white;
         }
 
         .influencer-name {
-            font-weight: 800;
+            font-weight: 900;
             color: var(--text-primary);
-            margin-bottom: 4px;
-            font-size: 0.95rem;
+            margin-bottom: 6px;
+            font-size: 1rem;
+            letter-spacing: -0.02em;
         }
 
         .influencer-followers {
             color: var(--vibrant-pink);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Depoimentos */
@@ -1501,6 +1502,11 @@
                 gap: 25px;
             }
 
+            .influencers-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
             .testimonials-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 30px;
@@ -1544,6 +1550,10 @@
             .guarantee-features {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 25px;
+            }
+
+            .influencer-photo {
+                height: 220px;
             }
         }
 
@@ -1894,34 +1904,42 @@
 
             <div class="influencers-grid">
                 <div class="influencer-card">
-                    <div class="influencer-photo"></div>
+                    <div class="influencer-photo">
+                        <img src="./assets/parceiros/virginia.jpg" alt="Foto Virginia">
+                    </div>
                     <div class="influencer-info">
-                        <div class="influencer-name">@influencer1</div>
-                        <div class="influencer-followers">2.5M seguidores</div>
+                        <div class="influencer-name">@virginia</div>
+                        <div class="influencer-followers">52,5M seguidores</div>
                     </div>
                 </div>
 
                 <div class="influencer-card">
-                    <div class="influencer-photo"></div>
+                    <div class="influencer-photo">
+                        <img src="./assets/parceiros/carlinhos.jpg" alt="Foto Carlinhos Maia">
+                    </div>
                     <div class="influencer-info">
-                        <div class="influencer-name">@influencer2</div>
-                        <div class="influencer-followers">1.8M seguidores</div>
+                        <div class="influencer-name">@carlinhos</div>
+                        <div class="influencer-followers">36,4M seguidores</div>
                     </div>
                 </div>
 
                 <div class="influencer-card">
-                    <div class="influencer-photo"></div>
+                    <div class="influencer-photo">
+                        <img src="./assets/parceiros/tata.jpg" alt="Foto Tata Werneck">
+                    </div>
                     <div class="influencer-info">
-                        <div class="influencer-name">@influencer3</div>
-                        <div class="influencer-followers">3.2M seguidores</div>
+                        <div class="influencer-name">@tatawerneck</div>
+                        <div class="influencer-followers">56,4M seguidores</div>
                     </div>
                 </div>
 
                 <div class="influencer-card">
-                    <div class="influencer-photo"></div>
+                    <div class="influencer-photo">
+                        <img src="./assets/parceiros/juliette.webp" alt="Foto Juliette">
+                    </div>
                     <div class="influencer-info">
-                        <div class="influencer-name">@influencer4</div>
-                        <div class="influencer-followers">950K seguidores</div>
+                        <div class="influencer-name">@juliette</div>
+                        <div class="influencer-followers">29M seguidores</div>
                     </div>
                 </div>
             </div>
