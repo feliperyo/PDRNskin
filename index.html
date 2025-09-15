@@ -126,12 +126,11 @@
             }
         }
 
-        /* Logo no topo */
+        /* Logo no topo - ALINHADO À ESQUERDA */
         .top-logo {
             position: fixed;
             top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 20px;
             z-index: 1000;
             background: rgba(255, 255, 255, 0.95);
             padding: 8px 20px;
@@ -148,6 +147,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin: 0;
+            text-align: left;
         }
 
         /* Faixas Animadas */
@@ -287,7 +287,7 @@
             color: white;
             letter-spacing: -0.02em;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-            text-align: center;
+            text-align: left;
             text-transform: uppercase;
         }
 
@@ -1320,50 +1320,22 @@
             box-shadow: 0 0 40px rgba(255, 20, 147, 0.8);
         }
 
-        /* Selos de Confiança e Avaliações */
-        .trust-and-rating {
+        /* Seção Unificada de Confiança */
+        .unified-trust-section {
             margin-top: 25px;
-        }
-
-        .trust-badges {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 15px;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 15px;
             border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .badge {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            border-radius: 20px;
+            padding: 25px 20px;
+            backdrop-filter: blur(10px);
             text-align: center;
-            flex: 1;
-            color: rgba(255, 255, 255, 0.9);
         }
 
-        .badge i {
-            font-size: 1.5rem;
-            color: #10b981;
-            margin-bottom: 8px;
-        }
-
-        .badge span {
-            font-size: 0.8rem;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        .rating-section {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            border: 2px solid #10b981;
-            border-radius: 16px;
-            padding: 15px 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+        /* Header com Avaliações */
+        .rating-header {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(16, 185, 129, 0.3);
         }
 
         .stars-large {
@@ -1372,41 +1344,95 @@
             gap: 3px;
             margin-bottom: 8px;
             color: #FFD700;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
 
         .rating-text {
             color: white;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 1rem;
             letter-spacing: 0.5px;
         }
 
         .rating-text strong {
             font-weight: 900;
+            color: #10b981;
         }
 
-        .simple-guarantee {
+        /* Selos de Confiança Unificados */
+        .trust-badges-unified {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-unified {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            color: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .badge-unified:hover {
+            background: rgba(16, 185, 129, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .badge-unified i {
+            font-size: 1.8rem;
+            color: #10b981;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .badge-unified:hover i {
+            transform: scale(1.1);
+            color: #34d399;
+        }
+
+        .badge-unified span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Garantia Unificada */
+        .guarantee-unified {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
             background: rgba(16, 185, 129, 0.15);
             border: 2px solid rgba(16, 185, 129, 0.4);
-            border-radius: var(--radius-lg);
-            padding: 15px;
-            text-align: center;
-            margin-top: 25px;
+            border-radius: 16px;
+            padding: 15px 20px;
             backdrop-filter: blur(20px);
         }
 
-        .guarantee-icon {
-            font-size: 2rem;
-            color: var(--success-color);
-            margin-bottom: 8px;
+        .guarantee-icon-unified {
+            font-size: 1.8rem;
+            color: #10b981;
             animation: pulse 3s infinite;
+            flex-shrink: 0;
         }
 
-        .guarantee-text {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.9rem;
+        .guarantee-text-unified {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 0.95rem;
             font-weight: 700;
+            text-align: center;
+            line-height: 1.3;
         }
 
         /* FAQ */
@@ -1555,22 +1581,17 @@
 
         /* Responsividade */
         @media (max-width: 480px) {
-            .trust-badges {
-                gap: 8px;
-                padding: 12px;
+            .trust-badges-unified {
+                gap: 10px;
             }
 
-            .badge i {
-                font-size: 1.2rem;
+            .badge-unified i {
+                font-size: 1.5rem;
                 margin-bottom: 6px;
             }
 
-            .badge span {
-                font-size: 0.7rem;
-            }
-
-            .rating-section {
-                padding: 12px 15px;
+            .badge-unified span {
+                font-size: 0.75rem;
             }
 
             .stars-large {
@@ -1579,7 +1600,17 @@
             }
 
             .rating-text {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .guarantee-unified {
+                flex-direction: column;
+                gap: 8px;
+                padding: 12px 15px;
+            }
+
+            .guarantee-text-unified {
+                font-size: 0.85rem;
             }
         }
 
@@ -1800,12 +1831,24 @@
             .banner-text {
                 font-size: 0.8rem;
             }
+
+            .trust-badges-unified {
+                gap: 8px;
+            }
+
+            .badge-unified {
+                padding: 8px 5px;
+            }
+
+            .badge-unified span {
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Logo no topo -->
+    <!-- Logo no topo - ALINHADO À ESQUERDA -->
     <div class="top-logo">
         <h1>PDRNskin</h1>
     </div>
@@ -2284,24 +2327,10 @@
                                 </button>
                             </div>
 
-                            <!-- Selos de Confiança e Avaliações -->
-                            <div class="trust-and-rating">
-                                <div class="trust-badges">
-                                    <div class="badge">
-                                        <i class="fas fa-shield-alt"></i>
-                                        <span>Compra<br>Segura</span>
-                                    </div>
-                                    <div class="badge">
-                                        <i class="fas fa-medal"></i>
-                                        <span>Satisfação<br>Garantida</span>
-                                    </div>
-                                    <div class="badge">
-                                        <i class="fas fa-lock"></i>
-                                        <span>Privacidade<br>Protegida</span>
-                                    </div>
-                                </div>
-
-                                <div class="rating-section">
+                            <!-- Seção Unificada de Confiança -->
+                            <div class="unified-trust-section">
+                                <!-- Avaliações no Topo -->
+                                <div class="rating-header">
                                     <div class="stars-large">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -2313,14 +2342,29 @@
                                         <strong>4.8</strong> DE <strong>159.687</strong> AVALIAÇÕES
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="simple-guarantee">
-                                <div class="guarantee-icon">
-                                    <i class="fas fa-shield-alt"></i>
+                                <!-- Selos de Confiança -->
+                                <div class="trust-badges-unified">
+                                    <div class="badge-unified">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Compra Segura</span>
+                                    </div>
+                                    <div class="badge-unified">
+                                        <i class="fas fa-medal"></i>
+                                        <span>Satisfação Garantida</span>
+                                    </div>
+                                    <div class="badge-unified">
+                                        <i class="fas fa-lock"></i>
+                                        <span>Privacidade Protegida</span>
+                                    </div>
                                 </div>
-                                <div class="guarantee-text">
-                                    Garantia de 90 dias ou seu dinheiro de volta
+
+                                <!-- Garantia -->
+                                <div class="guarantee-unified">
+                                    <i class="fas fa-shield-alt guarantee-icon-unified"></i>
+                                    <div class="guarantee-text-unified">
+                                        Garantia de 90 dias ou seu dinheiro de volta
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -2424,19 +2468,19 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FUNCIONAL -->
+    <!-- JAVASCRIPT FUNCIONAL - ATUALIZADO COM NOVOS LINKS YAMPI -->
     <script>
-        // SISTEMA YAMPI - REESCRITO DO ZERO
+        // SISTEMA YAMPI - LINKS ATUALIZADOS
         let qtd = 1;
 
-        // CÓDIGOS DA YAMPI
-        const codigos = {
-            1: "1TPD5A9U0H",
-            2: "LB3T9Z5QYV",
-            3: "R5ZJQ3ASC5",
-            4: "RVI57I655H",
-            5: "SETHGEIP5J",
-            6: "500XL055KW"
+        // NOVOS CÓDIGOS DA YAMPI (ATUALIZADOS)
+        const yampiLinks = {
+            1: "https://pdrnskin.pay.yampi.com.br/r/PUZYMA5H4Y",
+            2: "https://pdrnskin.pay.yampi.com.br/r/IPCLDX5BAE",
+            3: "https://pdrnskin.pay.yampi.com.br/r/5JEQLKT733",
+            4: "https://pdrnskin.pay.yampi.com.br/r/TBTTA88DW5",
+            5: "https://pdrnskin.pay.yampi.com.br/r/49B8OZQCU1",
+            6: "https://pdrnskin.pay.yampi.com.br/r/NH68IJN973"
         };
 
         // DADOS DOS PRODUTOS
@@ -2460,7 +2504,7 @@
             document.getElementById('displayPrice').textContent = precoFormatado;
             document.getElementById('info').textContent = produto.descricao;
 
-            console.log('Interface atualizada:', { qtd, preco: produto.preco, codigo: codigos[qtd] });
+            console.log('Interface atualizada:', { qtd, preco: produto.preco, link: yampiLinks[qtd] });
         }
 
         // AUMENTAR QUANTIDADE
@@ -2487,24 +2531,22 @@
             }
         }
 
-        // COMPRAR AGORA
+        // COMPRAR AGORA - ATUALIZADO COM NOVOS LINKS
         function comprar() {
             console.log('🛒 BOTÃO COMPRAR CLICADO! Quantidade:', qtd);
 
             try {
-                const codigo = codigos[qtd];
-                // URL correta para checkout direto da Yampi
-                const url = `https://pdrnskin.yampi.io/checkout/${codigo}`;
+                const link = yampiLinks[qtd];
 
-                console.log('Abrindo página de compra:', url);
-                console.log('Código Yampi:', codigo);
+                console.log('Abrindo página de compra:', link);
+                console.log('Quantidade selecionada:', qtd);
 
                 // Tentar abrir o link
-                const newWindow = window.open(url, '_blank');
+                const newWindow = window.open(link, '_blank');
 
                 // Se não conseguir abrir (bloqueado por popup), usar redirect
                 if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-                    window.location.href = url;
+                    window.location.href = link;
                 }
 
             } catch (error) {
@@ -2584,7 +2626,7 @@
         // INICIALIZAÇÃO QUANDO A PÁGINA CARREGA
         document.addEventListener('DOMContentLoaded', function () {
             console.log('=== PDRNskin SISTEMA INICIADO ===');
-            console.log('Códigos Yampi:', codigos);
+            console.log('Links Yampi:', yampiLinks);
             console.log('Produtos:', produtos);
 
             // Atualizar interface inicial
