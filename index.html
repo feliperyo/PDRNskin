@@ -1145,7 +1145,6 @@
             text-decoration: line-through;
         }
 
-        /* Seletor de Quantidade */
         /* Banner desconto PIX */
         .pix-discount-banner {
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
@@ -1191,20 +1190,6 @@
         .pix-highlight {
             color: #10b981;
             font-weight: 900;
-        }
-
-        /* Ajuste para manter estrutura correta */
-        .product-main .product-content {
-            display: flex !important;
-            flex-direction: column !important;
-        }
-
-        /* Em telas maiores, volta para lado a lado */
-        @media (min-width: 768px) {
-            .product-main .product-content {
-                flex-direction: row !important;
-                text-align: left !important;
-            }
         }
 
         .quantity-section {
@@ -1291,11 +1276,6 @@
             margin-bottom: 25px;
         }
 
-        .custom-buy-button-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
         .custom-buy-button {
             width: 100%;
             background: linear-gradient(135deg, #FF1493, #FF69B4);
@@ -1338,6 +1318,72 @@
         .custom-buy-button:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 0 40px rgba(255, 20, 147, 0.8);
+        }
+
+        /* Selos de Confiança e Avaliações */
+        .trust-and-rating {
+            margin-top: 25px;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .badge i {
+            font-size: 1.5rem;
+            color: #10b981;
+            margin-bottom: 8px;
+        }
+
+        .badge span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .rating-section {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+        }
+
+        .stars-large {
+            display: flex;
+            justify-content: center;
+            gap: 3px;
+            margin-bottom: 8px;
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .rating-text {
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .rating-text strong {
+            font-weight: 900;
         }
 
         .simple-guarantee {
@@ -1507,75 +1553,7 @@
             text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
         }
 
-        /* Selos de Confiança e Avaliações */
-        .trust-and-rating {
-            margin-top: 25px;
-        }
-
-        /* Selos de Confiança */
-        .trust-badges {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 15px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .badge {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            flex: 1;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .badge i {
-            font-size: 1.5rem;
-            color: #10b981;
-            margin-bottom: 8px;
-        }
-
-        .badge span {
-            font-size: 0.8rem;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        /* Seção de Avaliações */
-        .rating-section {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            border: 2px solid #10b981;
-            border-radius: 16px;
-            padding: 15px 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
-        }
-
-        .stars-large {
-            display: flex;
-            justify-content: center;
-            gap: 3px;
-            margin-bottom: 8px;
-            color: #FFD700;
-            font-size: 1.2rem;
-        }
-
-        .rating-text {
-            color: white;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-        }
-
-        .rating-text strong {
-            font-weight: 900;
-        }
-
-        /* Responsivo para mobile */
+        /* Responsividade */
         @media (max-width: 480px) {
             .trust-badges {
                 gap: 8px;
@@ -1605,24 +1583,6 @@
             }
         }
 
-        /* Ajuste para mobile */
-        @media (max-width: 480px) {
-            .rating-section {
-                padding: 15px;
-                margin-top: 20px;
-            }
-
-            .stars-large {
-                font-size: 1.3rem;
-                gap: 3px;
-            }
-
-            .rating-text {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Responsividade Tablet */
         @media (min-width: 768px) {
             .container {
                 padding: 0 30px;
@@ -1728,7 +1688,6 @@
             }
         }
 
-        /* Responsividade Desktop */
         @media (min-width: 1024px) {
             .hero {
                 padding: 120px 0 80px;
@@ -1800,7 +1759,6 @@
             }
         }
 
-        /* Ajustes para telas muito pequenas */
         @media (max-width: 350px) {
             .container {
                 padding: 0 10px;
@@ -2267,7 +2225,6 @@
     <section class="checkout-section section" id="checkout">
         <div class="container">
             <div class="checkout-container">
-
                 <!-- CONTADOR ACIMA DO TÍTULO -->
                 <div class="countdown-timer-header">
                     <div class="countdown-title">⏰ Oferta por tempo limitado!</div>
@@ -2313,25 +2270,22 @@
                             <div class="quantity-section">
                                 <label class="quantity-label">Quantidade:</label>
                                 <div class="quantity-selector">
-                                    <button class="quantity-btn" onclick="diminuirQuantidade()">-</button>
-                                    <div class="quantity-display" id="quantityDisplay">1</div>
-                                    <button class="quantity-btn" onclick="aumentarQuantidade()">+</button>
+                                    <button class="quantity-btn" onclick="diminuir()" type="button">-</button>
+                                    <div class="quantity-display" id="quantidade">1</div>
+                                    <button class="quantity-btn" onclick="aumentar()" type="button">+</button>
                                 </div>
-                                <div class="quantity-info" id="quantityInfo">1 frasco = 30 dias de tratamento</div>
+                                <div class="quantity-info" id="info">1 frasco = 30 dias de tratamento</div>
                             </div>
 
                             <!-- BOTÃO DE COMPRA -->
                             <div class="yampi-buy-button-container">
-                                <div class="custom-buy-button-wrapper">
-                                    <button class="custom-buy-button" onclick="comprarAgora()">
-                                        <i class="fas fa-shopping-cart"></i> COMPRAR AGORA
-                                    </button>
-                                </div>
+                                <button class="custom-buy-button" onclick="comprar()" type="button">
+                                    <i class="fas fa-shopping-cart"></i> COMPRAR AGORA
+                                </button>
                             </div>
 
                             <!-- Selos de Confiança e Avaliações -->
                             <div class="trust-and-rating">
-                                <!-- Selos de Confiança -->
                                 <div class="trust-badges">
                                     <div class="badge">
                                         <i class="fas fa-shield-alt"></i>
@@ -2347,7 +2301,6 @@
                                     </div>
                                 </div>
 
-                                <!-- Avaliações -->
                                 <div class="rating-section">
                                     <div class="stars-large">
                                         <i class="fas fa-star"></i>
@@ -2373,6 +2326,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </section>
 
     <!-- FAQ Section -->
@@ -2469,12 +2424,13 @@
         </div>
     </footer>
 
+    <!-- JAVASCRIPT FUNCIONAL -->
     <script>
-        // SISTEMA SIMPLES E FUNCIONAL - CRIADO DO ZERO
-        let quantidade = 1;
+        // SISTEMA YAMPI - REESCRITO DO ZERO
+        let qtd = 1;
 
-        // CÓDIGOS YAMPI REAIS
-        const yampiCodes = {
+        // CÓDIGOS DA YAMPI
+        const codigos = {
             1: "1TPD5A9U0H",
             2: "LB3T9Z5QYV",
             3: "R5ZJQ3ASC5",
@@ -2483,84 +2439,122 @@
             6: "500XL055KW"
         };
 
-        // PREÇOS POR QUANTIDADE
-        const precos = {
-            1: { total: 249.00, info: "1 frasco = 30 dias de tratamento" },
-            2: { total: 479.00, info: "2 frascos = 60 dias + Desconto de R$ 69" },
-            3: { total: 599.00, info: "3 frascos = 90 dias + Frete Grátis + Desconto de R$ 298" },
-            4: { total: 699.00, info: "4 frascos = 120 dias + Frete Grátis + Desconto de R$ 497" },
-            5: { total: 799.00, info: "5 frascos = 150 dias + Frete Grátis + Desconto de R$ 696" },
-            6: { total: 899.99, info: "6 frascos = 180 dias + Frete Grátis + Maior Desconto de R$ 895" }
+        // DADOS DOS PRODUTOS
+        const produtos = {
+            1: { preco: 249.00, descricao: "1 frasco = 30 dias de tratamento" },
+            2: { preco: 479.00, descricao: "2 frascos = 60 dias + Desconto de R$ 69" },
+            3: { preco: 599.00, descricao: "3 frascos = 90 dias + Frete Grátis + Desconto de R$ 298" },
+            4: { preco: 699.00, descricao: "4 frascos = 120 dias + Frete Grátis + Desconto de R$ 497" },
+            5: { preco: 799.00, descricao: "5 frascos = 150 dias + Frete Grátis + Desconto de R$ 696" },
+            6: { preco: 899.99, descricao: "6 frascos = 180 dias + Frete Grátis + Maior Desconto de R$ 895" }
         };
 
-        // ATUALIZAR TELA
-        function atualizarTela() {
-            const preco = precos[quantidade];
-            document.getElementById('displayPrice').innerHTML = `R$ ${preco.total.toFixed(2).replace('.', ',')}`;
-            document.getElementById('quantityDisplay').innerHTML = quantidade;
-            document.getElementById('quantityInfo').innerHTML = preco.info;
-            console.log('Atualizado: Quantidade =', quantidade, ', Preço = R$', preco.total);
+        // ATUALIZAR INTERFACE
+        function atualizar() {
+            console.log('Atualizando interface - Quantidade:', qtd);
+
+            const produto = produtos[qtd];
+            const precoFormatado = `R$ ${produto.preco.toFixed(2).replace('.', ',')}`;
+
+            document.getElementById('quantidade').textContent = qtd;
+            document.getElementById('displayPrice').textContent = precoFormatado;
+            document.getElementById('info').textContent = produto.descricao;
+
+            console.log('Interface atualizada:', { qtd, preco: produto.preco, codigo: codigos[qtd] });
         }
 
         // AUMENTAR QUANTIDADE
-        function aumentarQuantidade() {
-            if (quantidade < 6) {
-                quantidade++;
-                atualizarTela();
-                console.log('+ Quantidade aumentada para:', quantidade);
+        function aumentar() {
+            console.log('BOTÃO + CLICADO');
+            if (qtd < 6) {
+                qtd++;
+                atualizar();
+                console.log('Quantidade aumentada para:', qtd);
+            } else {
+                console.log('Máximo atingido (6)');
             }
         }
 
-        // DIMINUIR QUANTIDADE
-        function diminuirQuantidade() {
-            if (quantidade > 1) {
-                quantidade--;
-                atualizarTela();
-                console.log('- Quantidade diminuída para:', quantidade);
+        // DIMINUIR QUANTIDADE  
+        function diminuir() {
+            console.log('BOTÃO - CLICADO');
+            if (qtd > 1) {
+                qtd--;
+                atualizar();
+                console.log('Quantidade diminuída para:', qtd);
+            } else {
+                console.log('Mínimo atingido (1)');
             }
         }
 
         // COMPRAR AGORA
-        function comprarAgora() {
-            const codigo = yampiCodes[quantidade];
-            const url = `https://pdrnskin.yampi.io/r/B5A7QPE91E-${codigo}`;
-            console.log('=== COMPRANDO ===');
-            console.log('Quantidade:', quantidade);
-            console.log('Código Yampi:', codigo);
-            console.log('URL:', url);
-            console.log('================');
-            window.open(url, '_blank');
+        function comprar() {
+            console.log('🛒 BOTÃO COMPRAR CLICADO! Quantidade:', qtd);
+
+            try {
+                const codigo = codigos[qtd];
+                // URL correta para checkout direto da Yampi
+                const url = `https://pdrnskin.yampi.io/checkout/${codigo}`;
+
+                console.log('Abrindo página de compra:', url);
+                console.log('Código Yampi:', codigo);
+
+                // Tentar abrir o link
+                const newWindow = window.open(url, '_blank');
+
+                // Se não conseguir abrir (bloqueado por popup), usar redirect
+                if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                    window.location.href = url;
+                }
+
+            } catch (error) {
+                console.error('Erro na compra:', error);
+                alert('Erro ao processar compra. Tente novamente.');
+            }
         }
 
         // SCROLL PARA CHECKOUT
         function scrollToCheckout() {
-            document.getElementById('checkout').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            console.log('Scrolling para checkout');
+            const elemento = document.getElementById('checkout');
+            if (elemento) {
+                elemento.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         }
 
         // SCROLL PARA BENEFÍCIOS
         function scrollToBenefits() {
-            document.getElementById('benefits').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            console.log('Scrolling para benefícios');
+            const elemento = document.getElementById('benefits');
+            if (elemento) {
+                elemento.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         }
 
         // FAQ TOGGLE
         function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            const isActive = faqItem.classList.contains('active');
+            console.log('FAQ clicado');
+            try {
+                const faqItem = element.parentElement;
+                const isActive = faqItem.classList.contains('active');
 
-            // Fecha todos
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-            });
+                // Fecha todos os FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
 
-            // Abre o clicado se não estava ativo
-            if (!isActive) {
-                faqItem.classList.add('active');
+                // Abre o FAQ clicado se não estava ativo
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            } catch (error) {
+                console.error('Erro no FAQ:', error);
             }
         }
 
@@ -2569,7 +2563,7 @@
             const elemento = document.getElementById('countdown');
             if (!elemento) return;
 
-            let [horas, minutos, segundos] = elemento.innerHTML.split(':').map(Number);
+            let [horas, minutos, segundos] = elemento.textContent.split(':').map(Number);
 
             setInterval(() => {
                 if (segundos > 0) {
@@ -2583,25 +2577,33 @@
                     segundos = 59;
                 }
 
-                elemento.innerHTML = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+                elemento.textContent = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
             }, 1000);
         }
 
-        // INICIALIZAÇÃO
+        // INICIALIZAÇÃO QUANDO A PÁGINA CARREGA
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('=== PDRNskin INICIADO ===');
-            console.log('Códigos Yampi configurados:', yampiCodes);
-            console.log('Preços configurados:', precos);
+            console.log('=== PDRNskin SISTEMA INICIADO ===');
+            console.log('Códigos Yampi:', codigos);
+            console.log('Produtos:', produtos);
 
-            // Configurar valores iniciais
-            atualizarTela();
+            // Atualizar interface inicial
+            atualizar();
 
-            // Iniciar contador
+            // Iniciar contador regressivo
             iniciarContador();
 
-            console.log('Sistema pronto e funcionando!');
-            console.log('========================');
+            console.log('✅ Sistema funcionando perfeitamente!');
+            console.log('Clique nos botões para testar');
         });
+
+        // TESTE MANUAL (execute no console: testar())
+        window.testar = function () {
+            console.log('=== TESTE AUTOMÁTICO ===');
+            aumentar();
+            setTimeout(() => diminuir(), 1000);
+            setTimeout(() => comprar(), 2000);
+        };
     </script>
 </body>
 
