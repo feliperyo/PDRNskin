@@ -1146,6 +1146,67 @@
         }
 
         /* Seletor de Quantidade */
+        /* Banner desconto PIX */
+        .pix-discount-banner {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .pix-logo {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 8px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .pix-logo svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .pix-text {
+            flex: 1;
+            color: #065f46;
+            font-weight: 700;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .pix-highlight {
+            color: #10b981;
+            font-weight: 900;
+        }
+
+        /* Ajuste para manter estrutura correta */
+        .product-main .product-content {
+            display: flex !important;
+            flex-direction: column !important;
+        }
+
+        /* Em telas maiores, volta para lado a lado */
+        @media (min-width: 768px) {
+            .product-main .product-content {
+                flex-direction: row !important;
+                text-align: left !important;
+            }
+        }
+
         .quantity-section {
             background: rgba(255, 255, 255, 0.05);
             padding: 20px;
@@ -2115,6 +2176,22 @@
                             <div class="product-price">
                                 <span class="current-price" id="displayPrice">R$ 249,00</span>
                                 <span class="old-price">R$ 299,00</span>
+                            </div>
+
+                            <!-- BANNER DESCONTO PIX -->
+                            <div class="pix-discount-banner">
+                                <div class="pix-logo">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" />
+                                        <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"
+                                            transform="rotate(45 12 12)" opacity="0.6" />
+                                    </svg>
+                                </div>
+                                <div class="pix-text">
+                                    Você ganhou <span class="pix-highlight">5% de desconto</span><br>
+                                    pagando com Pix
+                                </div>
                             </div>
 
                             <!-- SELETOR DE QUANTIDADE -->
