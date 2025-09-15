@@ -68,30 +68,6 @@
             }
         }
 
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
         @keyframes float {
 
             0%,
@@ -321,6 +297,7 @@
             letter-spacing: -0.02em;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
             text-align: center;
+            text-transform: uppercase;
         }
 
         .biotechnology-title {
@@ -376,7 +353,7 @@
             filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
         }
 
-        /* Botões Orgânicos */
+        /* Botões */
         .btn {
             padding: 18px 25px;
             border: none;
@@ -675,7 +652,7 @@
             background: var(--light-color);
             padding: 20px;
             border-radius: var(--radius-blob);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             border: 2px solid rgba(255, 105, 180, 0.2);
             position: relative;
@@ -841,7 +818,7 @@
             background: var(--light-color);
             padding: 25px 20px;
             border-radius: var(--radius-blob);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
             transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             border: 2px solid rgba(255, 105, 180, 0.2);
             position: relative;
@@ -907,6 +884,145 @@
             font-weight: 600;
         }
 
+        /* Garantia e Aprovação ANVISA */
+        .guarantee-approval {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guarantee-approval::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 25% 25%, rgba(255, 20, 147, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 105, 180, 0.15) 0%, transparent 50%);
+        }
+
+        .guarantee-approval .section-title {
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .guarantee-approval .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .guarantee-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guarantee-main {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-blob);
+            padding: 40px 30px;
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+            animation: morphing 12s ease-in-out infinite;
+        }
+
+        .guarantee-icon-main {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .guarantee-icon-main i {
+            font-size: 3rem;
+            color: #10b981;
+            animation: pulse 3s infinite;
+        }
+
+        .guarantee-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .guarantee-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .guarantee-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .pdrn-highlight {
+            color: #FF69B4;
+            font-weight: 800;
+        }
+
+        .anvisa-highlight {
+            color: #10b981;
+            font-weight: 800;
+        }
+
+        .guarantee-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .guarantee-feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: var(--radius-xl);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .guarantee-feature i {
+            font-size: 1.5rem;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        .guarantee-feature-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .guarantee-bottom-text {
+            background: rgba(16, 185, 129, 0.15);
+            border: 2px solid rgba(16, 185, 129, 0.4);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            text-align: center;
+            margin-top: 25px;
+            backdrop-filter: blur(20px);
+        }
+
+        .guarantee-bottom-text p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
         /* Checkout Section */
         .checkout-section {
             background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
@@ -942,7 +1058,6 @@
             z-index: 2;
         }
 
-        /* CONTADOR ACIMA DO TÍTULO */
         .countdown-timer-header {
             background: rgba(255, 20, 147, 0.2);
             border: 2px solid rgba(255, 20, 147, 0.5);
@@ -1034,7 +1149,7 @@
             text-decoration: line-through;
         }
 
-        /* SELETOR DE QUANTIDADE */
+        /* Seletor de Quantidade */
         .quantity-section {
             background: rgba(255, 255, 255, 0.05);
             padding: 20px;
@@ -1113,25 +1228,12 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        /* BOTÃO DE COMPRA PERSONALIZADO E YAMPI */
+        /* Botão de Compra */
         .yampi-buy-button-container {
             width: 100%;
             margin-bottom: 25px;
         }
 
-        /* Ocultar o botão Yampi original */
-        .ymp-buy-button {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            position: absolute !important;
-            left: -9999px !important;
-            top: -9999px !important;
-            width: 0 !important;
-            height: 0 !important;
-        }
-
-        /* Container customizado para o botão */
         .custom-buy-button-wrapper {
             position: relative;
             width: 100%;
@@ -1219,7 +1321,7 @@
             margin-bottom: 15px;
             border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
             border: 2px solid rgba(255, 105, 180, 0.1);
         }
 
@@ -1438,6 +1540,11 @@
             .banner-text {
                 font-size: 1.2rem;
             }
+
+            .guarantee-features {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
         }
 
         /* Responsividade Desktop */
@@ -1491,6 +1598,11 @@
             .banner-text {
                 font-size: 1.3rem;
             }
+
+            .guarantee-features {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
         }
 
         /* Ajustes para telas muito pequenas */
@@ -1540,10 +1652,6 @@
                 font-size: 0.8rem;
             }
         }
-
-        .hidden {
-            display: none;
-        }
     </style>
 </head>
 
@@ -1576,7 +1684,7 @@
                     </div>
 
                     <h1 class="hero-title">
-                        O poder da <span class="biotechnology-title">Biotecnologia PDRN</span> extraída do DNA do salmão
+                        O PODER DA <span class="biotechnology-title">BIOTECNOLOGIA PDRN</span> EXTRAÍDA DO DNA DO SALMÃO
                     </h1>
                     <p class="hero-subtitle">
                         O bioativo mais avançado da tecnologia antienvelhecimento utilizado por famosos em
@@ -1892,6 +2000,61 @@
         </div>
     </section>
 
+    <!-- Garantia e Aprovação ANVISA -->
+    <section class="guarantee-approval section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">GARANTIA DE CONFIANÇA E APROVAÇÃO PELA ANVISA</h2>
+                <p class="section-subtitle">Segurança, qualidade e resultados comprovados</p>
+            </div>
+
+            <div class="guarantee-content">
+                <div class="guarantee-main">
+                    <div class="guarantee-icon-main">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+
+                    <h3 class="guarantee-title">PRODUTO APROVADO PELA ANVISA</h3>
+                    <p class="guarantee-subtitle">✅ Produto aprovado pela ANVISA</p>
+
+                    <p class="guarantee-text">
+                        O <span class="pdrn-highlight">PDRNskin</span> segue todas as normas de segurança e qualidade
+                        estabelecidas pela <span class="anvisa-highlight">ANVISA</span>
+                        (Agência Nacional de Vigilância Sanitária). Isso significa que você está adquirindo um produto
+                        confiável, seguro para uso diário e com eficácia comprovada.
+                    </p>
+
+                    <h4 class="guarantee-title" style="font-size: 1.3rem; margin-top: 25px;">🛡️ GARANTIA DE SATISFAÇÃO
+                    </h4>
+
+                    <p class="guarantee-text">
+                        Estamos tão confiantes no poder da biotecnologia <span class="pdrn-highlight">PDRN</span> que
+                        oferecemos a você uma <span class="anvisa-highlight">garantia exclusiva de 90 dias</span>.
+                    </p>
+
+                    <div class="guarantee-features">
+                        <div class="guarantee-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <div class="guarantee-feature-text">Se, após o uso contínuo, você não perceber os benefícios
+                                prometidos, devolvemos 100% do valor investido.</div>
+                        </div>
+
+                        <div class="guarantee-feature">
+                            <i class="fas fa-clock"></i>
+                            <div class="guarantee-feature-text">Simplesmente assim: ou você conquista resultados
+                                visíveis, ou não paga nada.</div>
+                        </div>
+                    </div>
+
+                    <div class="guarantee-bottom-text">
+                        <p>✨ Com o <span class="pdrn-highlight">PDRNskin</span>, você tem a segurança da aprovação da
+                            ANVISA e a tranquilidade de uma garantia que protege o seu investimento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Faixa Animada -->
     <div class="animated-banner reverse">
         <div class="banner-text banner-scroll-left">
@@ -1933,17 +2096,17 @@
                             <div class="quantity-section">
                                 <label class="quantity-label">Quantidade:</label>
                                 <div class="quantity-selector">
-                                    <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                                    <button class="quantity-btn" onclick="diminuirQuantidade()">-</button>
                                     <div class="quantity-display" id="quantityDisplay">1</div>
-                                    <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                                    <button class="quantity-btn" onclick="aumentarQuantidade()">+</button>
                                 </div>
                                 <div class="quantity-info" id="quantityInfo">1 frasco = 30 dias de tratamento</div>
                             </div>
 
-                            <!-- BOTÃO DE COMPRA DINÂMICO -->
+                            <!-- BOTÃO DE COMPRA -->
                             <div class="yampi-buy-button-container">
                                 <div class="custom-buy-button-wrapper">
-                                    <button class="custom-buy-button" id="customBuyButton">
+                                    <button class="custom-buy-button" onclick="comprarAgora()">
                                         <i class="fas fa-shopping-cart"></i> Comprar Agora
                                     </button>
                                 </div>
@@ -2059,192 +2222,138 @@
     </footer>
 
     <script>
-        // Configuração do produto
-        let quantity = 1;
-        let currentYampiScript = null;
+        // SISTEMA SIMPLES E FUNCIONAL - CRIADO DO ZERO
+        let quantidade = 1;
 
-        const PRODUCT_CONFIG = {
-            name: 'PDRNskin Premium',
-            basePrice: 249.00,
-            originalPrice: 299.00,
-            image: 'assets/mockup1-sem-fundo.webp',
-            description: 'Biotecnologia PDRN - Tratamento para 30 dias'
+        // CÓDIGOS YAMPI REAIS
+        const yampiCodes = {
+            1: "1TPD5A9U0H",
+            2: "LB3T9Z5QYV",
+            3: "R5ZJQ3ASC5",
+            4: "RVI57I655H",
+            5: "SETHGEIP5J",
+            6: "500XL055KW"
         };
 
-        // Códigos dos scripts da Yampi para cada quantidade
-        const YAMPI_SCRIPTS = {
-            1: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/1TPD5A9U0H/js',
-            2: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/LB3T9Z5QYV/js',
-            3: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/R5ZJQ3ASC5/js',
-            4: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/RVI57I655H/js',
-            5: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/SETHGEIP5J/js',
-            6: 'https://api.yampi.io/v2/pdrnskin/public/buy-button/500XL055KW/js'
+        // PREÇOS POR QUANTIDADE
+        const precos = {
+            1: { total: 249.00, info: "1 frasco = 30 dias de tratamento" },
+            2: { total: 479.00, info: "2 frascos = 60 dias + Desconto de R$ 69" },
+            3: { total: 599.00, info: "3 frascos = 90 dias + Frete Grátis + Desconto de R$ 298" },
+            4: { total: 699.00, info: "4 frascos = 120 dias + Frete Grátis + Desconto de R$ 497" },
+            5: { total: 799.00, info: "5 frascos = 150 dias + Frete Grátis + Desconto de R$ 696" },
+            6: { total: 899.99, info: "6 frascos = 180 dias + Frete Grátis + Maior Desconto de R$ 895" }
         };
 
-        // Preços por quantidade
-        const QUANTITY_PRICING = {
-            1: { price: 249.00, total: 249.00, savings: 0, info: "1 frasco = 30 dias de tratamento" },
-            2: { price: 239.50, total: 479.00, savings: 69.00, info: "2 frascos = 60 dias + Desconto de R$ 69" },
-            3: { price: 199.67, total: 599.00, savings: 298.00, info: "3 frascos = 90 dias + Frete Grátis + Desconto de R$ 298" },
-            4: { price: 174.75, total: 699.00, savings: 497.00, info: "4 frascos = 120 dias + Frete Grátis + Desconto de R$ 497" },
-            5: { price: 159.80, total: 799.00, savings: 696.00, info: "5 frascos = 150 dias + Frete Grátis + Desconto de R$ 696" },
-            6: { price: 149.98, total: 899.99, savings: 895.01, info: "6 frascos = 180 dias + Frete Grátis + Maior Desconto de R$ 895" }
-        };
+        // ATUALIZAR TELA
+        function atualizarTela() {
+            const preco = precos[quantidade];
+            document.getElementById('displayPrice').innerHTML = `R$ ${preco.total.toFixed(2).replace('.', ',')}`;
+            document.getElementById('quantityDisplay').innerHTML = quantidade;
+            document.getElementById('quantityInfo').innerHTML = preco.info;
+            console.log('Atualizado: Quantidade =', quantidade, ', Preço = R$', preco.total);
+        }
 
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function () {
-            updatePriceDisplay();
-            loadYampiScript();
-            initializeFAQ();
-            startCountdown();
-        });
-
-        // Função para carregar o script da Yampi dinamicamente
-        function loadYampiScript() {
-            // Remove o script anterior se existir
-            if (currentYampiScript) {
-                currentYampiScript.remove();
-                currentYampiScript = null;
-            }
-
-            // Remove qualquer botão Yampi existente
-            const existingButtons = document.querySelectorAll('.ymp-buy-button');
-            existingButtons.forEach(btn => btn.remove());
-
-            // Cria e carrega o novo script
-            const scriptUrl = YAMPI_SCRIPTS[quantity];
-            if (scriptUrl) {
-                currentYampiScript = document.createElement('script');
-                currentYampiScript.className = 'ymp-script';
-                currentYampiScript.src = scriptUrl;
-                currentYampiScript.onload = function () {
-                    console.log('Script Yampi carregado para quantidade:', quantity);
-                    // Aguarda um momento para o botão Yampi ser criado
-                    setTimeout(attachCustomButtonClick, 500);
-                };
-                document.head.appendChild(currentYampiScript);
+        // AUMENTAR QUANTIDADE
+        function aumentarQuantidade() {
+            if (quantidade < 6) {
+                quantidade++;
+                atualizarTela();
+                console.log('+ Quantidade aumentada para:', quantidade);
             }
         }
 
-        // Função para anexar o clique do botão customizado ao botão Yampi
-        function attachCustomButtonClick() {
-            const customButton = document.getElementById('customBuyButton');
-
-            if (customButton) {
-                // Remove qualquer listener anterior
-                customButton.replaceWith(customButton.cloneNode(true));
-                const newCustomButton = document.getElementById('customBuyButton');
-
-                newCustomButton.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    // Procura pelo botão Yampi no DOM
-                    const yampiButton = document.querySelector('.ymp-buy-button');
-
-                    if (yampiButton) {
-                        console.log('Clicando no botão Yampi para quantidade:', quantity);
-                        yampiButton.click();
-                    } else {
-                        console.warn('Botão Yampi não encontrado, tentando recarregar...');
-                        loadYampiScript();
-                    }
-                });
+        // DIMINUIR QUANTIDADE
+        function diminuirQuantidade() {
+            if (quantidade > 1) {
+                quantidade--;
+                atualizarTela();
+                console.log('- Quantidade diminuída para:', quantidade);
             }
         }
 
-        // Contador regressivo
-        function startCountdown() {
-            const countdownElement = document.getElementById('countdown');
-            if (!countdownElement) return;
+        // COMPRAR AGORA
+        function comprarAgora() {
+            const codigo = yampiCodes[quantidade];
+            const url = `https://pdrnskin.yampi.io/r/B5A7QPE91E-${codigo}`;
+            console.log('=== COMPRANDO ===');
+            console.log('Quantidade:', quantidade);
+            console.log('Código Yampi:', codigo);
+            console.log('URL:', url);
+            console.log('================');
+            window.open(url, '_blank');
+        }
 
-            let time = countdownElement.textContent.split(':');
-            let hours = parseInt(time[0]);
-            let minutes = parseInt(time[1]);
-            let seconds = parseInt(time[2]);
+        // SCROLL PARA CHECKOUT
+        function scrollToCheckout() {
+            document.getElementById('checkout').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // SCROLL PARA BENEFÍCIOS
+        function scrollToBenefits() {
+            document.getElementById('benefits').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // FAQ TOGGLE
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+
+            // Fecha todos
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Abre o clicado se não estava ativo
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // CONTADOR REGRESSIVO
+        function iniciarContador() {
+            const elemento = document.getElementById('countdown');
+            if (!elemento) return;
+
+            let [horas, minutos, segundos] = elemento.innerHTML.split(':').map(Number);
 
             setInterval(() => {
-                if (seconds > 0) {
-                    seconds--;
-                } else if (minutes > 0) {
-                    minutes--;
-                    seconds = 59;
-                } else if (hours > 0) {
-                    hours--;
-                    minutes = 59;
-                    seconds = 59;
+                if (segundos > 0) {
+                    segundos--;
+                } else if (minutos > 0) {
+                    minutos--;
+                    segundos = 59;
+                } else if (horas > 0) {
+                    horas--;
+                    minutos = 59;
+                    segundos = 59;
                 }
 
-                countdownElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                elemento.innerHTML = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
             }, 1000);
         }
 
-        // Aumentar quantidade
-        function increaseQuantity() {
-            if (quantity < 6) {
-                quantity++;
-                updatePriceDisplay();
-                loadYampiScript();
-            }
-        }
+        // INICIALIZAÇÃO
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('=== PDRNskin INICIADO ===');
+            console.log('Códigos Yampi configurados:', yampiCodes);
+            console.log('Preços configurados:', precos);
 
-        // Diminuir quantidade
-        function decreaseQuantity() {
-            if (quantity > 1) {
-                quantity--;
-                updatePriceDisplay();
-                loadYampiScript();
-            }
-        }
+            // Configurar valores iniciais
+            atualizarTela();
 
-        // Atualizar display de preço
-        function updatePriceDisplay() {
-            const pricing = QUANTITY_PRICING[quantity];
-            document.getElementById('quantityDisplay').textContent = quantity;
-            document.getElementById('displayPrice').textContent = `R$ ${pricing.total.toFixed(2).replace('.', ',')}`;
-            document.getElementById('quantityInfo').textContent = pricing.info;
-        }
+            // Iniciar contador
+            iniciarContador();
 
-        // FAQ
-        function initializeFAQ() {
-            window.toggleFAQ = function (element) {
-                const faqItem = element.parentElement;
-                const isActive = faqItem.classList.contains('active');
-
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-
-                if (!isActive) {
-                    faqItem.classList.add('active');
-                }
-            };
-        }
-
-        // Scroll para seções
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
-        function scrollToCheckout() {
-            scrollToSection('checkout');
-        }
-
-        function scrollToBenefits() {
-            scrollToSection('benefits');
-        }
-
-        // Exportar funções globais
-        window.scrollToCheckout = scrollToCheckout;
-        window.scrollToBenefits = scrollToBenefits;
-        window.toggleFAQ = toggleFAQ;
-        window.increaseQuantity = increaseQuantity;
-        window.decreaseQuantity = decreaseQuantity;
+            console.log('Sistema pronto e funcionando!');
+            console.log('========================');
+        });
     </script>
 </body>
 
