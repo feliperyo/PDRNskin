@@ -1507,6 +1507,121 @@
             text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
         }
 
+        /* Selos de Confiança e Avaliações */
+        .trust-and-rating {
+            margin-top: 25px;
+        }
+
+        /* Selos de Confiança */
+        .trust-badges {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .badge i {
+            font-size: 1.5rem;
+            color: #10b981;
+            margin-bottom: 8px;
+        }
+
+        .badge span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Seção de Avaliações */
+        .rating-section {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border: 2px solid #10b981;
+            border-radius: 16px;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+        }
+
+        .stars-large {
+            display: flex;
+            justify-content: center;
+            gap: 3px;
+            margin-bottom: 8px;
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .rating-text {
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .rating-text strong {
+            font-weight: 900;
+        }
+
+        /* Responsivo para mobile */
+        @media (max-width: 480px) {
+            .trust-badges {
+                gap: 8px;
+                padding: 12px;
+            }
+
+            .badge i {
+                font-size: 1.2rem;
+                margin-bottom: 6px;
+            }
+
+            .badge span {
+                font-size: 0.7rem;
+            }
+
+            .rating-section {
+                padding: 12px 15px;
+            }
+
+            .stars-large {
+                font-size: 1.1rem;
+                gap: 2px;
+            }
+
+            .rating-text {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Ajuste para mobile */
+        @media (max-width: 480px) {
+            .rating-section {
+                padding: 15px;
+                margin-top: 20px;
+            }
+
+            .stars-large {
+                font-size: 1.3rem;
+                gap: 3px;
+            }
+
+            .rating-text {
+                font-size: 0.9rem;
+            }
+        }
+
         /* Responsividade Tablet */
         @media (min-width: 768px) {
             .container {
@@ -2209,24 +2324,55 @@
                             <div class="yampi-buy-button-container">
                                 <div class="custom-buy-button-wrapper">
                                     <button class="custom-buy-button" onclick="comprarAgora()">
-                                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                                        <i class="fas fa-shopping-cart"></i> COMPRAR AGORA
                                     </button>
+                                </div>
+                            </div>
+
+                            <!-- Selos de Confiança e Avaliações -->
+                            <div class="trust-and-rating">
+                                <!-- Selos de Confiança -->
+                                <div class="trust-badges">
+                                    <div class="badge">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span>Compra<br>Segura</span>
+                                    </div>
+                                    <div class="badge">
+                                        <i class="fas fa-medal"></i>
+                                        <span>Satisfação<br>Garantida</span>
+                                    </div>
+                                    <div class="badge">
+                                        <i class="fas fa-lock"></i>
+                                        <span>Privacidade<br>Protegida</span>
+                                    </div>
+                                </div>
+
+                                <!-- Avaliações -->
+                                <div class="rating-section">
+                                    <div class="stars-large">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="rating-text">
+                                        <strong>4.8</strong> DE <strong>159.687</strong> AVALIAÇÕES
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="simple-guarantee">
+                                <div class="guarantee-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="guarantee-text">
+                                    Garantia de 90 dias ou seu dinheiro de volta
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="simple-guarantee">
-                        <div class="guarantee-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div class="guarantee-text">
-                            Garantia de 90 dias ou seu dinheiro de volta
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </div>
     </section>
 
     <!-- FAQ Section -->
