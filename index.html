@@ -37,6 +37,8 @@
             background: #ffffff;
             color: #1a1a1a;
             line-height: 1.6;
+            overflow-x: hidden;
+            touch-action: pan-y;
         }
 
         .container {
@@ -2952,11 +2954,32 @@
             }, 1000);
         }
 
+        // BLOQUEAR ZOOM E GESTOS NO iOS/SAFARI
+        function bloquearZoom() {
+            // Bloqueia gesto de zoom e duplo toque
+            document.addEventListener('gesturestart', e => e.preventDefault());
+            document.addEventListener('gesturechange', e => e.preventDefault());
+            document.addEventListener('gestureend', e => e.preventDefault());
+
+            // Bloqueia duplo clique que dá zoom no iOS
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function (e) {
+                const now = new Date().getTime();
+                if (now - lastTouchEnd <= 300) {
+                    e.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+        }
+
         // INICIALIZAÇÃO QUANDO A PÁGINA CARREGA
         document.addEventListener('DOMContentLoaded', function () {
             console.log('=== PDRNskin SISTEMA INICIADO ===');
             console.log('Links Yampi:', yampiLinks);
             console.log('Produtos:', produtos);
+
+            // Bloquear zoom no iOS/Safari
+            bloquearZoom();
 
             // Atualizar interface inicial
             atualizar();
