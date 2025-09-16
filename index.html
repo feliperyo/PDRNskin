@@ -126,6 +126,42 @@
             }
         }
 
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         /* Logo no topo - ALINHADO À ESQUERDA */
         .top-logo {
             position: fixed;
@@ -446,6 +482,194 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 900;
+        }
+
+        /* SEÇÃO: Galeria de Produto OTIMIZADA */
+        .product-gallery {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E9B 50%, #FFB6C1 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 80px 0;
+        }
+
+        .product-gallery::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .gallery-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Seção Superior */
+        .gallery-top-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 80px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .gallery-text-content {
+            color: white;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .gallery-main-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .gallery-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        /* Seção Inferior - MODIFICADA para ter imagem-texto-imagem no desktop */
+        .gallery-bottom-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .gallery-center-content {
+            order: 2;
+        }
+
+        .gallery-big-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            color: white;
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .gallery-side-images {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .gallery-side-images .gallery-image:first-child {
+            order: 1;
+        }
+
+        .gallery-side-images .gallery-image:last-child {
+            order: 3;
+        }
+
+        .gallery-info-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            order: 4;
+        }
+
+        .gallery-image {
+            width: 100%;
+            max-width: 350px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Caixa de Informações */
+        .info-header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .info-badge {
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(255, 20, 147, 0.3);
+        }
+
+        .info-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .info-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .info-divider {
+            height: 2px;
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+            margin-bottom: 20px;
+            border-radius: 2px;
+        }
+
+        .info-details p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .info-details p:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-details strong {
+            color: var(--vibrant-pink);
+            font-weight: 700;
         }
 
         /* Benefícios */
@@ -1612,6 +1836,15 @@
             .guarantee-text-unified {
                 font-size: 0.85rem;
             }
+
+            .gallery-image {
+                height: 250px;
+                max-width: 300px;
+            }
+
+            .product-image {
+                max-width: 100px;
+            }
         }
 
         @media (min-width: 768px) {
@@ -1647,6 +1880,26 @@
             .hero-buttons {
                 flex-direction: row;
                 max-width: none;
+            }
+
+            /* Galeria - Responsividade tablet */
+            .gallery-top-section {
+                flex-direction: row;
+                text-align: left;
+                gap: 60px;
+            }
+
+            .gallery-text-content {
+                flex: 1;
+            }
+
+            .gallery-image-top {
+                flex: 1;
+            }
+
+            .gallery-image {
+                max-width: 350px;
+                height: 300px;
             }
 
             .benefits-grid {
@@ -1741,6 +1994,48 @@
             .floating-product {
                 width: 450px;
                 height: 600px;
+            }
+
+            /* LAYOUT DESKTOP DA GALERIA - IMAGEM-TEXTO-IMAGEM */
+            .gallery-bottom-section {
+                display: grid;
+                grid-template-columns: 300px 1fr 300px;
+                gap: 40px;
+                align-items: center;
+            }
+
+            .gallery-side-images {
+                display: contents;
+            }
+
+            .gallery-side-images .gallery-image:first-child {
+                order: 0;
+                grid-column: 1;
+            }
+
+            .gallery-center-content {
+                order: 0;
+                grid-column: 2;
+                text-align: center;
+            }
+
+            .gallery-side-images .gallery-image:last-child {
+                order: 0;
+                grid-column: 3;
+            }
+
+            .gallery-info-box {
+                order: 0;
+                grid-column: 1 / -1;
+                margin-top: 40px;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .gallery-image {
+                max-width: 100%;
+                height: 350px;
             }
 
             .benefits-grid {
@@ -1843,6 +2138,11 @@
             .badge-unified span {
                 font-size: 0.7rem;
             }
+
+            .gallery-image {
+                height: 200px;
+                max-width: 280px;
+            }
         }
     </style>
 </head>
@@ -1906,6 +2206,52 @@
             💎 TECNOLOGIA AVANÇADA • PELE JOVEM • ANTI-IDADE • RESULTADOS REAIS • APROVADO ANVISA 💎
         </div>
     </div>
+
+    <!-- SEÇÃO: Galeria de Produto OTIMIZADA -->
+    <section class="product-gallery section">
+        <div class="container">
+            <div class="gallery-wrapper">
+                <!-- Seção Superior - Texto + Imagem -->
+                <div class="gallery-top-section">
+                    <div class="gallery-text-content">
+                        <h2 class="gallery-main-title">BEM-ESTAR QUE CABE NA ROTINA.</h2>
+                        <p class="gallery-description">Tem coisa melhor do que cuidar de si sem complicação? O PDRNskin
+                            é um skincare premium, feito com biotecnologia PDRN extraída do DNA do salmão, que une
+                            regeneração celular e hidratação profunda na medida certa.</p>
+                        <p class="gallery-description">É prático, eficaz e pensado pra encaixar no seu dia sem esforço —
+                            seja pra manter o foco na pele jovem ou dar uma forcinha pro rejuvenescimento e luminosidade
+                            natural.</p>
+                    </div>
+                </div>
+
+                <!-- Seção Inferior - Layout OTIMIZADO: mobile vertical, desktop imagem-texto-imagem -->
+                <div class="gallery-bottom-section">
+                    <div class="gallery-side-images">
+                        <img src="./assets/woman-mockup.webp" alt="Resultado PDRNskin na pele" class="gallery-image" />
+                        <div class="gallery-center-content">
+                            <h3 class="gallery-big-title">SIMPLES,<br>LEVE E<br>FUNCIONAL</h3>
+                        </div>
+                        <img src="./assets/woman-mockup2.webp" alt="Aplicação PDRNskin" class="gallery-image" />
+                    </div>
+
+                    <div class="gallery-info-box">
+                        <div class="info-header">
+                            <span class="info-badge">BIOTECNOLOGIA PDRN</span>
+                        </div>
+                        <h4 class="info-title">INFORMAÇÃO DO PRODUTO</h4>
+                        <p class="info-subtitle">Frasco 30ml (1 unidade)</p>
+                        <div class="info-divider"></div>
+                        <div class="info-details">
+                            <p><strong>PDRN (DNA do Salmão)</strong> - Regeneração celular</p>
+                            <p><strong>Ácido Hialurônico</strong> - Hidratação intensa</p>
+                            <p><strong>Niacinamida</strong> - Uniformização do tom</p>
+                            <p><strong>Pantenol</strong> - Reparação e maciez</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Benefícios Section -->
     <section class="benefits section" id="benefits">
@@ -2236,12 +2582,6 @@
 
                     <div class="guarantee-features">
                         <div class="guarantee-feature">
-                            <i class="fas fa-check-circle"></i>
-                            <div class="guarantee-feature-text">Se, após o uso contínuo, você não perceber os benefícios
-                                prometidos, devolvemos 100% do valor investido.</div>
-                        </div>
-
-                        <div class="guarantee-feature">
                             <i class="fas fa-clock"></i>
                             <div class="guarantee-feature-text">Simplesmente assim: ou você conquista resultados
                                 visíveis, ou não paga nada.</div>
@@ -2352,10 +2692,6 @@
                                     <div class="badge-unified">
                                         <i class="fas fa-medal"></i>
                                         <span>Satisfação Garantida</span>
-                                    </div>
-                                    <div class="badge-unified">
-                                        <i class="fas fa-lock"></i>
-                                        <span>Privacidade Protegida</span>
                                     </div>
                                 </div>
 
